@@ -6,6 +6,7 @@
 #include "ProjectApp.h"
 #include "ZDProfile.h"
 #include "user_printf.h"
+#include "DHT11.h"
 
 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
 uint8 UART0_RX_STA = 0;                //接收状态标记
@@ -13,6 +14,7 @@ uint8 UART0_RX_LEN = 0;                //接收数据长度
 //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
 extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
 extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+
 
 void USER_Uart0_Init( uint8 baudRate )
 {
@@ -67,46 +69,11 @@ void Uart0_Process( uint8 port, uint8 event )
   }
 }
 
-static void ProjectApp_SendBindcast( void )
-{
-  char theMessageData[ ] = "Bind data\r\n";
-  
-  afAddrType_t ProjectApp_DstAddr;
-  ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
-  ProjectApp_DstAddr.endPoint       = 0;
-  ProjectApp_DstAddr.addr.shortAddr = 0;
- 
-  AF_DataRequest( &ProjectApp_DstAddr,
-                  &ProjectApp_epDesc,
-                  PROJECTAPP_CLUSTERID,
-                  (byte)osal_strlen( theMessageData ) + 1,
-                  (byte *)&theMessageData,
-                  &ProjectApp_TransID,
-                  AF_DISCV_ROUTE,
-                  AF_DEFAULT_RADIUS
-                );
-}
+
 
 void Uart0_Handle(void)
 {
-  if(strstr((const char*)UART0_RX_BUFF, "request binding"))
-  {
-    printf("Bind start!\r\n");
-    zAddrType_t dstAddr;
-    dstAddr.addrMode = Addr16Bit;
-    dstAddr.addr.shortAddr = 0x0000; // Coordinator
-    ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
-                          ProjectApp_epDesc.endPoint,
-                          PROJECTAPP_PROFID,
-                          PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-                          PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-                          FALSE );
-
-  }
-  else if(strstr((const char*)UART0_RX_BUFF,"send binding"))
-  {
-      ProjectApp_SendBindcast();
-  }
+ 
 }
 
 void Uart0_Reset(void)

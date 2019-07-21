@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               14/Jul/2019  19:53:08
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               19/Jul/2019  12:46:58
 # Copyright 2004-2018 IAR Systems AB.
 # PC-locked license - IAR Embedded Workbench for 8051
 #
@@ -12,24 +12,25 @@
 #    Dptr setup         =  1,16
 #                          
 #    Source file        =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
 #    Command line       =  
-#        -f C:\Users\Admin\AppData\Local\Temp\EW84.tmp
-#        (E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c -D
-#        NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D
-#        xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING -lC
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        -f C:\Users\Admin\AppData\Local\Temp\EWB97D.tmp
+#        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
+#        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+#        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
+#        -lC
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 #        -lA
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 #        --diag_suppress Pe001,Pa010 -o
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
 #        -e --debug --core=plain --dptr=16,1 --data_model=large
 #        --code_model=banked --calling_convention=xdata_reentrant
 #        --place_constants=data_rom --nr_virtual_regs 8 -f
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
 #        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
 #        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
 #        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 #        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
 #        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
@@ -45,57 +46,57 @@
 #        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
 #        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
 #        -DREJOIN_POLL_RATE=440) -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
 #        -Ohz --require_prototypes --no_code_motion)
 #    Locale             =  Chinese (Simplified)_CHN.936
 #    List file          =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\MT_TASK.lst
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\MT_TASK.lst
 #    Object file        =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\MT_TASK.r51
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\MT_TASK.r51
 #
 ###############################################################################
 
-E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
+E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
       1          /***************************************************************************************************
       2            Filename:       MT_TASK.c
       3            Revised:        $Date: 2011-06-07 15:36:01 -0700 (Tue, 07 Jun 2011) $
@@ -375,7 +376,7 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
    \   0000BB   FA           MOV       R2,A
    \   0000BC   EF           MOV       A,R7
    \   0000BD   6480         XRL       A,#0x80
-   \   0000BF   8065         SJMP      ??MT_ProcessEvent_7
+   \   0000BF   8025         SJMP      ??MT_ProcessEvent_7
     120            }
     121          
     122            if ( events & MT_SECONDARY_INIT_EVENT )
@@ -391,7 +392,7 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
     126              return (events ^ MT_SECONDARY_INIT_EVENT);
    \   0000C9   EE           MOV       A,R6
    \   0000CA   6410         XRL       A,#0x10
-   \   0000CC   8056         SJMP      ??MT_ProcessEvent_9
+   \   0000CC   8016         SJMP      ??MT_ProcessEvent_9
     127            }
     128          
     129            if ( events & MT_ZTOOL_SERIAL_RCV_BUFFER_FULL )
@@ -405,7 +406,7 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
    \   0000D3   EA           MOV       A,R2
    \   0000D4   6402         XRL       A,#0x2
    \   0000D6   FA           MOV       R2,A
-   \   0000D7   8054         SJMP      ??MT_ProcessEvent_11
+   \   0000D7   8014         SJMP      ??MT_ProcessEvent_11
     133            }
     134          
     135          #if !defined( NONWK )
@@ -413,7 +414,7 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
    \                     ??MT_ProcessEvent_10:
    \   0000D9   EA           MOV       A,R2
    \   0000DA   5408         ANL       A,#0x8
-   \   0000DC   6008         JZ        ??MT_ProcessEvent_12
+   \   0000DC   600B         JZ        ??MT_ProcessEvent_12
     137            {
     138              MT_AfExec();
    \   0000DE                ; Setup parameters for call to function MT_AfExec
@@ -421,101 +422,55 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
     139              return (events ^ MT_AF_EXEC_EVT);
    \   0000E1   EE           MOV       A,R6
    \   0000E2   6408         XRL       A,#0x8
-   \   0000E4   803E         SJMP      ??MT_ProcessEvent_9
+   \                     ??MT_ProcessEvent_9:
+   \   0000E4   FA           MOV       R2,A
+   \   0000E5   EF           MOV       A,R7
+   \                     ??MT_ProcessEvent_7:
+   \   0000E6   FB           MOV       R3,A
+   \   0000E7   8004         SJMP      ??MT_ProcessEvent_11
     140            }
     141          #endif  /* NONWK */
     142          
     143            /* Handle MT_SYS_OSAL_START_TIMER callbacks */
     144          #if defined MT_SYS_FUNC
     145            if ( events & (MT_SYS_OSAL_EVENT_MASK))
-   \                     ??MT_ProcessEvent_12:
-   \   0000E6   EB           MOV       A,R3
-   \   0000E7   540F         ANL       A,#0xf
-   \   0000E9   603E         JZ        ??MT_ProcessEvent_13
     146            {
     147              if (events & MT_SYS_OSAL_EVENT_0)
-   \   0000EB   EB           MOV       A,R3
-   \   0000EC   5408         ANL       A,#0x8
-   \   0000EE   6009         JZ        ??MT_ProcessEvent_14
     148              {
     149                MT_SysOsalTimerExpired(0x00);
-   \   0000F0                ; Setup parameters for call to function MT_SysOsalTimerExpired
-   \   0000F0   7900         MOV       R1,#0x0
-   \   0000F2   12....       LCALL     `??MT_SysOsalTimerExpired::?relay`; Banked call to: MT_SysOsalTimerExpired
     150                events ^= MT_SYS_OSAL_EVENT_0;
-   \   0000F5   7408         MOV       A,#0x8
-   \   0000F7   6F           XRL       A,R7
-   \   0000F8   FF           MOV       R7,A
     151              }
     152          
     153              if (events & MT_SYS_OSAL_EVENT_1)
-   \                     ??MT_ProcessEvent_14:
-   \   0000F9   EF           MOV       A,R7
-   \   0000FA   5404         ANL       A,#0x4
-   \   0000FC   6009         JZ        ??MT_ProcessEvent_15
     154              {
     155                MT_SysOsalTimerExpired(0x01);
-   \   0000FE                ; Setup parameters for call to function MT_SysOsalTimerExpired
-   \   0000FE   7901         MOV       R1,#0x1
-   \   000100   12....       LCALL     `??MT_SysOsalTimerExpired::?relay`; Banked call to: MT_SysOsalTimerExpired
     156                events ^= MT_SYS_OSAL_EVENT_1;
-   \   000103   7404         MOV       A,#0x4
-   \   000105   6F           XRL       A,R7
-   \   000106   FF           MOV       R7,A
     157              }
     158          
     159              if (events & MT_SYS_OSAL_EVENT_2)
-   \                     ??MT_ProcessEvent_15:
-   \   000107   EF           MOV       A,R7
-   \   000108   5402         ANL       A,#0x2
-   \   00010A   6009         JZ        ??MT_ProcessEvent_16
     160              {
     161                MT_SysOsalTimerExpired(0x02);
-   \   00010C                ; Setup parameters for call to function MT_SysOsalTimerExpired
-   \   00010C   7902         MOV       R1,#0x2
-   \   00010E   12....       LCALL     `??MT_SysOsalTimerExpired::?relay`; Banked call to: MT_SysOsalTimerExpired
     162                events ^= MT_SYS_OSAL_EVENT_2;
-   \   000111   7402         MOV       A,#0x2
-   \   000113   6F           XRL       A,R7
-   \   000114   FF           MOV       R7,A
     163              }
     164          
     165              if (events & MT_SYS_OSAL_EVENT_3)
-   \                     ??MT_ProcessEvent_16:
-   \   000115   EF           MOV       A,R7
-   \   000116   5401         ANL       A,#0x1
-   \   000118   6009         JZ        ??MT_ProcessEvent_17
     166              {
     167                MT_SysOsalTimerExpired(0x03);
-   \   00011A                ; Setup parameters for call to function MT_SysOsalTimerExpired
-   \   00011A   7903         MOV       R1,#0x3
-   \   00011C   12....       LCALL     `??MT_SysOsalTimerExpired::?relay`; Banked call to: MT_SysOsalTimerExpired
     168                events ^= MT_SYS_OSAL_EVENT_3;
-   \   00011F   7401         MOV       A,#0x1
-   \   000121   6F           XRL       A,R7
-   \   000122   FF           MOV       R7,A
     169              }
     170          
     171              return events;
-   \                     ??MT_ProcessEvent_17:
-   \   000123   EE           MOV       A,R6
-   \                     ??MT_ProcessEvent_9:
-   \   000124   FA           MOV       R2,A
-   \   000125   EF           MOV       A,R7
-   \                     ??MT_ProcessEvent_7:
-   \   000126   FB           MOV       R3,A
-   \   000127   8004         SJMP      ??MT_ProcessEvent_11
     172            }
     173          #endif
     174          
     175            /* Discard or make more handlers */
     176            return 0;
-   \                     ??MT_ProcessEvent_13:
-   \   000129   7A00         MOV       R2,#0x0
-   \   00012B   7B00         MOV       R3,#0x0
+   \                     ??MT_ProcessEvent_12:
+   \   0000E9   7A00         MOV       R2,#0x0
+   \   0000EB   7B00         MOV       R3,#0x0
    \                     ??MT_ProcessEvent_11:
-   \   00012D   7F06         MOV       R7,#0x6
-   \   00012F   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   0000ED   7F06         MOV       R7,#0x6
+   \   0000EF   02....       LJMP      ?BANKED_LEAVE_XDATA
     177          
     178          } /* MT_ProcessEvent() */
     179          
@@ -605,62 +560,25 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
     263           *
     264           * @return  pointer the allocated memory or NULL if fail to allocate the memory
     265           ***************************************************************************************************/
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
     266          uint8 *MT_TransportAlloc(uint8 cmd0, uint8 len)
-   \                     MT_TransportAlloc:
     267          {
-   \   000000                REQUIRE ?V0
-   \   000000                REQUIRE ?V1
-   \   000000   74F6         MOV       A,#-0xa
-   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
-   \   000005                ; Saved register size: 10
-   \   000005                ; Auto size: 0
-   \   000005   EA           MOV       A,R2
     268            uint8 *p;
     269          
     270            (void)cmd0;  // Intentionally unreferenced parameter
     271          
     272            /* Allocate a buffer of data length + SOP+CMD+FCS (5 bytes) */
     273            p = osal_msg_allocate(len + SPI_0DATA_MSG_LEN);
-   \   000006                ; Setup parameters for call to function osal_msg_allocate
-   \   000006   2405         ADD       A,#0x5
-   \   000008   FA           MOV       R2,A
-   \   000009   E4           CLR       A
-   \   00000A   3400         ADDC      A,#0x0
-   \   00000C   FB           MOV       R3,A
-   \   00000D   12....       LCALL     `??osal_msg_allocate::?relay`; Banked call to: osal_msg_allocate
-   \   000010   8A82         MOV       DPL,R2
-   \   000012   8B83         MOV       DPH,R3
     274          
     275            if (p)
-   \   000014   E582         MOV       A,DPL
-   \   000016   4583         ORL       A,DPH
-   \   000018   6007         JZ        ??MT_TransportAlloc_0
     276            {
     277              p++; /* Save space for SOP_VALUE, msg structure */
     278              return p;
-   \   00001A   A3           INC       DPTR
-   \   00001B   AA82         MOV       R2,DPL
-   \   00001D   AB83         MOV       R3,DPH
-   \   00001F   8004         SJMP      ??MT_TransportAlloc_1
     279            }
     280            else
     281            {
     282              return NULL;
-   \                     ??MT_TransportAlloc_0:
-   \   000021   7A00         MOV       R2,#0x0
-   \   000023   7B00         MOV       R3,#0x0
     283            }
-   \                     ??MT_TransportAlloc_1:
-   \   000025                REQUIRE ?Subroutine0
-   \   000025                ; // Fall through to label ?Subroutine0
     284          }
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine0:
-   \   000000   7F02         MOV       R7,#0x2
-   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
     285          
     286          /***************************************************************************************************
     287           * @fn      MT_TransportSend
@@ -671,86 +589,28 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
     292           *
     293           * @return  None
     294           ***************************************************************************************************/
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
     295          void MT_TransportSend(uint8 *pBuf)
-   \                     MT_TransportSend:
     296          {
-   \   000000                REQUIRE ?V0
-   \   000000                REQUIRE ?V1
-   \   000000   74F6         MOV       A,#-0xa
-   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
-   \   000005                ; Saved register size: 10
-   \   000005                ; Auto size: 0
     297            uint8 *msgPtr;
     298            uint8 dataLen = pBuf[0]; /* Data length is on byte #1 from the pointer */
-   \   000005   8A82         MOV       DPL,R2
-   \   000007   8B83         MOV       DPH,R3
-   \   000009   E0           MOVX      A,@DPTR
-   \   00000A   F8           MOV       R0,A
     299          
     300            /* Move back to the SOP */
     301            msgPtr = pBuf-1;
-   \   00000B   EA           MOV       A,R2
-   \   00000C   24FF         ADD       A,#-0x1
-   \   00000E   F5..         MOV       ?V0,A
-   \   000010   EB           MOV       A,R3
-   \   000011   34FF         ADDC      A,#-0x1
-   \   000013   F5..         MOV       ?V1,A
     302          
     303            /* Insert SOP */
     304            msgPtr[0] = MT_UART_SOF;
-   \   000015   85..82       MOV       DPL,?V0
-   \   000018   F583         MOV       DPH,A
-   \   00001A   74FE         MOV       A,#-0x2
-   \   00001C   F0           MOVX      @DPTR,A
     305          
     306            /* Insert FCS */
     307            msgPtr[SPI_0DATA_MSG_LEN - 1 + dataLen] = MT_UartCalcFCS (pBuf, (3 + dataLen));
-   \   00001D   E8           MOV       A,R0
-   \   00001E   FE           MOV       R6,A
-   \   00001F                ; Setup parameters for call to function MT_UartCalcFCS
-   \   00001F   7403         MOV       A,#0x3
-   \   000021   28           ADD       A,R0
-   \   000022   F9           MOV       R1,A
-   \   000023   12....       LCALL     `??MT_UartCalcFCS::?relay`; Banked call to: MT_UartCalcFCS
-   \   000026   E5..         MOV       A,?V0
-   \   000028   2E           ADD       A,R6
-   \   000029   F582         MOV       DPL,A
-   \   00002B   E4           CLR       A
-   \   00002C   35..         ADDC      A,?V1
-   \   00002E   F583         MOV       DPH,A
-   \   000030   A3           INC       DPTR
-   \   000031   A3           INC       DPTR
-   \   000032   A3           INC       DPTR
-   \   000033   A3           INC       DPTR
-   \   000034   E9           MOV       A,R1
-   \   000035   F0           MOVX      @DPTR,A
     308          
     309            /* Send to UART */
     310          #ifdef MT_UART_DEFAULT_PORT
     311            HalUARTWrite(MT_UART_DEFAULT_PORT, msgPtr, dataLen + SPI_0DATA_MSG_LEN);
-   \   000036                ; Setup parameters for call to function HalUARTWrite
-   \   000036   EE           MOV       A,R6
-   \   000037   2405         ADD       A,#0x5
-   \   000039   FC           MOV       R4,A
-   \   00003A   E4           CLR       A
-   \   00003B   3400         ADDC      A,#0x0
-   \   00003D   FD           MOV       R5,A
-   \   00003E   AA..         MOV       R2,?V0
-   \   000040   AB..         MOV       R3,?V1
-   \   000042   7900         MOV       R1,#0x0
-   \   000044   12....       LCALL     `??HalUARTWrite::?relay`; Banked call to: HalUARTWrite
     312          #endif
     313          
     314            /* Deallocate */
     315            osal_msg_deallocate(msgPtr);
-   \   000047                ; Setup parameters for call to function osal_msg_deallocate
-   \   000047   AA..         MOV       R2,?V0
-   \   000049   AB..         MOV       R3,?V1
-   \   00004B   12....       LCALL     `??osal_msg_deallocate::?relay`; Banked call to: osal_msg_deallocate
     316          }
-   \   00004E   80..         SJMP      ?Subroutine0
     317          #endif /* MT_TASK */
     318          /***************************************************************************************************
     319           ***************************************************************************************************/
@@ -767,7 +627,6 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
         0     14   -> MT_ProcessDebugMsg
         0     14   -> MT_ProcessDebugStr
         0     14   -> MT_ProcessIncoming
-        0     14   -> MT_SysOsalTimerExpired
         0     14   -> MT_UartCalcFCS
         0     14   -> osal_msg_deallocate
         0     14   -> osal_msg_receive
@@ -775,33 +634,24 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT_TASK.c
         0      9   -> MT_UartInit
         0      9   -> MT_UartRegisterTaskID
         0      9   -> osal_set_event
-      0     10   MT_TransportAlloc
-        0     10   -> osal_msg_allocate
-      1     10   MT_TransportSend
-        0     10   -> HalUARTWrite
-        0     10   -> MT_UartCalcFCS
-        0     10   -> osal_msg_deallocate
 
 
    Segment part sizes:
 
    Bytes  Function/Label
    -----  --------------
-       5  ?Subroutine0
-     306  MT_ProcessEvent
+     242  MT_ProcessEvent
        1  MT_TaskID
       33  MT_TaskInit
-      37  MT_TransportAlloc
-      80  MT_TransportSend
-      24  -- Other
+      12  -- Other
 
  
- 461 bytes in segment BANKED_CODE
-  24 bytes in segment BANK_RELAYS
+ 275 bytes in segment BANKED_CODE
+  12 bytes in segment BANK_RELAYS
    1 byte  in segment XDATA_Z
  
-  24 bytes of CODE     memory
- 461 bytes of HUGECODE memory
+  12 bytes of CODE     memory
+ 275 bytes of HUGECODE memory
    1 byte  of XDATA    memory
 
 Errors: none

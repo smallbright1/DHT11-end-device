@@ -4,6 +4,8 @@
 #include "ZDObject.h"
 #include "ZDProfile.h"
 
+#include "string.h"
+#include "DHT11.h"
 #include "ProjectApp.h"
 #include "DebugTrace.h"
 
@@ -93,12 +95,11 @@ afAddrType_t ProjectApp_DstAddr;
 static void ProjectApp_HandleKeys( byte shift, byte keys );
 static void ProjectApp_SendTheMessage( void );
 static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg );
-static void ProjectApp_SendBindcast( void );
 static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt );
 #if defined( IAR_ARMCM3_LM )
 static void ProjectApp_ProcessRtosMessage( void );
 #endif
-
+static void ProjectApp_SendBindcast( void );
 /*********************************************************************
  * NETWORK LAYER CALLBACKS
  */
@@ -251,12 +252,12 @@ uint16 ProjectApp_ProcessEvent( uint8 task_id, uint16 events )
   if ( events & PROJECTAPP_SEND_MSG_EVT )
   {
     // Send "the" message
-    ProjectApp_SendTheMessage();
-
+    ProjectApp_SendBindcast();
+//    ProjectApp_SendTheMessage();
     // Setup to send message again
     osal_start_timerEx( ProjectApp_TaskID,
                         PROJECTAPP_SEND_MSG_EVT,
-                        PROJECTAPP_SEND_MSG_TIMEOUT );
+                        PROJECTAPP_SEND_MSG_TIMEOUT+(osal_rand() & 0x00FF));
 
     // return unprocessed events
     return (events ^ PROJECTAPP_SEND_MSG_EVT);
@@ -318,7 +319,6 @@ static void ProjectApp_HandleKeys( uint8 shift, uint8 keys )
   {
     if ( keys & HAL_KEY_SW_1 )
     {
-    ProjectApp_SendBindcast();
     }
 
 #if defined( SWITCH1_BIND )
@@ -372,6 +372,9 @@ static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )//每次“绑定”状
       if ( ZDO_ParseBindRsp( inMsg ) == ZSuccess )
       {
         printf("Bind success!\r\n");
+        osal_start_timerEx( ProjectApp_TaskID,
+                            PROJECTAPP_SEND_MSG_EVT,
+                            PROJECTAPP_SEND_MSG_TIMEOUT );
       }
       else
       {
@@ -383,23 +386,34 @@ static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )//每次“绑定”状
 
 static void ProjectApp_SendBindcast( void )
 {
-  char theMessageData[ ] = "Bind data\r\n";
- 
+  char strTemp[5];
+
+  DHT11(); 
+  
+  strTemp[0] = wendu_shi+0x30;
+  strTemp[1] = wendu_ge+0x30;
+  strTemp[2] = '\r';
+  strTemp[3] = '\n';
+  strTemp[4] = '\0';
+
+  HalUARTWrite(0, (uint8 *)strTemp, strlen(strTemp)); //输出接收到的数据
+  
+  afAddrType_t ProjectApp_DstAddr;
   ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
   ProjectApp_DstAddr.endPoint       = 0;
   ProjectApp_DstAddr.addr.shortAddr = 0;
- 
+  
   AF_DataRequest( &ProjectApp_DstAddr,
                   &ProjectApp_epDesc,
                   PROJECTAPP_CLUSTERID,
-                  (byte)osal_strlen( theMessageData ) + 1,
-                  (byte *)&theMessageData,
+                   strlen(strTemp)+1,
+                  (uint8 *)strTemp,
                   &ProjectApp_TransID,
                   AF_DISCV_ROUTE,
                   AF_DEFAULT_RADIUS
                 );
-}
 
+}
 /*********************************************************************
  * LOCAL FUNCTIONS
  */
@@ -434,23 +448,30 @@ static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )
  *
  * @return  none
  */
+
+
 static void ProjectApp_SendTheMessage( void )
 {
-  char theMessageData[] = "Hello World";
+  char strTemp[3];//有个结束符
+  DHT11(); 
 
-  if ( AF_DataRequest( &ProjectApp_DstAddr, &ProjectApp_epDesc,
-                       PROJECTAPP_CLUSTERID,
-                       (byte)osal_strlen( theMessageData ) + 1,
-                       (byte *)&theMessageData,
-                       &ProjectApp_TransID,
-                       AF_DISCV_ROUTE, AF_DEFAULT_RADIUS ) == afStatus_SUCCESS )
-  {
-    // Successfully requested to be sent.
-  }
-  else
-  {
-    // Error occurred in request to send.
-  }
+  strTemp[0] = wendu_shi+0x30;
+  strTemp[1] = wendu_ge+0x30;
+  strTemp[2] = '\0';
+  
+  afAddrType_t dstAddr;
+  dstAddr.endPoint = PROJECTAPP_ENDPOINT;//目的端点
+  dstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+  dstAddr.addr.shortAddr = 0x0000; // Coordinator
+
+  AF_DataRequest( &dstAddr,
+                  &ProjectApp_epDesc,//源端点 
+                  PROJECTAPP_CLUSTERID,
+                  strlen(strTemp)+1,//长度不包含'\0'
+                  (uint8 *)strTemp,//地址
+                  &ProjectApp_TransID,
+                  AF_DISCV_ROUTE,
+                  AF_DEFAULT_RADIUS );
 }
 
 #if defined( IAR_ARMCM3_LM )

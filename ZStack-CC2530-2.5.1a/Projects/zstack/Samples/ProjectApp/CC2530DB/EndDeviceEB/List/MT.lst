@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               14/Jul/2019  19:52:59
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               19/Jul/2019  12:46:51
 # Copyright 2004-2018 IAR Systems AB.
 # PC-locked license - IAR Embedded Workbench for 8051
 #
@@ -12,24 +12,24 @@
 #    Dptr setup         =  1,16
 #                          
 #    Source file        =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT.c
 #    Command line       =  
-#        -f C:\Users\Admin\AppData\Local\Temp\EWD16F.tmp
-#        (E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c -D
-#        NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D
-#        xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING -lC
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        -f C:\Users\Admin\AppData\Local\Temp\EWA012.tmp
+#        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT.c -D
+#        NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D xMT_ZDO_FUNC
+#        -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING -lC
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 #        -lA
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 #        --diag_suppress Pe001,Pa010 -o
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
 #        -e --debug --core=plain --dptr=16,1 --data_model=large
 #        --code_model=banked --calling_convention=xdata_reentrant
 #        --place_constants=data_rom --nr_virtual_regs 8 -f
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
 #        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
 #        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
 #        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 #        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
 #        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
@@ -45,57 +45,57 @@
 #        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
 #        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
 #        -DREJOIN_POLL_RATE=440) -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
 #        -I
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
 #        -Ohz --require_prototypes --no_code_motion)
 #    Locale             =  Chinese (Simplified)_CHN.936
 #    List file          =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\MT.lst
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\MT.lst
 #    Object file        =  
-#        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\MT.r51
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\MT.r51
 #
 ###############################################################################
 
-E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
+E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Components\mt\MT.c
       1          /***************************************************************************************************
       2            Filename:       MT.c
       3            Revised:        $Date: 2011-06-07 12:12:44 -0700 (Tue, 07 Jun 2011) $
@@ -218,12 +218,11 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
     120           **************************************************************************************************/
     121          
 
-   \                                 In  segment XDATA_I, align 1, keep-with-next
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
     122          mtProcessMsg_t mtProcessIncoming[] =
    \                     mtProcessIncoming:
    \   000000                DS 22
-   \   000016                REQUIRE `?<Initializer for mtProcessIncoming>`
-   \   000016                REQUIRE __INIT_XDATA_I
+   \   000016                REQUIRE __INIT_XDATA_Z
     123          {
     124            NULL,
     125          
@@ -351,15 +350,13 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
    \   000004                ; Auto size: 0
     231          #if defined (MT_ZDO_FUNC)
     232            MT_ZdoInit();
-   \   000004                ; Setup parameters for call to function MT_ZdoInit
-   \   000004   12....       LCALL     `??MT_ZdoInit::?relay`; Banked call to: MT_ZdoInit
     233          #endif
     234            MT_SysResetInd();
-   \   000007                ; Setup parameters for call to function MT_SysResetInd
-   \   000007   12....       LCALL     `??MT_SysResetInd::?relay`; Banked call to: MT_SysResetInd
+   \   000004                ; Setup parameters for call to function MT_SysResetInd
+   \   000004   12....       LCALL     `??MT_SysResetInd::?relay`; Banked call to: MT_SysResetInd
     235          }
-   \   00000A                REQUIRE ?Subroutine0
-   \   00000A                ; // Fall through to label ?Subroutine0
+   \   000007                REQUIRE ?Subroutine0
+   \   000007                ; // Fall through to label ?Subroutine0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
    \                     ?Subroutine0:
@@ -1541,20 +1538,6 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
    \   000003   E0           MOVX      A,@DPTR
    \   000004   C8           XCH       A,R0
    \   000005   22           RET
-
-   \                                 In  segment XDATA_ID, align 1, keep-with-next
-   \                     `?<Initializer for mtProcessIncoming>`:
-   \   000000   0000         DW 0H
-   \   000002   ....         DW `??MT_SysCommandProcessing::?relay`
-   \   000004   0000         DW 0H
-   \   000006   0000         DW 0H
-   \   000008   0000         DW 0H
-   \   00000A   ....         DW `??MT_ZdoCommandProcessing::?relay`
-   \   00000C   0000         DW 0H
-   \   00000E   0000         DW 0H
-   \   000010   0000         DW 0H
-   \   000012   0000         DW 0H
-   \   000014   0000         DW 0H
     523          #endif
     524          /***************************************************************************************************
     525          ***************************************************************************************************/
@@ -1577,7 +1560,6 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
         0     17   -> osal_memcpy
       2      0   MT_Init
         2      0   -> MT_SysResetInd
-        2      0   -> MT_ZdoInit
       3      3   MT_ProcessIncoming
         2      3   -> MT_BuildAndSendZToolResponse
       1     11   MT_ReverseBytes
@@ -1588,7 +1570,6 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
 
    Bytes  Function/Label
    -----  --------------
-      22  ?<Initializer for mtProcessIncoming>
        6  ??Subroutine19_0
        4  ??Subroutine20_0
        8  ??Subroutine21_0
@@ -1616,7 +1597,7 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
       72  MT_BuildAndSendZToolResponse
      433  MT_BuildEndpointDesc
       78  MT_BuildSPIMsg
-      10  MT_Init
+       7  MT_Init
      162  MT_ProcessIncoming
       72  MT_ReverseBytes
       55  MT_Word2Buf
@@ -1626,14 +1607,12 @@ E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Components\mt\MT.c
       48  -- Other
 
  
- 1 160 bytes in segment BANKED_CODE
+ 1 157 bytes in segment BANKED_CODE
     48 bytes in segment BANK_RELAYS
-    22 bytes in segment XDATA_I
-    22 bytes in segment XDATA_ID
-     2 bytes in segment XDATA_Z
+    24 bytes in segment XDATA_Z
  
-    70 bytes of CODE     memory
- 1 160 bytes of HUGECODE memory
+    48 bytes of CODE     memory
+ 1 157 bytes of HUGECODE memory
     24 bytes of XDATA    memory
 
 Errors: none

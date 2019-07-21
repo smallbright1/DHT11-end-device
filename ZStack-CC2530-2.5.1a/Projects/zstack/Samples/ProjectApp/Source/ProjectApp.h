@@ -67,7 +67,7 @@ extern "C"
 #define PROJECTAPP_CLUSTERID          1
 
 // Send Message Timeout
-#define PROJECTAPP_SEND_MSG_TIMEOUT   5000     // Every 5 seconds
+#define PROJECTAPP_SEND_MSG_TIMEOUT   1000     // Every 1 seconds
 
 // Application Events (OSAL) - These are bit weighted definitions.
 #define PROJECTAPP_SEND_MSG_EVT       0x0001

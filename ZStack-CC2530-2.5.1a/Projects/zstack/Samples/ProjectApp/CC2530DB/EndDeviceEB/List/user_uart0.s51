@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V10.30.1.6000 for 8051              16/Jul/2019  19:15:50
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              20/Jul/2019  10:49:31
 // Copyright 2004-2018 IAR Systems AB.
 // PC-locked license - IAR Embedded Workbench for 8051
 //
@@ -12,24 +12,25 @@
 //    Dptr setup         =  1,16
 //                          
 //    Source file        =  
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 //    Command line       =  
-//        -f C:\Users\Admin\AppData\Local\Temp\EWB96D.tmp
-//        (E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
-//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC
-//        -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING -lC
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        -f C:\Users\Admin\AppData\Local\Temp\EW926B.tmp
+//        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
+//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+//        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D
+//        xPOWER_SAVING -lC
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 //        -lA
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 //        --diag_suppress Pe001,Pa010 -o
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
 //        -e --debug --core=plain --dptr=16,1 --data_model=large
 //        --code_model=banked --calling_convention=xdata_reentrant
 //        --place_constants=data_rom --nr_virtual_regs 8 -f
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
 //        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
 //        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
 //        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 //        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
 //        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
@@ -45,51 +46,51 @@
 //        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
 //        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
 //        -DREJOIN_POLL_RATE=440) -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
 //        -Ohz --require_prototypes --no_code_motion)
 //    Locale             =  Chinese (Simplified)_CHN.936
 //    List file          =  
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\user_uart0.s51
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\user_uart0.s51
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -115,20 +116,15 @@
 
         EXTERN ?V0
         EXTERN ?V1
-        EXTERN ?V2
         EXTERN ?ALLOC_XSTACK8
         EXTERN ?BANKED_ENTER_XDATA
         EXTERN ?BANKED_LEAVE_XDATA
         EXTERN ?BDISPATCH
+        EXTERN ?BRET
         EXTERN ?DEALLOC_XSTACK8
-        EXTERN ?MOVE_LONG8_XDATA_XDATA
-        EXTERN ?PUSH_XSTACK_I_ONE
         EXTERN ?PUSH_XSTACK_I_TWO
         EXTERN ?XSP
         EXTERN ?XSTACK_DISP0_8
-        EXTERN ?XSTACK_DISP100_8
-        EXTERN ?XSTACK_DISP101_8
-        EXTERN ?XSTACK_DISP102_8
         EXTERN __INIT_XDATA_Z
 
         PUBLIC `??USER_Uart0_Init::?relay`
@@ -148,11 +144,8 @@
         LOCFRAME ISTACK, 1, STACK
         LOCFRAME XSTACK, 38, STACK
         PUBLIC Uart0_Handle
-        FUNCTION Uart0_Handle,0a1203H
-        ARGFRAME XSTACK, 11, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        LOCFRAME XSTACK, 53, STACK
+        FUNCTION Uart0_Handle,0203H
+        ARGFRAME XSTACK, 0, STACK
         PUBLIC Uart0_Process
         FUNCTION Uart0_Process,0a1603H
         ARGFRAME XSTACK, 0, STACK
@@ -244,26 +237,14 @@
           CFI ?RET_LOW Frame(CFA_SP, 1)
           CFI EndCommon cfiCommon0
         
-AF_DataRequest      SYMBOL "AF_DataRequest"
-`??AF_DataRequest::?relay` SYMBOL "?relay", AF_DataRequest
 HalUARTOpen         SYMBOL "HalUARTOpen"
 `??HalUARTOpen::?relay` SYMBOL "?relay", HalUARTOpen
 HalUARTRead         SYMBOL "HalUARTRead"
 `??HalUARTRead::?relay` SYMBOL "?relay", HalUARTRead
 Hal_UART_RxBufLen   SYMBOL "Hal_UART_RxBufLen"
 `??Hal_UART_RxBufLen::?relay` SYMBOL "?relay", Hal_UART_RxBufLen
-NLME_GetShortAddr   SYMBOL "NLME_GetShortAddr"
-`??NLME_GetShortAddr::?relay` SYMBOL "?relay", NLME_GetShortAddr
-ZDP_EndDeviceBindReq SYMBOL "ZDP_EndDeviceBindReq"
-`??ZDP_EndDeviceBindReq::?relay` SYMBOL "?relay", ZDP_EndDeviceBindReq
 memset              SYMBOL "memset"
 `??memset::?relay`  SYMBOL "?relay", memset
-osal_strlen         SYMBOL "osal_strlen"
-`??osal_strlen::?relay` SYMBOL "?relay", osal_strlen
-printf              SYMBOL "printf"
-`??printf::?relay`  SYMBOL "?relay", printf
-strstr              SYMBOL "strstr"
-`??strstr::?relay`  SYMBOL "?relay", strstr
 USER_Uart0_Init     SYMBOL "USER_Uart0_Init"
 `??USER_Uart0_Init::?relay` SYMBOL "?relay", USER_Uart0_Init
 Uart0_Handle        SYMBOL "Uart0_Handle"
@@ -273,33 +254,14 @@ Uart0_Process       SYMBOL "Uart0_Process"
 Uart0_Reset         SYMBOL "Uart0_Reset"
 `??Uart0_Reset::?relay` SYMBOL "?relay", Uart0_Reset
 
-        EXTERN `??AF_DataRequest::?relay`
-        FUNCTION `??AF_DataRequest::?relay`,00H
         EXTERN `??HalUARTOpen::?relay`
         FUNCTION `??HalUARTOpen::?relay`,00H
         EXTERN `??HalUARTRead::?relay`
         FUNCTION `??HalUARTRead::?relay`,00H
         EXTERN `??Hal_UART_RxBufLen::?relay`
         FUNCTION `??Hal_UART_RxBufLen::?relay`,00H
-        EXTERN `??NLME_GetShortAddr::?relay`
-        FUNCTION `??NLME_GetShortAddr::?relay`,00H
-        EXTERN `??ZDP_EndDeviceBindReq::?relay`
-        FUNCTION `??ZDP_EndDeviceBindReq::?relay`,00H
         EXTERN `??memset::?relay`
         FUNCTION `??memset::?relay`,00H
-        EXTERN `??osal_strlen::?relay`
-        FUNCTION `??osal_strlen::?relay`,00H
-        EXTERN `??printf::?relay`
-        FUNCTION `??printf::?relay`,00H
-        EXTERN `??strstr::?relay`
-        FUNCTION `??strstr::?relay`,00H
-        EXTERN AF_DataRequest
-        FUNCTION AF_DataRequest,0202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 53, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
         EXTERN HalUARTOpen
         FUNCTION HalUARTOpen,0202H
         ARGFRAME ISTACK, 0, STACK
@@ -321,23 +283,6 @@ Uart0_Reset         SYMBOL "Uart0_Reset"
         ARGFRAME XSTACK, 11, STACK
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN NLME_GetShortAddr
-        FUNCTION NLME_GetShortAddr,0202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN ProjectApp_ClusterList
-        EXTERN ProjectApp_TransID
-        EXTERN ProjectApp_epDesc
-        EXTERN ZDP_EndDeviceBindReq
-        FUNCTION ZDP_EndDeviceBindReq,0202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 53, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
         EXTERN memset
         FUNCTION memset,010202H
         ARGFRAME ISTACK, 0, STACK
@@ -345,29 +290,8 @@ Uart0_Reset         SYMBOL "Uart0_Reset"
         ARGFRAME XSTACK, 12, STACK
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN osal_strlen
-        FUNCTION osal_strlen,0202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN printf
-        FUNCTION printf,0202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN strstr
-        FUNCTION strstr,010202H
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
 
-// E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
+// E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 //    1 #include "user_uart0.h"
 //    2 #include "hal_uart.h"
 //    3 #include "string.h"
@@ -376,40 +300,42 @@ Uart0_Reset         SYMBOL "Uart0_Reset"
 //    6 #include "ProjectApp.h"
 //    7 #include "ZDProfile.h"
 //    8 #include "user_printf.h"
-//    9 
+//    9 #include "DHT11.h"
+//   10 
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   10 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
+//   11 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
 UART0_RX_BUFF:
         DS 60
         REQUIRE __INIT_XDATA_Z
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   11 uint8 UART0_RX_STA = 0;                //接收状态标记
+//   12 uint8 UART0_RX_STA = 0;                //接收状态标记
 UART0_RX_STA:
         DS 1
         REQUIRE __INIT_XDATA_Z
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   12 uint8 UART0_RX_LEN = 0;                //接收数据长度
+//   13 uint8 UART0_RX_LEN = 0;                //接收数据长度
 UART0_RX_LEN:
         DS 1
         REQUIRE __INIT_XDATA_Z
-//   13 //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-//   14 extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-//   15 extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
-//   16 
+//   14 //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+//   15 extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+//   16 extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+//   17 
+//   18 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   17 void USER_Uart0_Init( uint8 baudRate )
+//   19 void USER_Uart0_Init( uint8 baudRate )
 USER_Uart0_Init:
           CFI Block cfiBlock0 Using cfiCommon0
           CFI Function USER_Uart0_Init
         CODE
-//   18 {
+//   20 {
         FUNCALL USER_Uart0_Init, HalUARTOpen
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -439,24 +365,24 @@ USER_Uart0_Init:
         MOV       A,#-0x1d
         LCALL     ?ALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 38)
-//   19   halUARTCfg_t uartConfig;
-//   20 
-//   21   /* UART Configuration */
-//   22   uartConfig.configured           = TRUE;
+//   21   halUARTCfg_t uartConfig;
+//   22 
+//   23   /* UART Configuration */
+//   24   uartConfig.configured           = TRUE;
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOV       A,#0x1
         MOVX      @DPTR,A
-//   23   uartConfig.baudRate             = baudRate;
+//   25   uartConfig.baudRate             = baudRate;
         LCALL     ?XSTACK_DISP0_8
         MOV       A,R1
         MOVX      @DPTR,A
-//   24   uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
+//   26   uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
         MOV       A,#0x2
         LCALL     ?XSTACK_DISP0_8
         CLR       A
         MOVX      @DPTR,A
-//   25   uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
+//   27   uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
         MOV       A,#0x3
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x40
@@ -464,7 +390,7 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   26   uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
+//   28   uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
         MOV       A,#0xa
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#-0x80
@@ -472,7 +398,7 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   27   uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
+//   29   uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
         MOV       A,#0x12
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#-0x80
@@ -480,17 +406,17 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   28   uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
+//   30   uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
         MOV       A,#0x5
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x6
         MOVX      @DPTR,A
-//   29   uartConfig.intEnable            = TRUE;
+//   31   uartConfig.intEnable            = TRUE;
         MOV       A,#0x16
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x1
         MOVX      @DPTR,A
-//   30   uartConfig.callBackFunc         = Uart0_Process;
+//   32   uartConfig.callBackFunc         = Uart0_Process;
         MOV       A,#0x1b
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#`??Uart0_Process::?relay` & 0xff
@@ -498,30 +424,30 @@ USER_Uart0_Init:
         INC       DPTR
         MOV       A,#(`??Uart0_Process::?relay` >> 8) & 0xff
         MOVX      @DPTR,A
-//   31 
-//   32   /* Start UART */
-//   33   HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
+//   33 
+//   34   /* Start UART */
+//   35   HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
         ; Setup parameters for call to function HalUARTOpen
         MOV       R2,?XSP + 0
         MOV       R3,?XSP + 1
         MOV       R1,#0x0
         LCALL     `??HalUARTOpen::?relay`; Banked call to: HalUARTOpen
-//   34 }
+//   36 }
         MOV       A,#0x1d
         LCALL     ?DEALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 9)
         MOV       R7,#0x1
         LJMP      ?BANKED_LEAVE_XDATA
           CFI EndBlock cfiBlock0
-//   35 
+//   37 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   36 void Uart0_Process( uint8 port, uint8 event )
+//   38 void Uart0_Process( uint8 port, uint8 event )
 Uart0_Process:
           CFI Block cfiBlock1 Using cfiCommon0
           CFI Function Uart0_Process
         CODE
-//   37 {
+//   39 {
         FUNCALL Uart0_Process, Hal_UART_RxBufLen
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -534,17 +460,6 @@ Uart0_Process:
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
         FUNCALL Uart0_Process, HalUARTRead
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 11, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 11, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Process, Uart0_Handle
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
         LOCFRAME XSTACK, 11, STACK
@@ -589,10 +504,10 @@ Uart0_Process:
           CFI CFA_XSP16 add(XSP16, 11)
         MOV       A,R1
         MOV       R6,A
-//   38   uint8 Res;
-//   39   (void)event;  // Intentionally unreferenced parameter
-//   40  
-//   41   while (Hal_UART_RxBufLen(port))
+//   40   uint8 Res;
+//   41   (void)event;  // Intentionally unreferenced parameter
+//   42  
+//   43   while (Hal_UART_RxBufLen(port))
 ??Uart0_Process_0:
         ; Setup parameters for call to function Hal_UART_RxBufLen
         MOV       A,R6
@@ -601,8 +516,8 @@ Uart0_Process:
         MOV       A,R2
         ORL       A,R3
         JZ        ??Uart0_Process_1
-//   42   {
-//   43     HalUARTRead (port, &Res, 1);//读取一个字节
+//   44   {
+//   45     HalUARTRead (port, &Res, 1);//读取一个字节
         ; Setup parameters for call to function HalUARTRead
         MOV       R4,#0x1
         MOV       R5,#0x0
@@ -611,7 +526,7 @@ Uart0_Process:
         MOV       A,R6
         MOV       R1,A
         LCALL     `??HalUARTRead::?relay`; Banked call to: HalUARTRead
-//   44     UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
+//   46     UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOVX      A,@DPTR
@@ -630,31 +545,31 @@ Uart0_Process:
         POP       A
           CFI CFA_SP SP+0
         MOVX      @DPTR,A
-//   45     UART0_RX_STA++;
+//   47     UART0_RX_STA++;
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         INC       A
         MOVX      @DPTR,A
-//   46  
-//   47     if((UART0_RX_STA&0x80)==0)//接收未完成
+//   48  
+//   49     if((UART0_RX_STA&0x80)==0)//接收未完成
         MOV       C,0xE0 /* A   */.7
         JC        ??Uart0_Process_2
-//   48     {
-//   49       if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
+//   50     {
+//   51       if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
         MOV       C,0xE0 /* A   */.6
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOVX      A,@DPTR
         JNC       ??Uart0_Process_3
-//   50       {
-//   51         if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
+//   52       {
+//   53         if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
         XRL       A,#0xa
         JNZ       ??Uart0_Process_4
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         SETB      0xE0 /* A   */.7
         SJMP      ??Uart0_Process_5
-//   52         else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
+//   54         else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
 ??Uart0_Process_4:
         MOVX      A,@DPTR
         XRL       A,#0xd
@@ -663,10 +578,10 @@ Uart0_Process:
         MOVX      A,@DPTR
         CLR       0xE0 /* A   */.6
         SJMP      ??Uart0_Process_5
-//   53       }
-//   54       else
-//   55       {
-//   56         if(Res==0x0D)UART0_RX_STA |= 0x40;
+//   55       }
+//   56       else
+//   57       {
+//   58         if(Res==0x0D)UART0_RX_STA |= 0x40;
 ??Uart0_Process_3:
         XRL       A,#0xd
         JNZ       ??Uart0_Process_2
@@ -675,31 +590,29 @@ Uart0_Process:
         SETB      0xE0 /* A   */.6
 ??Uart0_Process_5:
         MOVX      @DPTR,A
-//   57       }
-//   58     }
-//   59  
-//   60     if((UART0_RX_STA&0x80)==0x80)
+//   59       }
+//   60     }
+//   61  
+//   62     if((UART0_RX_STA&0x80)==0x80)
 ??Uart0_Process_2:
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         MOV       C,0xE0 /* A   */.7
         JNC       ??Uart0_Process_0
-//   61     {
-//   62       UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
+//   63     {
+//   64       UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
         ANL       A,#0x3f
         ADD       A,#-0x2
         MOV       DPTR,#UART0_RX_LEN
         MOVX      @DPTR,A
-//   63       Uart0_Handle();
-        ; Setup parameters for call to function Uart0_Handle
-        LCALL     `??Uart0_Handle::?relay`; Banked call to: Uart0_Handle
-//   64       Uart0_Reset();
+//   65       Uart0_Handle();
+//   66       Uart0_Reset();
         ; Setup parameters for call to function Uart0_Reset
         LCALL     `??Uart0_Reset::?relay`; Banked call to: Uart0_Reset
-//   65       break;
-//   66     }
-//   67   }
-//   68 }
+//   67       break;
+//   68     }
+//   69   }
+//   70 }
 ??Uart0_Process_1:
         MOV       A,#0x1
         LCALL     ?DEALLOC_XSTACK8
@@ -726,306 +639,32 @@ Uart0_Process:
         MOV       R7,#0x2
         LJMP      ?BANKED_LEAVE_XDATA
           CFI EndBlock cfiBlock2
-//   69 
-//   70 static void ProjectApp_SendBindcast( void )
-//   71 {
-//   72   char theMessageData[ ] = "Bind data\r\n";
-//   73   
-//   74   afAddrType_t ProjectApp_DstAddr;
-//   75   ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
-//   76   ProjectApp_DstAddr.endPoint       = 0;
-//   77   ProjectApp_DstAddr.addr.shortAddr = 0;
-//   78  
-//   79   AF_DataRequest( &ProjectApp_DstAddr,
-//   80                   &ProjectApp_epDesc,
-//   81                   PROJECTAPP_CLUSTERID,
-//   82                   (byte)osal_strlen( theMessageData ) + 1,
-//   83                   (byte *)&theMessageData,
-//   84                   &ProjectApp_TransID,
-//   85                   AF_DISCV_ROUTE,
-//   86                   AF_DEFAULT_RADIUS
-//   87                 );
-//   88 }
-//   89 
+//   71 
+//   72 
+//   73 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   90 void Uart0_Handle(void)
+//   74 void Uart0_Handle(void)
 Uart0_Handle:
           CFI Block cfiBlock3 Using cfiCommon0
           CFI Function Uart0_Handle
         CODE
-//   91 {
-        FUNCALL Uart0_Handle, strstr
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 44, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, printf
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 44, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, NLME_GetShortAddr
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 44, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, ZDP_EndDeviceBindReq
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 53, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 53, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, strstr
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 44, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, osal_strlen
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 44, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 44, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL Uart0_Handle, AF_DataRequest
-        LOCFRAME ISTACK, 0, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 53, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 0, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 53, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        REQUIRE ?V0
-        REQUIRE ?V1
-        REQUIRE ?V2
-        MOV       A,#-0xb
-        LCALL     ?BANKED_ENTER_XDATA
-          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
-          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
-          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
-          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
-          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
-          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
-          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-7)))
-          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-8)))
-          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-9)))
-          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-10)))
-          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-11)))
-          CFI CFA_SP SP+0
-          CFI CFA_XSP16 add(XSP16, 11)
-        ; Saved register size: 11
-        ; Auto size: 33
-        MOV       A,#-0x21
-        LCALL     ?ALLOC_XSTACK8
-          CFI CFA_XSP16 add(XSP16, 44)
-//   92   if(strstr((const char*)UART0_RX_BUFF, "request binding"))
-        ; Setup parameters for call to function strstr
-        MOV       R4,#`?<Constant "request binding">` & 0xff
-        MOV       R5,#(`?<Constant "request binding">` >> 8) & 0xff
-        MOV       R2,#UART0_RX_BUFF & 0xff
-        MOV       R3,#(UART0_RX_BUFF >> 8) & 0xff
-        LCALL     `??strstr::?relay`; Banked call to: strstr
-        MOV       A,R2
-        ORL       A,R3
-        JZ        ??Uart0_Handle_0
-//   93   {
-//   94     printf("Bind start!\r\n");
-        ; Setup parameters for call to function printf
-        MOV       R2,#`?<Constant "Bind start!\\r\\n">` & 0xff
-        MOV       R3,#(`?<Constant "Bind start!\\r\\n">` >> 8) & 0xff
-        LCALL     `??printf::?relay`; Banked call to: printf
-//   95     zAddrType_t dstAddr;
-//   96     dstAddr.addrMode = Addr16Bit;
-        MOV       A,#0x14
-        LCALL     ?XSTACK_DISP0_8
-        MOV       A,#0x2
-        MOVX      @DPTR,A
-//   97     dstAddr.addr.shortAddr = 0x0000; // Coordinator
-        MOV       A,#0xc
-        LCALL     ?XSTACK_DISP0_8
-        CLR       A
-        MOVX      @DPTR,A
-        INC       DPTR
-        MOVX      @DPTR,A
-//   98     ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
-//   99                           ProjectApp_epDesc.endPoint,
-//  100                           PROJECTAPP_PROFID,
-//  101                           PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-//  102                           PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-//  103                           FALSE );
-        ; Setup parameters for call to function NLME_GetShortAddr
-        LCALL     `??NLME_GetShortAddr::?relay`; Banked call to: NLME_GetShortAddr
-        MOV       ?V0,R2
-        MOV       ?V1,R3
-        MOV       R4,?V0
-        MOV       R5,?V1
-        MOV       ?V0,#ProjectApp_ClusterList & 0xff
-        MOV       ?V1,#(ProjectApp_ClusterList >> 8) & 0xff
-        ; Setup parameters for call to function ZDP_EndDeviceBindReq
-        MOV       ?V2,#0x0
-        MOV       R0,#?V2
-        LCALL     ?PUSH_XSTACK_I_ONE
-          CFI CFA_XSP16 add(XSP16, 45)
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 47)
-        MOV       ?V2,#0x1
-        MOV       R0,#?V2
-        LCALL     ?PUSH_XSTACK_I_ONE
-          CFI CFA_XSP16 add(XSP16, 48)
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 50)
-        MOV       ?V0,#0x1
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_ONE
-          CFI CFA_XSP16 add(XSP16, 51)
-        MOV       ?V0,#0x4
-        MOV       ?V1,#0xf
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 53)
-        MOV       DPTR,#ProjectApp_epDesc
-        MOVX      A,@DPTR
-        MOV       R1,A
-        MOV       A,#0x15
-        LCALL     ?XSTACK_DISP101_8
-        LCALL     `??ZDP_EndDeviceBindReq::?relay`; Banked call to: ZDP_EndDeviceBindReq
-        LJMP      ??Uart0_Handle_1 & 0xFFFF
-          CFI CFA_XSP16 add(XSP16, 44)
-//  104 
-//  105   }
-//  106   else if(strstr((const char*)UART0_RX_BUFF,"send binding"))
-??Uart0_Handle_0:
-        ; Setup parameters for call to function strstr
-        MOV       R4,#`?<Constant "send binding">` & 0xff
-        MOV       R5,#(`?<Constant "send binding">` >> 8) & 0xff
-        MOV       R2,#UART0_RX_BUFF & 0xff
-        MOV       R3,#(UART0_RX_BUFF >> 8) & 0xff
-        LCALL     `??strstr::?relay`; Banked call to: strstr
-        MOV       A,R2
-        ORL       A,R3
-        JZ        ??Uart0_Handle_2
-//  107   {
-//  108       ProjectApp_SendBindcast();
-        MOV       DPTR,#`?<Constant "Bind data\\r\\n">`
-        MOV       A,#0x15
-        LCALL     ?XSTACK_DISP102_8
-        MOV       A,#0xc
-        LCALL     ?MOVE_LONG8_XDATA_XDATA
-        MOV       A,#0x8
-        LCALL     ?XSTACK_DISP0_8
-        CLR       A
-        MOVX      @DPTR,A
-        MOV       A,#0x9
-        LCALL     ?XSTACK_DISP0_8
-        CLR       A
-        MOVX      @DPTR,A
-        MOV       DPL,?XSP + 0
-        MOV       DPH,?XSP + 1
-        MOVX      @DPTR,A
-        INC       DPTR
-        MOVX      @DPTR,A
-        ; Setup parameters for call to function osal_strlen
-        MOV       A,#0x15
-        LCALL     ?XSTACK_DISP101_8
-        LCALL     `??osal_strlen::?relay`; Banked call to: osal_strlen
-        ; Setup parameters for call to function AF_DataRequest
-        MOV       ?V0,#0x1e
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_ONE
-          CFI CFA_XSP16 add(XSP16, 45)
-        MOV       ?V0,#ProjectApp_TransID & 0xff
-        MOV       ?V1,#(ProjectApp_TransID >> 8) & 0xff
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 47)
-        MOV       A,#0x18
-        LCALL     ?XSTACK_DISP100_8
-        MOV       ?V0,R0
-        MOV       ?V1,R1
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 49)
-        MOV       A,R2
-        ADD       A,#0x1
-        MOV       ?V0,A
-        CLR       A
-        ADDC      A,#0x0
-        MOV       ?V1,A
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 51)
-        MOV       ?V0,#0x1
-        MOV       ?V1,#0x0
-        MOV       R0,#?V0
-        LCALL     ?PUSH_XSTACK_I_TWO
-          CFI CFA_XSP16 add(XSP16, 53)
-        MOV       R1,#0x20
-        MOV       R4,#ProjectApp_epDesc & 0xff
-        MOV       R5,#(ProjectApp_epDesc >> 8) & 0xff
-        MOV       A,#0x9
-        LCALL     ?XSTACK_DISP101_8
-        LCALL     `??AF_DataRequest::?relay`; Banked call to: AF_DataRequest
-??Uart0_Handle_1:
-        MOV       A,#0x9
-        LCALL     ?DEALLOC_XSTACK8
-          CFI CFA_XSP16 add(XSP16, 44)
-//  109   }
-//  110 }
-??Uart0_Handle_2:
-        MOV       A,#0x21
-        LCALL     ?DEALLOC_XSTACK8
-          CFI CFA_XSP16 add(XSP16, 11)
-        MOV       R7,#0x3
-        LJMP      ?BANKED_LEAVE_XDATA
+//   75 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   76  
+//   77 }
+        LJMP      ?BRET
           CFI EndBlock cfiBlock3
-//  111 
+//   78 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//  112 void Uart0_Reset(void)
+//   79 void Uart0_Reset(void)
 Uart0_Reset:
           CFI Block cfiBlock4 Using cfiCommon0
           CFI Function Uart0_Reset
         CODE
-//  113 {
+//   80 {
         FUNCALL Uart0_Reset, memset
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -1055,7 +694,7 @@ Uart0_Reset:
           CFI CFA_XSP16 add(XSP16, 10)
         ; Saved register size: 10
         ; Auto size: 0
-//  114   memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
+//   81   memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
         ; Setup parameters for call to function memset
         MOV       ?V0,#0x3c
         MOV       ?V1,#0x0
@@ -1070,12 +709,12 @@ Uart0_Reset:
         MOV       A,#0x2
         LCALL     ?DEALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 10)
-//  115   UART0_RX_STA = 0;
+//   82   UART0_RX_STA = 0;
         MOV       DPTR,#UART0_RX_STA
         CLR       A
         MOVX      @DPTR,A
-//  116 }
-        LJMP      ?Subroutine0 & 0xFFFF
+//   83 }
+        SJMP      ?Subroutine0
           CFI EndBlock cfiBlock4
 
         RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
@@ -1106,36 +745,14 @@ Uart0_Reset:
         DATA24
         DC24    Uart0_Reset
 
-        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
-        DATA8
-`?<Constant "Bind data\\r\\n">`:
-        DB "Bind data\015\012"
-
-        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
-        DATA8
-`?<Constant "request binding">`:
-        DB "request binding"
-
-        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
-        DATA8
-`?<Constant "Bind start!\\r\\n">`:
-        DB "Bind start!\015\012"
-
-        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
-        DATA8
-`?<Constant "send binding">`:
-        DB "send binding"
-
         END
 // 
-// 577 bytes in segment BANKED_CODE
+// 302 bytes in segment BANKED_CODE
 //  24 bytes in segment BANK_RELAYS
-//  55 bytes in segment XDATA_ROM_C
 //  62 bytes in segment XDATA_Z
 // 
 //  24 bytes of CODE     memory
-//  55 bytes of CONST    memory
-// 577 bytes of HUGECODE memory
+// 302 bytes of HUGECODE memory
 //  62 bytes of XDATA    memory
 //
 //Errors: none

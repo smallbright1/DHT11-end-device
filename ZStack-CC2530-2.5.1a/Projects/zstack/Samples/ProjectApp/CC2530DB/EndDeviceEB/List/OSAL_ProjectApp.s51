@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V10.30.1.6000 for 8051              16/Jul/2019  19:15:48
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              19/Jul/2019  12:47:08
 // Copyright 2004-2018 IAR Systems AB.
 // PC-locked license - IAR Embedded Workbench for 8051
 //
@@ -12,24 +12,25 @@
 //    Dptr setup         =  1,16
 //                          
 //    Source file        =  
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
 //    Command line       =  
-//        -f C:\Users\Admin\AppData\Local\Temp\EWB0EE.tmp
-//        (E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
-//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC
-//        -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING -lC
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        -f C:\Users\Admin\AppData\Local\Temp\EWE3E4.tmp
+//        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
+//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+//        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D
+//        xPOWER_SAVING -lC
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 //        -lA
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
 //        --diag_suppress Pe001,Pa010 -o
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
 //        -e --debug --core=plain --dptr=16,1 --data_model=large
 //        --code_model=banked --calling_convention=xdata_reentrant
 //        --place_constants=data_rom --nr_virtual_regs 8 -f
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
 //        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
 //        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
 //        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 //        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
 //        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
@@ -45,51 +46,51 @@
 //        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
 //        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
 //        -DREJOIN_POLL_RATE=440) -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
 //        -I
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
 //        -Ohz --require_prototypes --no_code_motion)
 //    Locale             =  Chinese (Simplified)_CHN.936
 //    List file          =  
-//        E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\OSAL_ProjectApp.s51
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\OSAL_ProjectApp.s51
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -218,24 +219,20 @@ Hal_Init            SYMBOL "Hal_Init"
 `??Hal_Init::?relay` SYMBOL "?relay", Hal_Init
 `?<Name Hal_ProcessEvent 10>` SYMBOL "Hal_ProcessEvent"
 `??Hal_ProcessEvent::?relay` SYMBOL "?relay", `?<Name Hal_ProcessEvent 10>`
-`?<Name MT_ProcessEvent 12>` SYMBOL "MT_ProcessEvent"
-`??MT_ProcessEvent::?relay` SYMBOL "?relay", `?<Name MT_ProcessEvent 12>`
-MT_TaskInit         SYMBOL "MT_TaskInit"
-`??MT_TaskInit::?relay` SYMBOL "?relay", MT_TaskInit
 ProjectApp_Init     SYMBOL "ProjectApp_Init"
 `??ProjectApp_Init::?relay` SYMBOL "?relay", ProjectApp_Init
-`?<Name ProjectApp_ProcessEv 18>` SYMBOL "ProjectApp_ProcessEvent"
-`??ProjectApp_ProcessEvent::?relay` SYMBOL "?relay", `?<Name ProjectApp_ProcessEv 18>`
+`?<Name ProjectApp_ProcessEv 14>` SYMBOL "ProjectApp_ProcessEvent"
+`??ProjectApp_ProcessEvent::?relay` SYMBOL "?relay", `?<Name ProjectApp_ProcessEv 14>`
 ZDApp_Init          SYMBOL "ZDApp_Init"
 `??ZDApp_Init::?relay` SYMBOL "?relay", ZDApp_Init
-`?<Name ZDApp_event_loop 22>` SYMBOL "ZDApp_event_loop"
-`??ZDApp_event_loop::?relay` SYMBOL "?relay", `?<Name ZDApp_event_loop 22>`
-`?<Name macEventLoop 24>` SYMBOL "macEventLoop"
-`??macEventLoop::?relay` SYMBOL "?relay", `?<Name macEventLoop 24>`
+`?<Name ZDApp_event_loop 18>` SYMBOL "ZDApp_event_loop"
+`??ZDApp_event_loop::?relay` SYMBOL "?relay", `?<Name ZDApp_event_loop 18>`
+`?<Name macEventLoop 20>` SYMBOL "macEventLoop"
+`??macEventLoop::?relay` SYMBOL "?relay", `?<Name macEventLoop 20>`
 macTaskInit         SYMBOL "macTaskInit"
 `??macTaskInit::?relay` SYMBOL "?relay", macTaskInit
-`?<Name nwk_event_loop 28>` SYMBOL "nwk_event_loop"
-`??nwk_event_loop::?relay` SYMBOL "?relay", `?<Name nwk_event_loop 28>`
+`?<Name nwk_event_loop 24>` SYMBOL "nwk_event_loop"
+`??nwk_event_loop::?relay` SYMBOL "?relay", `?<Name nwk_event_loop 24>`
 nwk_init            SYMBOL "nwk_init"
 `??nwk_init::?relay` SYMBOL "?relay", nwk_init
 osal_mem_alloc      SYMBOL "osal_mem_alloc"
@@ -257,10 +254,6 @@ osalInitTasks       SYMBOL "osalInitTasks"
         FUNCTION `??Hal_Init::?relay`,00H
         EXTERN `??Hal_ProcessEvent::?relay`
         FUNCTION `??Hal_ProcessEvent::?relay`,00H
-        EXTERN `??MT_ProcessEvent::?relay`
-        FUNCTION `??MT_ProcessEvent::?relay`,00H
-        EXTERN `??MT_TaskInit::?relay`
-        FUNCTION `??MT_TaskInit::?relay`,00H
         EXTERN `??ProjectApp_Init::?relay`
         FUNCTION `??ProjectApp_Init::?relay`,00H
         EXTERN `??ProjectApp_ProcessEvent::?relay`
@@ -297,13 +290,6 @@ osalInitTasks       SYMBOL "osalInitTasks"
         ARGFRAME DOVERLAY, 0, STATIC
         EXTERN Hal_Init
         FUNCTION Hal_Init,0202H
-        ARGFRAME ISTACK, 2, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 0, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
-        EXTERN MT_TaskInit
-        FUNCTION MT_TaskInit,0202H
         ARGFRAME ISTACK, 2, STACK
         ARGFRAME PSTACK, 0, STACK
         ARGFRAME XSTACK, 0, STACK
@@ -352,7 +338,7 @@ osalInitTasks       SYMBOL "osalInitTasks"
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
 
-// E:\GitHub\zjh\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
+// E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\OSAL_ProjectApp.c
 //    1 /**************************************************************************************************
 //    2   Filename:       OSAL_ProjectApp.c
 //    3   Revised:        $Date: 2008-02-07 12:10:00 -0800 (Thu, 07 Feb 2008) $
@@ -433,7 +419,6 @@ tasksArr:
         DW `??macEventLoop::?relay`
         DW `??nwk_event_loop::?relay`
         DW `??Hal_ProcessEvent::?relay`
-        DW `??MT_ProcessEvent::?relay`
         DW `??APS_event_loop::?relay`
         DW `??APSF_ProcessEvent::?relay`
         DW `??ZDApp_event_loop::?relay`
@@ -460,7 +445,7 @@ tasksArr:
         DATA8
 //   90 const uint8 tasksCnt = sizeof( tasksArr ) / sizeof( tasksArr[0] );
 tasksCnt:
-        DB 8
+        DB 7
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA16
@@ -545,17 +530,6 @@ osalInitTasks:
         ARGFRAME XSTACK, 0, STACK
         ARGFRAME IOVERLAY, 0, STATIC
         ARGFRAME DOVERLAY, 0, STATIC
-        FUNCALL osalInitTasks, MT_TaskInit
-        LOCFRAME ISTACK, 2, STACK
-        LOCFRAME PSTACK, 0, STACK
-        LOCFRAME XSTACK, 0, STACK
-        LOCFRAME IOVERLAY, 0, STATIC
-        LOCFRAME DOVERLAY, 0, STATIC
-        ARGFRAME ISTACK, 2, STACK
-        ARGFRAME PSTACK, 0, STACK
-        ARGFRAME XSTACK, 0, STACK
-        ARGFRAME IOVERLAY, 0, STATIC
-        ARGFRAME DOVERLAY, 0, STATIC
         FUNCALL osalInitTasks, APS_Init
         LOCFRAME ISTACK, 2, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -612,7 +586,7 @@ osalInitTasks:
 //  109 
 //  110   tasksEvents = (uint16 *)osal_mem_alloc( sizeof( uint16 ) * tasksCnt);
         ; Setup parameters for call to function osal_mem_alloc
-        MOV       R2,#0x10
+        MOV       R2,#0xe
         MOV       R3,#0x0
         LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
         MOV       DPTR,#tasksEvents
@@ -623,7 +597,7 @@ osalInitTasks:
         MOVX      @DPTR,A
 //  111   osal_memset( tasksEvents, 0, (sizeof( uint16 ) * tasksCnt));
         ; Setup parameters for call to function osal_memset
-        MOV       R4,#0x10
+        MOV       R4,#0xe
         MOV       R5,#0x0
         MOV       R1,#0x0
         LCALL     `??osal_memset::?relay`; Banked call to: osal_memset
@@ -642,30 +616,27 @@ osalInitTasks:
         LCALL     `??Hal_Init::?relay`; Banked call to: Hal_Init
 //  116 #if defined( MT_TASK )
 //  117   MT_TaskInit( taskID++ );
-        ; Setup parameters for call to function MT_TaskInit
-        MOV       R1,#0x3
-        LCALL     `??MT_TaskInit::?relay`; Banked call to: MT_TaskInit
 //  118 #endif
 //  119   APS_Init( taskID++ );
         ; Setup parameters for call to function APS_Init
-        MOV       R1,#0x4
+        MOV       R1,#0x3
         LCALL     `??APS_Init::?relay`; Banked call to: APS_Init
 //  120 #if defined ( ZIGBEE_FRAGMENTATION )
 //  121   APSF_Init( taskID++ );
         ; Setup parameters for call to function APSF_Init
-        MOV       R1,#0x5
+        MOV       R1,#0x4
         LCALL     `??APSF_Init::?relay`; Banked call to: APSF_Init
 //  122 #endif
 //  123   ZDApp_Init( taskID++ );
         ; Setup parameters for call to function ZDApp_Init
-        MOV       R1,#0x6
+        MOV       R1,#0x5
         LCALL     `??ZDApp_Init::?relay`; Banked call to: ZDApp_Init
 //  124 #if defined ( ZIGBEE_FREQ_AGILITY ) || defined ( ZIGBEE_PANID_CONFLICT )
 //  125   ZDNwkMgr_Init( taskID++ );
 //  126 #endif
 //  127   ProjectApp_Init( taskID );
         ; Setup parameters for call to function ProjectApp_Init
-        MOV       R1,#0x7
+        MOV       R1,#0x6
         LCALL     `??ProjectApp_Init::?relay`; Banked call to: ProjectApp_Init
 //  128 }
         POP       DPH
@@ -689,14 +660,14 @@ osalInitTasks:
 //  130 /*********************************************************************
 //  131 *********************************************************************/
 // 
-// 75 bytes in segment BANKED_CODE
+// 70 bytes in segment BANKED_CODE
 //  6 bytes in segment BANK_RELAYS
-// 17 bytes in segment XDATA_ROM_C
+// 15 bytes in segment XDATA_ROM_C
 //  2 bytes in segment XDATA_Z
 // 
 //  6 bytes of CODE     memory
-// 17 bytes of CONST    memory
-// 75 bytes of HUGECODE memory
+// 15 bytes of CONST    memory
+// 70 bytes of HUGECODE memory
 //  2 bytes of XDATA    memory
 //
 //Errors: none
