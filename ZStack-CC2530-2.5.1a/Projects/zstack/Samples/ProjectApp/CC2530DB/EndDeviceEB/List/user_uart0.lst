@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               20/Jul/2019  10:49:31
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               27/Jul/2019  10:51:07
 # Copyright 2004-2018 IAR Systems AB.
 # PC-locked license - IAR Embedded Workbench for 8051
 #
@@ -14,7 +14,7 @@
 #    Source file        =  
 #        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 #    Command line       =  
-#        -f C:\Users\Admin\AppData\Local\Temp\EW926B.tmp
+#        -f C:\Users\Admin\AppData\Local\Temp\EW7A39.tmp
 #        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 #        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
 #        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
@@ -105,60 +105,59 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
       6          #include "ProjectApp.h"
       7          #include "ZDProfile.h"
       8          #include "user_printf.h"
-      9          #include "DHT11.h"
-     10          
+      9          
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     11          uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
+     10          uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
    \                     UART0_RX_BUFF:
    \   000000                DS 60
    \   00003C                REQUIRE __INIT_XDATA_Z
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     12          uint8 UART0_RX_STA = 0;                //接收状态标记
+     11          uint8 UART0_RX_STA = 0;                //接收状态标记
    \                     UART0_RX_STA:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     13          uint8 UART0_RX_LEN = 0;                //接收数据长度
+     12          uint8 UART0_RX_LEN = 0;                //接收数据长度
    \                     UART0_RX_LEN:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
-     14          //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-     15          extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-     16          extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+     13          //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+     14          extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+     15          extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+     16          
      17          
-     18          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-     19          void USER_Uart0_Init( uint8 baudRate )
+     18          void USER_Uart0_Init( uint8 baudRate )
    \                     USER_Uart0_Init:
-     20          {
+     19          {
    \   000000   74F7         MOV       A,#-0x9
    \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
    \   000005                ; Saved register size: 9
    \   000005                ; Auto size: 29
    \   000005   74E3         MOV       A,#-0x1d
    \   000007   12....       LCALL     ?ALLOC_XSTACK8
-     21            halUARTCfg_t uartConfig;
-     22          
-     23            /* UART Configuration */
-     24            uartConfig.configured           = TRUE;
+     20            halUARTCfg_t uartConfig;
+     21          
+     22            /* UART Configuration */
+     23            uartConfig.configured           = TRUE;
    \   00000A   85..82       MOV       DPL,?XSP + 0
    \   00000D   85..83       MOV       DPH,?XSP + 1
    \   000010   7401         MOV       A,#0x1
    \   000012   F0           MOVX      @DPTR,A
-     25            uartConfig.baudRate             = baudRate;
+     24            uartConfig.baudRate             = baudRate;
    \   000013   12....       LCALL     ?XSTACK_DISP0_8
    \   000016   E9           MOV       A,R1
    \   000017   F0           MOVX      @DPTR,A
-     26            uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
+     25            uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
    \   000018   7402         MOV       A,#0x2
    \   00001A   12....       LCALL     ?XSTACK_DISP0_8
    \   00001D   E4           CLR       A
    \   00001E   F0           MOVX      @DPTR,A
-     27            uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
+     26            uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
    \   00001F   7403         MOV       A,#0x3
    \   000021   12....       LCALL     ?XSTACK_DISP0_8
    \   000024   7440         MOV       A,#0x40
@@ -166,7 +165,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000027   A3           INC       DPTR
    \   000028   E4           CLR       A
    \   000029   F0           MOVX      @DPTR,A
-     28            uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
+     27            uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
    \   00002A   740A         MOV       A,#0xa
    \   00002C   12....       LCALL     ?XSTACK_DISP0_8
    \   00002F   7480         MOV       A,#-0x80
@@ -174,7 +173,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000032   A3           INC       DPTR
    \   000033   E4           CLR       A
    \   000034   F0           MOVX      @DPTR,A
-     29            uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
+     28            uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
    \   000035   7412         MOV       A,#0x12
    \   000037   12....       LCALL     ?XSTACK_DISP0_8
    \   00003A   7480         MOV       A,#-0x80
@@ -182,17 +181,17 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00003D   A3           INC       DPTR
    \   00003E   E4           CLR       A
    \   00003F   F0           MOVX      @DPTR,A
-     30            uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
+     29            uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
    \   000040   7405         MOV       A,#0x5
    \   000042   12....       LCALL     ?XSTACK_DISP0_8
    \   000045   7406         MOV       A,#0x6
    \   000047   F0           MOVX      @DPTR,A
-     31            uartConfig.intEnable            = TRUE;
+     30            uartConfig.intEnable            = TRUE;
    \   000048   7416         MOV       A,#0x16
    \   00004A   12....       LCALL     ?XSTACK_DISP0_8
    \   00004D   7401         MOV       A,#0x1
    \   00004F   F0           MOVX      @DPTR,A
-     32            uartConfig.callBackFunc         = Uart0_Process;
+     31            uartConfig.callBackFunc         = Uart0_Process;
    \   000050   741B         MOV       A,#0x1b
    \   000052   12....       LCALL     ?XSTACK_DISP0_8
    \   000055   74..         MOV       A,#`??Uart0_Process::?relay` & 0xff
@@ -200,25 +199,25 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000058   A3           INC       DPTR
    \   000059   74..         MOV       A,#(`??Uart0_Process::?relay` >> 8) & 0xff
    \   00005B   F0           MOVX      @DPTR,A
-     33          
-     34            /* Start UART */
-     35            HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
+     32          
+     33            /* Start UART */
+     34            HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
    \   00005C                ; Setup parameters for call to function HalUARTOpen
    \   00005C   AA..         MOV       R2,?XSP + 0
    \   00005E   AB..         MOV       R3,?XSP + 1
    \   000060   7900         MOV       R1,#0x0
    \   000062   12....       LCALL     `??HalUARTOpen::?relay`; Banked call to: HalUARTOpen
-     36          }
+     35          }
    \   000065   741D         MOV       A,#0x1d
    \   000067   12....       LCALL     ?DEALLOC_XSTACK8
    \   00006A   7F01         MOV       R7,#0x1
    \   00006C   02....       LJMP      ?BANKED_LEAVE_XDATA
-     37          
+     36          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-     38          void Uart0_Process( uint8 port, uint8 event )
+     37          void Uart0_Process( uint8 port, uint8 event )
    \                     Uart0_Process:
-     39          {
+     38          {
    \   000000                REQUIRE ?V0
    \   000000                REQUIRE ?V1
    \   000000   74F6         MOV       A,#-0xa
@@ -229,10 +228,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000007   12....       LCALL     ?ALLOC_XSTACK8
    \   00000A   E9           MOV       A,R1
    \   00000B   FE           MOV       R6,A
-     40            uint8 Res;
-     41            (void)event;  // Intentionally unreferenced parameter
-     42           
-     43            while (Hal_UART_RxBufLen(port))
+     39            uint8 Res;
+     40            (void)event;  // Intentionally unreferenced parameter
+     41           
+     42            while (Hal_UART_RxBufLen(port))
    \                     ??Uart0_Process_0:
    \   00000C                ; Setup parameters for call to function Hal_UART_RxBufLen
    \   00000C   EE           MOV       A,R6
@@ -241,8 +240,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000011   EA           MOV       A,R2
    \   000012   4B           ORL       A,R3
    \   000013   6076         JZ        ??Uart0_Process_1
-     44            {
-     45              HalUARTRead (port, &Res, 1);//读取一个字节
+     43            {
+     44              HalUARTRead (port, &Res, 1);//读取一个字节
    \   000015                ; Setup parameters for call to function HalUARTRead
    \   000015   7C01         MOV       R4,#0x1
    \   000017   7D00         MOV       R5,#0x0
@@ -251,7 +250,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00001D   EE           MOV       A,R6
    \   00001E   F9           MOV       R1,A
    \   00001F   12....       LCALL     `??HalUARTRead::?relay`; Banked call to: HalUARTRead
-     46              UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
+     45              UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
    \   000022   85..82       MOV       DPL,?XSP + 0
    \   000025   85..83       MOV       DPH,?XSP + 1
    \   000028   E0           MOVX      A,@DPTR
@@ -268,31 +267,31 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00003A   F583         MOV       DPH,A
    \   00003C   D0E0         POP       A
    \   00003E   F0           MOVX      @DPTR,A
-     47              UART0_RX_STA++;
+     46              UART0_RX_STA++;
    \   00003F   90....       MOV       DPTR,#UART0_RX_STA
    \   000042   E0           MOVX      A,@DPTR
    \   000043   04           INC       A
    \   000044   F0           MOVX      @DPTR,A
-     48           
-     49              if((UART0_RX_STA&0x80)==0)//接收未完成
+     47           
+     48              if((UART0_RX_STA&0x80)==0)//接收未完成
    \   000045   A2E7         MOV       C,0xE0 /* A   */.7
    \   000047   402F         JC        ??Uart0_Process_2
-     50              {
-     51                if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
+     49              {
+     50                if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
    \   000049   A2E6         MOV       C,0xE0 /* A   */.6
    \   00004B   85..82       MOV       DPL,?XSP + 0
    \   00004E   85..83       MOV       DPH,?XSP + 1
    \   000051   E0           MOVX      A,@DPTR
    \   000052   5019         JNC       ??Uart0_Process_3
-     52                {
-     53                  if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
+     51                {
+     52                  if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
    \   000054   640A         XRL       A,#0xa
    \   000056   7008         JNZ       ??Uart0_Process_4
    \   000058   90....       MOV       DPTR,#UART0_RX_STA
    \   00005B   E0           MOVX      A,@DPTR
    \   00005C   D2E7         SETB      0xE0 /* A   */.7
    \   00005E   8017         SJMP      ??Uart0_Process_5
-     54                  else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
+     53                  else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
    \                     ??Uart0_Process_4:
    \   000060   E0           MOVX      A,@DPTR
    \   000061   640D         XRL       A,#0xd
@@ -301,10 +300,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000068   E0           MOVX      A,@DPTR
    \   000069   C2E6         CLR       0xE0 /* A   */.6
    \   00006B   800A         SJMP      ??Uart0_Process_5
-     55                }
-     56                else
-     57                {
-     58                  if(Res==0x0D)UART0_RX_STA |= 0x40;
+     54                }
+     55                else
+     56                {
+     57                  if(Res==0x0D)UART0_RX_STA |= 0x40;
    \                     ??Uart0_Process_3:
    \   00006D   640D         XRL       A,#0xd
    \   00006F   7007         JNZ       ??Uart0_Process_2
@@ -313,29 +312,29 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000075   D2E6         SETB      0xE0 /* A   */.6
    \                     ??Uart0_Process_5:
    \   000077   F0           MOVX      @DPTR,A
-     59                }
-     60              }
-     61           
-     62              if((UART0_RX_STA&0x80)==0x80)
+     58                }
+     59              }
+     60           
+     61              if((UART0_RX_STA&0x80)==0x80)
    \                     ??Uart0_Process_2:
    \   000078   90....       MOV       DPTR,#UART0_RX_STA
    \   00007B   E0           MOVX      A,@DPTR
    \   00007C   A2E7         MOV       C,0xE0 /* A   */.7
    \   00007E   508C         JNC       ??Uart0_Process_0
-     63              {
-     64                UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
+     62              {
+     63                UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
    \   000080   543F         ANL       A,#0x3f
    \   000082   24FE         ADD       A,#-0x2
    \   000084   90....       MOV       DPTR,#UART0_RX_LEN
    \   000087   F0           MOVX      @DPTR,A
-     65                Uart0_Handle();
-     66                Uart0_Reset();
+     64                Uart0_Handle();
+     65                Uart0_Reset();
    \   000088                ; Setup parameters for call to function Uart0_Reset
    \   000088   12....       LCALL     `??Uart0_Reset::?relay`; Banked call to: Uart0_Reset
-     67                break;
-     68              }
-     69            }
-     70          }
+     66                break;
+     67              }
+     68            }
+     69          }
    \                     ??Uart0_Process_1:
    \   00008B   7401         MOV       A,#0x1
    \   00008D   12....       LCALL     ?DEALLOC_XSTACK8
@@ -346,32 +345,32 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \                     ?Subroutine0:
    \   000000   7F02         MOV       R7,#0x2
    \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+     70          
      71          
      72          
-     73          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-     74          void Uart0_Handle(void)
+     73          void Uart0_Handle(void)
    \                     Uart0_Handle:
-     75          {
+     74          {
    \   000000                ; Saved register size: 0
    \   000000                ; Auto size: 0
-     76           
-     77          }
+     75           
+     76          }
    \   000000   02....       LJMP      ?BRET
-     78          
+     77          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-     79          void Uart0_Reset(void)
+     78          void Uart0_Reset(void)
    \                     Uart0_Reset:
-     80          {
+     79          {
    \   000000                REQUIRE ?V0
    \   000000                REQUIRE ?V1
    \   000000   74F6         MOV       A,#-0xa
    \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
    \   000005                ; Saved register size: 10
    \   000005                ; Auto size: 0
-     81            memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
+     80            memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
    \   000005                ; Setup parameters for call to function memset
    \   000005   75..3C       MOV       ?V0,#0x3c
    \   000008   75..00       MOV       ?V1,#0x0
@@ -384,11 +383,11 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000018   12....       LCALL     `??memset::?relay`; Banked call to: memset
    \   00001B   7402         MOV       A,#0x2
    \   00001D   12....       LCALL     ?DEALLOC_XSTACK8
-     82            UART0_RX_STA = 0;
+     81            UART0_RX_STA = 0;
    \   000020   90....       MOV       DPTR,#UART0_RX_STA
    \   000023   E4           CLR       A
    \   000024   F0           MOVX      @DPTR,A
-     83          }
+     82          }
    \   000025   80..         SJMP      ?Subroutine0
 
    Maximum stack usage in bytes:

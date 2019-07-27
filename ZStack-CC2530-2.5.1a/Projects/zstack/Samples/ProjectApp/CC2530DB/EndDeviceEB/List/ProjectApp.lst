@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               21/Jul/2019  11:22:51
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               27/Jul/2019  11:10:03
 # Copyright 2004-2018 IAR Systems AB.
 # PC-locked license - IAR Embedded Workbench for 8051
 #
@@ -14,7 +14,7 @@
 #    Source file        =  
 #        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\ProjectApp.c
 #    Command line       =  
-#        -f C:\Users\Admin\AppData\Local\Temp\EW6C9C.tmp
+#        -f C:\Users\Admin\AppData\Local\Temp\EWCF30.tmp
 #        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\ProjectApp.c
 #        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
 #        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
@@ -103,57 +103,60 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
       4          #include "ZDObject.h"
       5          #include "ZDProfile.h"
       6          
-      7          #include "string.h"
-      8          #include "DHT11.h"
-      9          #include "ProjectApp.h"
-     10          #include "DebugTrace.h"
-     11          
-     12          #if !defined( WIN32 )
-     13            #include "OnBoard.h"
-     14          #endif
-     15          
-     16          /* HAL */
-     17          #include "hal_lcd.h"
-     18          #include "hal_led.h"
-     19          #include "hal_key.h"
-     20          #include "hal_uart.h"
-     21          
-     22          /* RTOS */
-     23          #if defined( IAR_ARMCM3_LM )
-     24          #include "RTOS_App.h"
-     25          #endif  
-     26          
-     27          #include "user_uart0.h"
-     28          #include "user_printf.h"
-     29          #include "user_api.h"
-     30          /*********************************************************************
-     31           * MACROS
-     32           */
-     33          
-     34          /*********************************************************************
-     35           * CONSTANTS
-     36           */
-     37          
-     38          /*********************************************************************
-     39           * TYPEDEFS
-     40           */
-     41          
-     42          /*********************************************************************
-     43           * GLOBAL VARIABLES
-     44           */
-     45          // This list should be filled with Application specific Cluster IDs.
+      7          #include "stdio.h"
+      8          #include "string.h"
+      9          #include "math.h"
+     10          //#include "DHT11.h"
+     11          #include "ProjectApp.h"
+     12          #include "DebugTrace.h"
+     13          #include "sht2x.h"
+     14          
+     15          #if !defined( WIN32 )
+     16            #include "OnBoard.h"
+     17          #endif
+     18          
+     19          /* HAL */
+     20          #include "hal_lcd.h"
+     21          #include "hal_led.h"
+     22          #include "hal_key.h"
+     23          #include "hal_uart.h"
+     24          
+     25          /* RTOS */
+     26          #if defined( IAR_ARMCM3_LM )
+     27          #include "RTOS_App.h"
+     28          #endif  
+     29          
+     30          #include "user_uart0.h"
+     31          #include "user_printf.h"
+     32          #include "user_api.h"
+     33          /*********************************************************************
+     34           * MACROS
+     35           */
+     36          
+     37          /*********************************************************************
+     38           * CONSTANTS
+     39           */
+     40          
+     41          /*********************************************************************
+     42           * TYPEDEFS
+     43           */
+     44          
+     45          /*********************************************************************
+     46           * GLOBAL VARIABLES
+     47           */
+     48          // This list should be filled with Application specific Cluster IDs.
 
    \                                 In  segment XDATA_ROM_C, align 1
-     46          const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS] =
+     49          const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS] =
    \                     ProjectApp_ClusterList:
    \   000000   0100         DW 1
-     47          {
-     48            PROJECTAPP_CLUSTERID
-     49          };
-     50          
+     50          {
+     51            PROJECTAPP_CLUSTERID
+     52          };
+     53          
 
    \                                 In  segment XDATA_ROM_C, align 1
-     51          const SimpleDescriptionFormat_t ProjectApp_SimpleDesc =
+     54          const SimpleDescriptionFormat_t ProjectApp_SimpleDesc =
    \                     ProjectApp_SimpleDesc:
    \   000000   0A           DB 10
    \   000001   040F         DW 3844
@@ -163,248 +166,256 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000007   ....         DW ProjectApp_ClusterList
    \   000009   01           DB 1
    \   00000A   ....         DW ProjectApp_ClusterList
-     52          {
-     53            PROJECTAPP_ENDPOINT,              //  int Endpoint;
-     54            PROJECTAPP_PROFID,                //  uint16 AppProfId[2];
-     55            PROJECTAPP_DEVICEID,              //  uint16 AppDeviceId[2];
-     56            PROJECTAPP_DEVICE_VERSION,        //  int   AppDevVer:4;
-     57            PROJECTAPP_FLAGS,                 //  int   AppFlags:4;
-     58            PROJECTAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
-     59            (cId_t *)ProjectApp_ClusterList,  //  byte *pAppInClusterList;
-     60            PROJECTAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
-     61            (cId_t *)ProjectApp_ClusterList   //  byte *pAppInClusterList;
-     62          };
-     63          
-     64          // This is the Endpoint/Interface description.  It is defined here, but
-     65          // filled-in in ProjectApp_Init().  Another way to go would be to fill
-     66          // in the structure here and make it a "const" (in code space).  The
-     67          // way it's defined in this sample app it is define in RAM.
+     55          {
+     56            PROJECTAPP_ENDPOINT,              //  int Endpoint;
+     57            PROJECTAPP_PROFID,                //  uint16 AppProfId[2];
+     58            PROJECTAPP_DEVICEID,              //  uint16 AppDeviceId[2];
+     59            PROJECTAPP_DEVICE_VERSION,        //  int   AppDevVer:4;
+     60            PROJECTAPP_FLAGS,                 //  int   AppFlags:4;
+     61            PROJECTAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
+     62            (cId_t *)ProjectApp_ClusterList,  //  byte *pAppInClusterList;
+     63            PROJECTAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
+     64            (cId_t *)ProjectApp_ClusterList   //  byte *pAppInClusterList;
+     65          };
+     66          
+     67          // This is the Endpoint/Interface description.  It is defined here, but
+     68          // filled-in in ProjectApp_Init().  Another way to go would be to fill
+     69          // in the structure here and make it a "const" (in code space).  The
+     70          // way it's defined in this sample app it is define in RAM.
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     68          endPointDesc_t ProjectApp_epDesc;
+     71          endPointDesc_t ProjectApp_epDesc;
    \                     ProjectApp_epDesc:
    \   000000                DS 6
    \   000006                REQUIRE __INIT_XDATA_Z
-     69          
-     70          /*********************************************************************
-     71           * EXTERNAL VARIABLES
-     72           */
-     73          
-     74          /*********************************************************************
-     75           * EXTERNAL FUNCTIONS
-     76           */
-     77          
-     78          /*********************************************************************
-     79           * LOCAL VARIABLES
-     80           */
+     72          
+     73          /*********************************************************************
+     74           * EXTERNAL VARIABLES
+     75           */
+     76          
+     77          /*********************************************************************
+     78           * EXTERNAL FUNCTIONS
+     79           */
+     80          
+     81          /*********************************************************************
+     82           * LOCAL VARIABLES
+     83           */
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     81          byte ProjectApp_TaskID;   // Task ID for internal task/event processing
+     84          byte ProjectApp_TaskID;   // Task ID for internal task/event processing
    \                     ProjectApp_TaskID:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
-     82                                    // This variable will be received when
-     83                                    // ProjectApp_Init() is called.
+     85                                    // This variable will be received when
+     86                                    // ProjectApp_Init() is called.
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     84          devStates_t ProjectApp_NwkState;
+     87          devStates_t ProjectApp_NwkState;
    \                     ProjectApp_NwkState:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
-     85          
-     86          
+     88          
+     89          
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     87          byte ProjectApp_TransID;  // This is the unique message ID (counter)
+     90          byte ProjectApp_TransID;  // This is the unique message ID (counter)
    \                     ProjectApp_TransID:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
-     88          
+     91          
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-     89          afAddrType_t ProjectApp_DstAddr;
+     92          afAddrType_t ProjectApp_DstAddr;
    \                     ProjectApp_DstAddr:
    \   000000                DS 12
    \   00000C                REQUIRE __INIT_XDATA_Z
-     90          
-     91          /*********************************************************************
-     92           * LOCAL FUNCTIONS
-     93           */
-     94          
-     95          static void ProjectApp_HandleKeys( byte shift, byte keys );
-     96          static void ProjectApp_SendTheMessage( void );
-     97          static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg );
-     98          static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt );
-     99          #if defined( IAR_ARMCM3_LM )
-    100          static void ProjectApp_ProcessRtosMessage( void );
-    101          #endif
-    102          static void ProjectApp_SendBindcast( void );
-    103          /*********************************************************************
-    104           * NETWORK LAYER CALLBACKS
-    105           */
-    106          
-    107          /*********************************************************************
-    108           * PUBLIC FUNCTIONS
-    109           */
-    110          
-    111          /*********************************************************************
-    112           * @fn      ProjectApp_Init
-    113           *
-    114           * @brief   Initialization function for the Project App Task.
-    115           *          This is called during initialization and should contain
-    116           *          any application specific initialization (ie. hardware
-    117           *          initialization/setup, table initialization, power up
-    118           *          notificaiton ... ).
-    119           *
-    120           * @param   task_id - the ID assigned by OSAL.  This ID should be
-    121           *                    used to send messages and set timers.
+     93          
+     94          /*********************************************************************
+     95           * LOCAL FUNCTIONS
+     96           */
+     97          
+     98          static void ProjectApp_HandleKeys( byte shift, byte keys );
+     99          //static void ProjectApp_SendTheMessage( void );
+    100          static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg );
+    101          static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt );
+    102          #if defined( IAR_ARMCM3_LM )
+    103          static void ProjectApp_ProcessRtosMessage( void );
+    104          #endif
+    105          static void ProjectApp_SendBindcast( void );
+    106          /*********************************************************************
+    107           * NETWORK LAYER CALLBACKS
+    108           */
+    109          
+    110          /*********************************************************************
+    111           * PUBLIC FUNCTIONS
+    112           */
+    113          
+    114          /*********************************************************************
+    115           * @fn      ProjectApp_Init
+    116           *
+    117           * @brief   Initialization function for the Project App Task.
+    118           *          This is called during initialization and should contain
+    119           *          any application specific initialization (ie. hardware
+    120           *          initialization/setup, table initialization, power up
+    121           *          notificaiton ... ).
     122           *
-    123           * @return  none
-    124           */
+    123           * @param   task_id - the ID assigned by OSAL.  This ID should be
+    124           *                    used to send messages and set timers.
+    125           *
+    126           * @return  none
+    127           */
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    125          void ProjectApp_Init( uint8 task_id )
+    128          void ProjectApp_Init( uint8 task_id )
    \                     ProjectApp_Init:
-    126          {
+    129          {
    \   000000   74F7         MOV       A,#-0x9
    \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
    \   000005                ; Saved register size: 9
    \   000005                ; Auto size: 0
    \   000005   E9           MOV       A,R1
-    127            ProjectApp_TaskID = task_id;
+    130            ProjectApp_TaskID = task_id;
    \   000006   90....       MOV       DPTR,#ProjectApp_TaskID
    \   000009   F0           MOVX      @DPTR,A
-    128            ProjectApp_NwkState = DEV_INIT;
+    131            ProjectApp_NwkState = DEV_INIT;
    \   00000A   90....       MOV       DPTR,#ProjectApp_NwkState
    \   00000D   7401         MOV       A,#0x1
    \   00000F   F0           MOVX      @DPTR,A
-    129            ProjectApp_TransID = 0;
+    132            ProjectApp_TransID = 0;
    \   000010   90....       MOV       DPTR,#ProjectApp_TransID
    \   000013   E4           CLR       A
    \   000014   F0           MOVX      @DPTR,A
-    130          
-    131            // Device hardware initialization can be added here or in main() (Zmain.c).
-    132            // If the hardware is application specific - add it here.
-    133            // If the hardware is other parts of the device add it in main().
-    134          
-    135            ProjectApp_DstAddr.addrMode = (afAddrMode_t)AddrNotPresent;
+    133          
+    134            // Device hardware initialization can be added here or in main() (Zmain.c).
+    135            // If the hardware is application specific - add it here.
+    136            // If the hardware is other parts of the device add it in main().
+    137          
+    138            ProjectApp_DstAddr.addrMode = (afAddrMode_t)AddrNotPresent;
    \   000015   90....       MOV       DPTR,#ProjectApp_DstAddr + 8
    \   000018   F0           MOVX      @DPTR,A
-    136            ProjectApp_DstAddr.endPoint = 0;
+    139            ProjectApp_DstAddr.endPoint = 0;
    \   000019   A3           INC       DPTR
    \   00001A   F0           MOVX      @DPTR,A
-    137            ProjectApp_DstAddr.addr.shortAddr = 0;
+    140            ProjectApp_DstAddr.addr.shortAddr = 0;
    \   00001B   90....       MOV       DPTR,#ProjectApp_DstAddr
    \   00001E   F0           MOVX      @DPTR,A
    \   00001F   A3           INC       DPTR
    \   000020   F0           MOVX      @DPTR,A
-    138          
-    139            // Fill out the endpoint description.
-    140            ProjectApp_epDesc.endPoint = PROJECTAPP_ENDPOINT;
+    141          
+    142            // Fill out the endpoint description.
+    143            ProjectApp_epDesc.endPoint = PROJECTAPP_ENDPOINT;
    \   000021   90....       MOV       DPTR,#ProjectApp_epDesc
    \   000024   740A         MOV       A,#0xa
    \   000026   F0           MOVX      @DPTR,A
-    141            ProjectApp_epDesc.task_id = &ProjectApp_TaskID;
+    144            ProjectApp_epDesc.task_id = &ProjectApp_TaskID;
    \   000027   A3           INC       DPTR
    \   000028   74..         MOV       A,#ProjectApp_TaskID & 0xff
    \   00002A   F0           MOVX      @DPTR,A
    \   00002B   A3           INC       DPTR
    \   00002C   74..         MOV       A,#(ProjectApp_TaskID >> 8) & 0xff
    \   00002E   F0           MOVX      @DPTR,A
-    142            ProjectApp_epDesc.simpleDesc
-    143                      = (SimpleDescriptionFormat_t *)&ProjectApp_SimpleDesc;
+    145            ProjectApp_epDesc.simpleDesc
+    146                      = (SimpleDescriptionFormat_t *)&ProjectApp_SimpleDesc;
    \   00002F   A3           INC       DPTR
    \   000030   74..         MOV       A,#ProjectApp_SimpleDesc & 0xff
    \   000032   F0           MOVX      @DPTR,A
    \   000033   A3           INC       DPTR
    \   000034   74..         MOV       A,#(ProjectApp_SimpleDesc >> 8) & 0xff
    \   000036   F0           MOVX      @DPTR,A
-    144            ProjectApp_epDesc.latencyReq = noLatencyReqs;
+    147            ProjectApp_epDesc.latencyReq = noLatencyReqs;
    \   000037   A3           INC       DPTR
    \   000038   E4           CLR       A
    \   000039   F0           MOVX      @DPTR,A
-    145          
-    146            // Register the endpoint description with the AF
-    147            afRegister( &ProjectApp_epDesc );
+    148          
+    149            // Register the endpoint description with the AF
+    150            afRegister( &ProjectApp_epDesc );
    \   00003A                ; Setup parameters for call to function afRegister
    \   00003A   7A..         MOV       R2,#ProjectApp_epDesc & 0xff
    \   00003C   7B..         MOV       R3,#(ProjectApp_epDesc >> 8) & 0xff
    \   00003E   12....       LCALL     `??afRegister::?relay`; Banked call to: afRegister
-    148          
-    149            // Register for all key events - This app will handle all key events
-    150            RegisterForKeys( ProjectApp_TaskID );
+    151          
+    152            // Register for all key events - This app will handle all key events
+    153            RegisterForKeys( ProjectApp_TaskID );
    \   000041                ; Setup parameters for call to function RegisterForKeys
    \   000041   90....       MOV       DPTR,#ProjectApp_TaskID
    \   000044   E0           MOVX      A,@DPTR
    \   000045   F9           MOV       R1,A
    \   000046   12....       LCALL     `??RegisterForKeys::?relay`; Banked call to: RegisterForKeys
-    151          
-    152            // Update the display
-    153          #if defined ( LCD_SUPPORTED )
-    154            HalLcdWriteString( "ProjectApp", HAL_LCD_LINE_1 );
-    155          #endif
-    156          
-    157            ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
+    154          
+    155            // Update the display
+    156          #if defined ( LCD_SUPPORTED )
+    157            HalLcdWriteString( "ProjectApp", HAL_LCD_LINE_1 );
+    158          #endif
+    159          
+    160            ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
    \   000049                ; Setup parameters for call to function ZDO_RegisterForZDOMsg
-   \   000049   12....       LCALL     ?Subroutine1 & 0xFFFF
-    158            ZDO_RegisterForZDOMsg( ProjectApp_TaskID, Match_Desc_rsp );
-   \                     ??CrossCallReturnLabel_2:
+   \   000049   12....       LCALL     ?Subroutine0 & 0xFFFF
+    161            ZDO_RegisterForZDOMsg( ProjectApp_TaskID, Match_Desc_rsp );
+   \                     ??CrossCallReturnLabel_0:
    \   00004C                ; Setup parameters for call to function ZDO_RegisterForZDOMsg
    \   00004C   7A06         MOV       R2,#0x6
-   \   00004E   12....       LCALL     ??Subroutine2_0 & 0xFFFF
-    159          
-    160          #if defined( IAR_ARMCM3_LM )
-    161            // Register this task with RTOS task initiator
-    162            RTOS_RegisterApp( task_id, PROJECTAPP_RTOS_MSG_EVT );
-    163          #endif
-    164            
-    165             USER_Uart0_Init(HAL_UART_BR_115200);
-   \                     ??CrossCallReturnLabel_4:
+   \   00004E   12....       LCALL     ??Subroutine1_0 & 0xFFFF
+    162          
+    163          #if defined( IAR_ARMCM3_LM )
+    164            // Register this task with RTOS task initiator
+    165            RTOS_RegisterApp( task_id, PROJECTAPP_RTOS_MSG_EVT );
+    166          #endif
+    167            
+    168            USER_Uart0_Init(HAL_UART_BR_115200);
+   \                     ??CrossCallReturnLabel_2:
    \   000051                ; Setup parameters for call to function USER_Uart0_Init
    \   000051   7904         MOV       R1,#0x4
    \   000053   12....       LCALL     `??USER_Uart0_Init::?relay`; Banked call to: USER_Uart0_Init
-    166             
-    167          ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
+    169             
+    170            ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
    \   000056                ; Setup parameters for call to function ZDO_RegisterForZDOMsg
-   \   000056   12....       LCALL     ?Subroutine1 & 0xFFFF
-    168          }
-   \                     ??CrossCallReturnLabel_3:
-   \   000059   7F01         MOV       R7,#0x1
-   \   00005B   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   000056   12....       LCALL     ?Subroutine0 & 0xFFFF
+    171          
+    172            SHT2x_Init(); 
+   \                     ??CrossCallReturnLabel_1:
+   \   000059                ; Setup parameters for call to function SHT2x_Init
+   \   000059   12....       LCALL     `??SHT2x_Init::?relay`; Banked call to: SHT2x_Init
+    173          
+    174          //  osal_start_timerEx( ProjectApp_TaskID,
+    175          //                      PROJECTAPP_SEND_MSG_EVT,
+    176          //                      PROJECTAPP_SEND_MSG_TIMEOUT );
+    177          }
+   \   00005C   7F01         MOV       R7,#0x1
+   \   00005E   02....       LJMP      ?BANKED_LEAVE_XDATA
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine1:
+   \                     ?Subroutine0:
    \   000000   7A20         MOV       R2,#0x20
-   \   000002                REQUIRE ??Subroutine2_0
-   \   000002                ; // Fall through to label ??Subroutine2_0
+   \   000002                REQUIRE ??Subroutine1_0
+   \   000002                ; // Fall through to label ??Subroutine1_0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ??Subroutine2_0:
+   \                     ??Subroutine1_0:
    \   000000   7B80         MOV       R3,#-0x80
    \   000002   90....       MOV       DPTR,#ProjectApp_TaskID
    \   000005   E0           MOVX      A,@DPTR
    \   000006   F9           MOV       R1,A
    \   000007   12....       LCALL     `??ZDO_RegisterForZDOMsg::?relay`; Banked call to: ZDO_RegisterForZDOMsg
    \   00000A   22           RET
-    169          
-    170          /*********************************************************************
-    171           * @fn      ProjectApp_ProcessEvent
-    172           *
-    173           * @brief   Project Application Task event processor.  This function
-    174           *          is called to process all events for the task.  Events
-    175           *          include timers, messages and any other user defined events.
-    176           *
-    177           * @param   task_id  - The OSAL assigned task ID.
-    178           * @param   events - events to process.  This is a bit map and can
-    179           *                   contain more than one event.
-    180           *
-    181           * @return  none
-    182           */
+    178          
+    179          /*********************************************************************
+    180           * @fn      ProjectApp_ProcessEvent
+    181           *
+    182           * @brief   Project Application Task event processor.  This function
+    183           *          is called to process all events for the task.  Events
+    184           *          include timers, messages and any other user defined events.
+    185           *
+    186           * @param   task_id  - The OSAL assigned task ID.
+    187           * @param   events - events to process.  This is a bit map and can
+    188           *                   contain more than one event.
+    189           *
+    190           * @return  none
+    191           */
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    183          uint16 ProjectApp_ProcessEvent( uint8 task_id, uint16 events )
+    192          uint16 ProjectApp_ProcessEvent( uint8 task_id, uint16 events )
    \                     ProjectApp_ProcessEvent:
-    184          {
+    193          {
    \   000000                REQUIRE ?V0
    \   000000                REQUIRE ?V1
    \   000000                REQUIRE ?V2
@@ -415,88 +426,88 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000000   74F0         MOV       A,#-0x10
    \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
    \   000005                ; Saved register size: 16
-   \   000005                ; Auto size: 26
-   \   000005   74E6         MOV       A,#-0x1a
+   \   000005                ; Auto size: 53
+   \   000005   74CB         MOV       A,#-0x35
    \   000007   12....       LCALL     ?ALLOC_XSTACK8
    \   00000A   EA           MOV       A,R2
    \   00000B   FE           MOV       R6,A
    \   00000C   EB           MOV       A,R3
    \   00000D   FF           MOV       R7,A
-    185            afIncomingMSGPacket_t *MSGpkt;
-    186            afDataConfirm_t *afDataConfirm;
-    187          
-    188            // Data Confirmation message fields
-    189            byte sentEP;
-    190            ZStatus_t sentStatus;
-    191            byte sentTransID;       // This should match the value sent
-    192            (void)task_id;  // Intentionally unreferenced parameter
-    193          
-    194            if ( events & SYS_EVENT_MSG )
+    194            afIncomingMSGPacket_t *MSGpkt;
+    195            afDataConfirm_t *afDataConfirm;
+    196          
+    197            // Data Confirmation message fields
+    198            byte sentEP;
+    199            ZStatus_t sentStatus;
+    200            byte sentTransID;       // This should match the value sent
+    201            (void)task_id;  // Intentionally unreferenced parameter
+    202          
+    203            if ( events & SYS_EVENT_MSG )
    \   00000E   5480         ANL       A,#0x80
    \   000010   7003         JNZ       $+5
    \   000012   02....       LJMP      ??ProjectApp_ProcessEvent_0 & 0xFFFF
-    195            {
-    196              MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( ProjectApp_TaskID );
+    204            {
+    205              MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( ProjectApp_TaskID );
    \   000015                ; Setup parameters for call to function osal_msg_receive
    \   000015   800D         SJMP      ??ProjectApp_ProcessEvent_1
-    197              while ( MSGpkt )
-    198              {
-    199                switch ( MSGpkt->hdr.event )
-    200                {
-    201                  case ZDO_CB_MSG:
-    202                    ProjectApp_ProcessZDOMsgs( (zdoIncomingMsg_t *)MSGpkt );
-    203                    break;
-    204          
-    205                  case KEY_CHANGE:
-    206                    ProjectApp_HandleKeys( ((keyChange_t *)MSGpkt)->state, ((keyChange_t *)MSGpkt)->keys );
-    207                    break;
-    208          
-    209                  case AF_DATA_CONFIRM_CMD:
-    210                    // This message is received as a confirmation of a data packet sent.
-    211                    // The status is of ZStatus_t type [defined in ZComDef.h]
-    212                    // The message fields are defined in AF.h
-    213                    afDataConfirm = (afDataConfirm_t *)MSGpkt;
-    214                    sentEP = afDataConfirm->endpoint;
-    215                    sentStatus = afDataConfirm->hdr.status;
-    216                    sentTransID = afDataConfirm->transID;
-    217                    (void)sentEP;
-    218                    (void)sentTransID;
-    219          
-    220                    // Action taken when confirmation is received.
-    221                    if ( sentStatus != ZSuccess )
-    222                    {
-    223                      // The data wasn't delivered -- Do something
-    224                    }
-    225                    break;
-    226          
-    227                  case AF_INCOMING_MSG_CMD:
-    228                     ProjectApp_MessageMSGCB( MSGpkt );
-    229                    break;
-    230                    
-    231                  case ZDO_STATE_CHANGE:
-    232                     user_state_change((devStates_t)(MSGpkt->hdr.status));
+    206              while ( MSGpkt )
+    207              {
+    208                switch ( MSGpkt->hdr.event )
+    209                {
+    210                  case ZDO_CB_MSG:
+    211                    ProjectApp_ProcessZDOMsgs( (zdoIncomingMsg_t *)MSGpkt );
+    212                    break;
+    213          
+    214                  case KEY_CHANGE:
+    215                    ProjectApp_HandleKeys( ((keyChange_t *)MSGpkt)->state, ((keyChange_t *)MSGpkt)->keys );
+    216                    break;
+    217          
+    218                  case AF_DATA_CONFIRM_CMD:
+    219                    // This message is received as a confirmation of a data packet sent.
+    220                    // The status is of ZStatus_t type [defined in ZComDef.h]
+    221                    // The message fields are defined in AF.h
+    222                    afDataConfirm = (afDataConfirm_t *)MSGpkt;
+    223                    sentEP = afDataConfirm->endpoint;
+    224                    sentStatus = afDataConfirm->hdr.status;
+    225                    sentTransID = afDataConfirm->transID;
+    226                    (void)sentEP;
+    227                    (void)sentTransID;
+    228          
+    229                    // Action taken when confirmation is received.
+    230                    if ( sentStatus != ZSuccess )
+    231                    {
+    232                      // The data wasn't delivered -- Do something
+    233                    }
+    234                    break;
+    235          
+    236                  case AF_INCOMING_MSG_CMD:
+    237                     ProjectApp_MessageMSGCB( MSGpkt );
+    238                    break;
+    239                    
+    240                  case ZDO_STATE_CHANGE:
+    241                     user_state_change((devStates_t)(MSGpkt->hdr.status));
    \                     ??ProjectApp_ProcessEvent_2:
    \   000017                ; Setup parameters for call to function user_state_change
    \   000017   A3           INC       DPTR
    \   000018   E0           MOVX      A,@DPTR
    \   000019   F9           MOV       R1,A
    \   00001A   12....       LCALL     `??user_state_change::?relay`; Banked call to: user_state_change
-    233                    break;
-    234          
-    235                  default:
-    236                    break;
-    237                }
-    238          
-    239                // Release the memory
-    240                osal_msg_deallocate( (uint8 *)MSGpkt );
+    242                    break;
+    243          
+    244                  default:
+    245                    break;
+    246                }
+    247          
+    248                // Release the memory
+    249                osal_msg_deallocate( (uint8 *)MSGpkt );
    \                     ??ProjectApp_ProcessEvent_3:
    \   00001D                ; Setup parameters for call to function osal_msg_deallocate
    \   00001D   AA..         MOV       R2,?V0
    \   00001F   AB..         MOV       R3,?V1
    \   000021   12....       LCALL     `??osal_msg_deallocate::?relay`; Banked call to: osal_msg_deallocate
-    241          
-    242                // Next
-    243                MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( ProjectApp_TaskID );
+    250          
+    251                // Next
+    252                MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( ProjectApp_TaskID );
    \   000024                ; Setup parameters for call to function osal_msg_receive
    \                     ??ProjectApp_ProcessEvent_1:
    \   000024   90....       MOV       DPTR,#ProjectApp_TaskID
@@ -576,306 +587,291 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   0000A5   E0           MOVX      A,@DPTR
    \   0000A6   F5..         MOV       ?V4,A
    \   0000A8   A2E1         MOV       C,0xE0 /* A   */.1
-   \   0000AA   5071         JNC       ??ProjectApp_ProcessEvent_9
+   \   0000AA   5072         JNC       ??ProjectApp_ProcessEvent_9
    \   0000AC                ; Setup parameters for call to function HalLedSet
    \   0000AC   7A00         MOV       R2,#0x0
    \   0000AE   7908         MOV       R1,#0x8
    \   0000B0   12....       LCALL     `??HalLedSet::?relay`; Banked call to: HalLedSet
-   \   0000B3   740D         MOV       A,#0xd
+   \   0000B3   7408         MOV       A,#0x8
    \   0000B5   12....       LCALL     ?XSTACK_DISP0_8
    \   0000B8   7402         MOV       A,#0x2
    \   0000BA   F0           MOVX      @DPTR,A
-   \   0000BB   7405         MOV       A,#0x5
-   \   0000BD   12....       LCALL     ?XSTACK_DISP0_8
-   \   0000C0   E4           CLR       A
-   \   0000C1   F0           MOVX      @DPTR,A
-   \   0000C2   A3           INC       DPTR
-   \   0000C3   F0           MOVX      @DPTR,A
-   \   0000C4                ; Setup parameters for call to function NLME_GetShortAddr
-   \   0000C4   12....       LCALL     `??NLME_GetShortAddr::?relay`; Banked call to: NLME_GetShortAddr
-   \   0000C7   8A..         MOV       ?V2,R2
-   \   0000C9   8B..         MOV       ?V3,R3
-   \   0000CB   AC..         MOV       R4,?V2
-   \   0000CD   AD..         MOV       R5,?V3
-   \   0000CF   75....       MOV       ?V6,#ProjectApp_ClusterList & 0xff
-   \   0000D2   75....       MOV       ?V7,#(ProjectApp_ClusterList >> 8) & 0xff
-   \   0000D5                ; Setup parameters for call to function ZDP_EndDeviceBindReq
-   \   0000D5   75..00       MOV       ?V2,#0x0
-   \   0000D8   78..         MOV       R0,#?V2
-   \   0000DA   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   0000DD   85....       MOV       ?V2,?V6
-   \   0000E0   85....       MOV       ?V3,?V7
-   \   0000E3   78..         MOV       R0,#?V2
-   \   0000E5   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0000E8   75..01       MOV       ?V2,#0x1
-   \   0000EB   78..         MOV       R0,#?V2
-   \   0000ED   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   0000F0   85....       MOV       ?V2,?V6
-   \   0000F3   78..         MOV       R0,#?V2
-   \   0000F5   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0000F8   75..01       MOV       ?V2,#0x1
-   \   0000FB   78..         MOV       R0,#?V2
-   \   0000FD   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   000100   75..04       MOV       ?V2,#0x4
-   \   000103   75..0F       MOV       ?V3,#0xf
-   \   000106   78..         MOV       R0,#?V2
-   \   000108   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00010B   90....       MOV       DPTR,#ProjectApp_epDesc
-   \   00010E   E0           MOVX      A,@DPTR
-   \   00010F   F9           MOV       R1,A
-   \   000110   740E         MOV       A,#0xe
-   \   000112   12....       LCALL     ?XSTACK_DISP101_8
-   \   000115   12....       LCALL     `??ZDP_EndDeviceBindReq::?relay`; Banked call to: ZDP_EndDeviceBindReq
-   \   000118   7409         MOV       A,#0x9
-   \   00011A   12....       LCALL     ?DEALLOC_XSTACK8
+   \   0000BB   85..82       MOV       DPL,?XSP + 0
+   \   0000BE   85..83       MOV       DPH,?XSP + 1
+   \   0000C1   E4           CLR       A
+   \   0000C2   F0           MOVX      @DPTR,A
+   \   0000C3   A3           INC       DPTR
+   \   0000C4   F0           MOVX      @DPTR,A
+   \   0000C5                ; Setup parameters for call to function NLME_GetShortAddr
+   \   0000C5   12....       LCALL     `??NLME_GetShortAddr::?relay`; Banked call to: NLME_GetShortAddr
+   \   0000C8   8A..         MOV       ?V2,R2
+   \   0000CA   8B..         MOV       ?V3,R3
+   \   0000CC   AC..         MOV       R4,?V2
+   \   0000CE   AD..         MOV       R5,?V3
+   \   0000D0   75....       MOV       ?V6,#ProjectApp_ClusterList & 0xff
+   \   0000D3   75....       MOV       ?V7,#(ProjectApp_ClusterList >> 8) & 0xff
+   \   0000D6                ; Setup parameters for call to function ZDP_EndDeviceBindReq
+   \   0000D6   75..00       MOV       ?V2,#0x0
+   \   0000D9   78..         MOV       R0,#?V2
+   \   0000DB   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   0000DE   85....       MOV       ?V2,?V6
+   \   0000E1   85....       MOV       ?V3,?V7
+   \   0000E4   78..         MOV       R0,#?V2
+   \   0000E6   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000E9   75..01       MOV       ?V2,#0x1
+   \   0000EC   78..         MOV       R0,#?V2
+   \   0000EE   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   0000F1   85....       MOV       ?V2,?V6
+   \   0000F4   78..         MOV       R0,#?V2
+   \   0000F6   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000F9   75..01       MOV       ?V2,#0x1
+   \   0000FC   78..         MOV       R0,#?V2
+   \   0000FE   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000101   75..04       MOV       ?V2,#0x4
+   \   000104   75..0F       MOV       ?V3,#0xf
+   \   000107   78..         MOV       R0,#?V2
+   \   000109   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00010C   90....       MOV       DPTR,#ProjectApp_epDesc
+   \   00010F   E0           MOVX      A,@DPTR
+   \   000110   F9           MOV       R1,A
+   \   000111   7409         MOV       A,#0x9
+   \   000113   12....       LCALL     ?XSTACK_DISP101_8
+   \   000116   12....       LCALL     `??ZDP_EndDeviceBindReq::?relay`; Banked call to: ZDP_EndDeviceBindReq
+   \   000119   7409         MOV       A,#0x9
+   \   00011B   12....       LCALL     ?DEALLOC_XSTACK8
    \                     ??ProjectApp_ProcessEvent_9:
-   \   00011D   E5..         MOV       A,?V4
-   \   00011F   A2E3         MOV       C,0xE0 /* A   */.3
-   \   000121   4003         JC        $+5
-   \   000123   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
-   \   000126                ; Setup parameters for call to function HalLedSet
-   \   000126   7A00         MOV       R2,#0x0
-   \   000128   7908         MOV       R1,#0x8
-   \   00012A   12....       LCALL     `??HalLedSet::?relay`; Banked call to: HalLedSet
-   \   00012D   740D         MOV       A,#0xd
-   \   00012F   12....       LCALL     ?XSTACK_DISP0_8
-   \   000132   740F         MOV       A,#0xf
-   \   000134   F0           MOVX      @DPTR,A
-   \   000135   7405         MOV       A,#0x5
-   \   000137   12....       LCALL     ?XSTACK_DISP0_8
-   \   00013A   74FF         MOV       A,#-0x1
-   \   00013C   F0           MOVX      @DPTR,A
-   \   00013D   A3           INC       DPTR
+   \   00011E   E5..         MOV       A,?V4
+   \   000120   A2E3         MOV       C,0xE0 /* A   */.3
+   \   000122   4003         JC        $+5
+   \   000124   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
+   \   000127                ; Setup parameters for call to function HalLedSet
+   \   000127   7A00         MOV       R2,#0x0
+   \   000129   7908         MOV       R1,#0x8
+   \   00012B   12....       LCALL     `??HalLedSet::?relay`; Banked call to: HalLedSet
+   \   00012E   7408         MOV       A,#0x8
+   \   000130   12....       LCALL     ?XSTACK_DISP0_8
+   \   000133   740F         MOV       A,#0xf
+   \   000135   F0           MOVX      @DPTR,A
+   \   000136   85..82       MOV       DPL,?XSP + 0
+   \   000139   85..83       MOV       DPH,?XSP + 1
+   \   00013C   74FF         MOV       A,#-0x1
    \   00013E   F0           MOVX      @DPTR,A
-   \   00013F   75....       MOV       ?V6,#ProjectApp_ClusterList & 0xff
-   \   000142   75....       MOV       ?V7,#(ProjectApp_ClusterList >> 8) & 0xff
-   \   000145                ; Setup parameters for call to function ZDP_MatchDescReq
-   \   000145   75..00       MOV       ?V2,#0x0
-   \   000148   78..         MOV       R0,#?V2
-   \   00014A   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   00014D   78..         MOV       R0,#?V6
-   \   00014F   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000152   75..01       MOV       ?V2,#0x1
-   \   000155   78..         MOV       R0,#?V2
-   \   000157   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   00015A   78..         MOV       R0,#?V6
-   \   00015C   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00015F   75..04       MOV       ?V2,#0x4
-   \   000162   75..0F       MOV       ?V3,#0xf
-   \   000165   78..         MOV       R0,#?V2
-   \   000167   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00016A   7901         MOV       R1,#0x1
-   \   00016C   7CFF         MOV       R4,#-0x1
-   \   00016E   7DFF         MOV       R5,#-0x1
-   \   000170   740D         MOV       A,#0xd
-   \   000172   12....       LCALL     ?XSTACK_DISP101_8
-   \   000175   12....       LCALL     `??ZDP_MatchDescReq::?relay`; Banked call to: ZDP_MatchDescReq
-   \   000178   7408         MOV       A,#0x8
-   \   00017A   12....       LCALL     ?DEALLOC_XSTACK8
-   \   00017D   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
+   \   00013F   A3           INC       DPTR
+   \   000140   F0           MOVX      @DPTR,A
+   \   000141   75....       MOV       ?V6,#ProjectApp_ClusterList & 0xff
+   \   000144   75....       MOV       ?V7,#(ProjectApp_ClusterList >> 8) & 0xff
+   \   000147                ; Setup parameters for call to function ZDP_MatchDescReq
+   \   000147   75..00       MOV       ?V2,#0x0
+   \   00014A   78..         MOV       R0,#?V2
+   \   00014C   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00014F   78..         MOV       R0,#?V6
+   \   000151   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000154   75..01       MOV       ?V2,#0x1
+   \   000157   78..         MOV       R0,#?V2
+   \   000159   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00015C   78..         MOV       R0,#?V6
+   \   00015E   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000161   75..04       MOV       ?V2,#0x4
+   \   000164   75..0F       MOV       ?V3,#0xf
+   \   000167   78..         MOV       R0,#?V2
+   \   000169   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00016C   7901         MOV       R1,#0x1
+   \   00016E   7CFF         MOV       R4,#-0x1
+   \   000170   7DFF         MOV       R5,#-0x1
+   \   000172   7408         MOV       A,#0x8
+   \   000174   12....       LCALL     ?XSTACK_DISP101_8
+   \   000177   12....       LCALL     `??ZDP_MatchDescReq::?relay`; Banked call to: ZDP_MatchDescReq
+   \   00017A   7408         MOV       A,#0x8
+   \   00017C   12....       LCALL     ?DEALLOC_XSTACK8
+   \   00017F   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
    \                     ??ProjectApp_ProcessEvent_5:
-   \   000180   A3           INC       DPTR
-   \   000181   A3           INC       DPTR
    \   000182   A3           INC       DPTR
    \   000183   A3           INC       DPTR
-   \   000184   E0           MOVX      A,@DPTR
-   \   000185   6401         XRL       A,#0x1
-   \   000187   7002         JNZ       ??ProjectApp_ProcessEvent_10
-   \   000189   A3           INC       DPTR
-   \   00018A   E0           MOVX      A,@DPTR
+   \   000184   A3           INC       DPTR
+   \   000185   A3           INC       DPTR
+   \   000186   E0           MOVX      A,@DPTR
+   \   000187   6401         XRL       A,#0x1
+   \   000189   7002         JNZ       ??ProjectApp_ProcessEvent_10
+   \   00018B   A3           INC       DPTR
+   \   00018C   E0           MOVX      A,@DPTR
    \                     ??ProjectApp_ProcessEvent_10:
-   \   00018B   6003         JZ        $+5
-   \   00018D   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
-   \   000190                ; Setup parameters for call to function printf
-   \   000190   E5..         MOV       A,?V0
-   \   000192   2422         ADD       A,#0x22
-   \   000194   F582         MOV       DPL,A
-   \   000196   E4           CLR       A
-   \   000197   35..         ADDC      A,?V1
-   \   000199   F583         MOV       DPH,A
-   \   00019B   12....       LCALL     ?PUSH_XSTACK8_X_TWO
-   \   00019E   7A..         MOV       R2,#`?<Constant "%s\\r\\n">` & 0xff
-   \   0001A0   7B..         MOV       R3,#(`?<Constant "%s\\r\\n">` >> 8) & 0xff
-   \   0001A2   12....       LCALL     `??printf::?relay`; Banked call to: printf
-   \   0001A5   7402         MOV       A,#0x2
-   \   0001A7   12....       LCALL     ?DEALLOC_XSTACK8
-   \   0001AA   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
-    244              }
-    245          
-    246              // return unprocessed events
-    247              return (events ^ SYS_EVENT_MSG);
+   \   00018D   6003         JZ        $+5
+   \   00018F   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
+   \   000192                ; Setup parameters for call to function printf
+   \   000192   E5..         MOV       A,?V0
+   \   000194   2422         ADD       A,#0x22
+   \   000196   F582         MOV       DPL,A
+   \   000198   E4           CLR       A
+   \   000199   35..         ADDC      A,?V1
+   \   00019B   F583         MOV       DPH,A
+   \   00019D   12....       LCALL     ?PUSH_XSTACK8_X_TWO
+   \   0001A0   7A..         MOV       R2,#`?<Constant "%s\\r\\n">` & 0xff
+   \   0001A2   7B..         MOV       R3,#(`?<Constant "%s\\r\\n">` >> 8) & 0xff
+   \   0001A4   12....       LCALL     `??printf::?relay`; Banked call to: printf
+   \   0001A7   7402         MOV       A,#0x2
+   \   0001A9   12....       LCALL     ?DEALLOC_XSTACK8
+   \   0001AC   02....       LJMP      ??ProjectApp_ProcessEvent_3 & 0xFFFF
+    253              }
+    254          
+    255              // return unprocessed events
+    256              return (events ^ SYS_EVENT_MSG);
    \                     ??ProjectApp_ProcessEvent_4:
-   \   0001AD   EE           MOV       A,R6
-   \   0001AE   FA           MOV       R2,A
-   \   0001AF   EF           MOV       A,R7
-   \   0001B0   6480         XRL       A,#0x80
-   \   0001B2   02....       LJMP      ??ProjectApp_ProcessEvent_11 & 0xFFFF
-    248            }
-    249          
-    250            // Send a message out - This event is generated by a timer
-    251            //  (setup in ProjectApp_Init()).
-    252            if ( events & PROJECTAPP_SEND_MSG_EVT )
+   \   0001AF   EE           MOV       A,R6
+   \   0001B0   FA           MOV       R2,A
+   \   0001B1   EF           MOV       A,R7
+   \   0001B2   6480         XRL       A,#0x80
+   \   0001B4   02....       LJMP      ??ProjectApp_ProcessEvent_11 & 0xFFFF
+    257            }
+    258          
+    259            // Send a message out - This event is generated by a timer
+    260            //  (setup in ProjectApp_Init()).
+    261            if ( events & PROJECTAPP_SEND_MSG_EVT )
    \                     ??ProjectApp_ProcessEvent_0:
-   \   0001B5   EA           MOV       A,R2
-   \   0001B6   A2E0         MOV       C,0xE0 /* A   */.0
-   \   0001B8   4003         JC        $+5
-   \   0001BA   02....       LJMP      ??ProjectApp_ProcessEvent_12 & 0xFFFF
-    253            {
-    254              // Send "the" message
-    255              ProjectApp_SendBindcast();
-   \   0001BD                ; Setup parameters for call to function DHT11
-   \   0001BD   12....       LCALL     `??DHT11::?relay`; Banked call to: DHT11
-   \   0001C0   90....       MOV       DPTR,#wendu_shi
-   \   0001C3   E0           MOVX      A,@DPTR
-   \   0001C4   2430         ADD       A,#0x30
-   \   0001C6   85..82       MOV       DPL,?XSP + 0
-   \   0001C9   85..83       MOV       DPH,?XSP + 1
-   \   0001CC   F0           MOVX      @DPTR,A
-   \   0001CD   90....       MOV       DPTR,#wendu_ge
-   \   0001D0   E0           MOVX      A,@DPTR
-   \   0001D1   2430         ADD       A,#0x30
-   \   0001D3   C0E0         PUSH      A
-   \   0001D5   7401         MOV       A,#0x1
-   \   0001D7   12....       LCALL     ?XSTACK_DISP0_8
-   \   0001DA   D0E0         POP       A
-   \   0001DC   F0           MOVX      @DPTR,A
-   \   0001DD   7402         MOV       A,#0x2
-   \   0001DF   12....       LCALL     ?XSTACK_DISP0_8
-   \   0001E2   740D         MOV       A,#0xd
-   \   0001E4   F0           MOVX      @DPTR,A
-   \   0001E5   7403         MOV       A,#0x3
-   \   0001E7   12....       LCALL     ?XSTACK_DISP0_8
-   \   0001EA   740A         MOV       A,#0xa
-   \   0001EC   F0           MOVX      @DPTR,A
-   \   0001ED   7404         MOV       A,#0x4
-   \   0001EF   12....       LCALL     ?XSTACK_DISP0_8
-   \   0001F2   E4           CLR       A
-   \   0001F3   12....       LCALL     ?Subroutine0 & 0xFFFF
-   \                     ??CrossCallReturnLabel_0:
-   \   0001F6   8A..         MOV       ?V0,R2
-   \   0001F8   8B..         MOV       ?V1,R3
-   \   0001FA   AC..         MOV       R4,?V0
-   \   0001FC   AD..         MOV       R5,?V1
-   \   0001FE                ; Setup parameters for call to function HalUARTWrite
-   \   0001FE   AA..         MOV       R2,?XSP + 0
-   \   000200   AB..         MOV       R3,?XSP + 1
-   \   000202   7900         MOV       R1,#0x0
-   \   000204   12....       LCALL     `??HalUARTWrite::?relay`; Banked call to: HalUARTWrite
-   \   000207   7416         MOV       A,#0x16
-   \   000209   12....       LCALL     ?XSTACK_DISP0_8
-   \   00020C   E4           CLR       A
-   \   00020D   F0           MOVX      @DPTR,A
-   \   00020E   7417         MOV       A,#0x17
-   \   000210   12....       LCALL     ?XSTACK_DISP0_8
-   \   000213   E4           CLR       A
-   \   000214   F0           MOVX      @DPTR,A
-   \   000215   740E         MOV       A,#0xe
-   \   000217   12....       LCALL     ?XSTACK_DISP0_8
-   \   00021A   E4           CLR       A
-   \   00021B   F0           MOVX      @DPTR,A
-   \   00021C   A3           INC       DPTR
-   \   00021D   12....       LCALL     ?Subroutine0 & 0xFFFF
-   \                     ??CrossCallReturnLabel_1:
-   \   000220                ; Setup parameters for call to function AF_DataRequest
-   \   000220   75..1E       MOV       ?V0,#0x1e
-   \   000223   78..         MOV       R0,#?V0
-   \   000225   12....       LCALL     ?PUSH_XSTACK_I_ONE
-   \   000228   75....       MOV       ?V0,#ProjectApp_TransID & 0xff
-   \   00022B   75....       MOV       ?V1,#(ProjectApp_TransID >> 8) & 0xff
-   \   00022E   78..         MOV       R0,#?V0
-   \   000230   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000233   7403         MOV       A,#0x3
-   \   000235   12....       LCALL     ?XSTACK_DISP100_8
-   \   000238   88..         MOV       ?V0,R0
-   \   00023A   89..         MOV       ?V1,R1
-   \   00023C   78..         MOV       R0,#?V0
-   \   00023E   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000241   EA           MOV       A,R2
-   \   000242   2401         ADD       A,#0x1
-   \   000244   F5..         MOV       ?V0,A
-   \   000246   E4           CLR       A
-   \   000247   3B           ADDC      A,R3
-   \   000248   F5..         MOV       ?V1,A
-   \   00024A   78..         MOV       R0,#?V0
-   \   00024C   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00024F   75..01       MOV       ?V0,#0x1
-   \   000252   75..00       MOV       ?V1,#0x0
-   \   000255   78..         MOV       R0,#?V0
-   \   000257   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00025A   7920         MOV       R1,#0x20
-   \   00025C   7C..         MOV       R4,#ProjectApp_epDesc & 0xff
-   \   00025E   7D..         MOV       R5,#(ProjectApp_epDesc >> 8) & 0xff
-   \   000260   7417         MOV       A,#0x17
-   \   000262   12....       LCALL     ?XSTACK_DISP101_8
-   \   000265   12....       LCALL     `??AF_DataRequest::?relay`; Banked call to: AF_DataRequest
-   \   000268   7409         MOV       A,#0x9
-   \   00026A   12....       LCALL     ?DEALLOC_XSTACK8
-    256          //    ProjectApp_SendTheMessage();
-    257              // Setup to send message again
-    258              osal_start_timerEx( ProjectApp_TaskID,
-    259                                  PROJECTAPP_SEND_MSG_EVT,
-    260                                  PROJECTAPP_SEND_MSG_TIMEOUT+(osal_rand() & 0x00FF));
-   \   00026D                ; Setup parameters for call to function osal_rand
-   \   00026D   12....       LCALL     `??osal_rand::?relay`; Banked call to: osal_rand
-   \   000270                ; Setup parameters for call to function osal_start_timerEx
-   \   000270   EA           MOV       A,R2
-   \   000271   24E8         ADD       A,#-0x18
-   \   000273   FC           MOV       R4,A
-   \   000274   E4           CLR       A
-   \   000275   3403         ADDC      A,#0x3
-   \   000277   FD           MOV       R5,A
-   \   000278   7A01         MOV       R2,#0x1
-   \   00027A   7B00         MOV       R3,#0x0
-   \   00027C   90....       MOV       DPTR,#ProjectApp_TaskID
-   \   00027F   E0           MOVX      A,@DPTR
-   \   000280   F9           MOV       R1,A
-   \   000281   12....       LCALL     `??osal_start_timerEx::?relay`; Banked call to: osal_start_timerEx
-    261          
-    262              // return unprocessed events
-    263              return (events ^ PROJECTAPP_SEND_MSG_EVT);
-   \   000284   EE           MOV       A,R6
-   \   000285   6401         XRL       A,#0x1
-   \   000287   FA           MOV       R2,A
-   \   000288   EF           MOV       A,R7
-   \                     ??ProjectApp_ProcessEvent_11:
-   \   000289   FB           MOV       R3,A
-   \   00028A   8004         SJMP      ??ProjectApp_ProcessEvent_13
-    264            }
+   \   0001B7   EA           MOV       A,R2
+   \   0001B8   A2E0         MOV       C,0xE0 /* A   */.0
+   \   0001BA   4003         JC        $+5
+   \   0001BC   02....       LJMP      ??ProjectApp_ProcessEvent_12 & 0xFFFF
+    262            {
+    263              // Send "the" message
+    264              ProjectApp_SendBindcast();
+   \   0001BF                ; Setup parameters for call to function SHT2x_GetTempPoll
+   \   0001BF   12....       LCALL     `??SHT2x_GetTempPoll::?relay`; Banked call to: SHT2x_GetTempPoll
+   \   0001C2   8A..         MOV       ?V0,R2
+   \   0001C4   8B..         MOV       ?V1,R3
+   \   0001C6   8C..         MOV       ?V2,R4
+   \   0001C8   8D..         MOV       ?V3,R5
+   \   0001CA                ; Setup parameters for call to function sprintf
+   \   0001CA   78..         MOV       R0,#?V0
+   \   0001CC   12....       LCALL     ?PUSH_XSTACK_I_FOUR
+   \   0001CF   7C..         MOV       R4,#`?<Constant "%5.2f C\\r\\n">` & 0xff
+   \   0001D1   7D..         MOV       R5,#(`?<Constant "%5.2f C\\r\\n">` >> 8) & 0xff
+   \   0001D3   7419         MOV       A,#0x19
+   \   0001D5   12....       LCALL     ?XSTACK_DISP101_8
+   \   0001D8   12....       LCALL     `??sprintf::?relay`; Banked call to: sprintf
+   \   0001DB   7404         MOV       A,#0x4
+   \   0001DD   12....       LCALL     ?DEALLOC_XSTACK8
+   \   0001E0                ; Setup parameters for call to function printf
+   \   0001E0   7415         MOV       A,#0x15
+   \   0001E2   12....       LCALL     ?XSTACK_DISP100_8
+   \   0001E5   88..         MOV       ?V0,R0
+   \   0001E7   89..         MOV       ?V1,R1
+   \   0001E9   78..         MOV       R0,#?V0
+   \   0001EB   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0001EE   7A..         MOV       R2,#`?<Constant "%s\\r\\n">` & 0xff
+   \   0001F0   7B..         MOV       R3,#(`?<Constant "%s\\r\\n">` >> 8) & 0xff
+   \   0001F2   12....       LCALL     `??printf::?relay`; Banked call to: printf
+   \   0001F5   7402         MOV       A,#0x2
+   \   0001F7   12....       LCALL     ?DEALLOC_XSTACK8
+   \   0001FA   7411         MOV       A,#0x11
+   \   0001FC   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001FF   E4           CLR       A
+   \   000200   F0           MOVX      @DPTR,A
+   \   000201   7412         MOV       A,#0x12
+   \   000203   12....       LCALL     ?XSTACK_DISP0_8
+   \   000206   E4           CLR       A
+   \   000207   F0           MOVX      @DPTR,A
+   \   000208   7409         MOV       A,#0x9
+   \   00020A   12....       LCALL     ?XSTACK_DISP0_8
+   \   00020D   E4           CLR       A
+   \   00020E   F0           MOVX      @DPTR,A
+   \   00020F   A3           INC       DPTR
+   \   000210   F0           MOVX      @DPTR,A
+   \   000211                ; Setup parameters for call to function strlen
+   \   000211   7415         MOV       A,#0x15
+   \   000213   12....       LCALL     ?XSTACK_DISP101_8
+   \   000216   12....       LCALL     `??strlen::?relay`; Banked call to: strlen
+   \   000219                ; Setup parameters for call to function AF_DataRequest
+   \   000219   75..1E       MOV       ?V0,#0x1e
+   \   00021C   78..         MOV       R0,#?V0
+   \   00021E   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000221   75....       MOV       ?V0,#ProjectApp_TransID & 0xff
+   \   000224   75....       MOV       ?V1,#(ProjectApp_TransID >> 8) & 0xff
+   \   000227   78..         MOV       R0,#?V0
+   \   000229   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00022C   7418         MOV       A,#0x18
+   \   00022E   12....       LCALL     ?XSTACK_DISP100_8
+   \   000231   88..         MOV       ?V0,R0
+   \   000233   89..         MOV       ?V1,R1
+   \   000235   78..         MOV       R0,#?V0
+   \   000237   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00023A   EA           MOV       A,R2
+   \   00023B   2401         ADD       A,#0x1
+   \   00023D   F5..         MOV       ?V0,A
+   \   00023F   E4           CLR       A
+   \   000240   3B           ADDC      A,R3
+   \   000241   F5..         MOV       ?V1,A
+   \   000243   78..         MOV       R0,#?V0
+   \   000245   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000248   75..01       MOV       ?V0,#0x1
+   \   00024B   75..00       MOV       ?V1,#0x0
+   \   00024E   78..         MOV       R0,#?V0
+   \   000250   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000253   7920         MOV       R1,#0x20
+   \   000255   7C..         MOV       R4,#ProjectApp_epDesc & 0xff
+   \   000257   7D..         MOV       R5,#(ProjectApp_epDesc >> 8) & 0xff
+   \   000259   7412         MOV       A,#0x12
+   \   00025B   12....       LCALL     ?XSTACK_DISP101_8
+   \   00025E   12....       LCALL     `??AF_DataRequest::?relay`; Banked call to: AF_DataRequest
+   \   000261   7409         MOV       A,#0x9
+   \   000263   12....       LCALL     ?DEALLOC_XSTACK8
     265          
-    266            
-    267          #if defined( IAR_ARMCM3_LM )
-    268            // Receive a message from the RTOS queue
-    269            if ( events & PROJECTAPP_RTOS_MSG_EVT )
-    270            {
-    271              // Process message from RTOS queue
-    272              ProjectApp_ProcessRtosMessage();
-    273          
-    274              // return unprocessed events
-    275              return (events ^ PROJECTAPP_RTOS_MSG_EVT);
-    276            }
-    277          #endif
-    278          
-    279            // Discard unknown events
-    280            return 0;
+    266          //ProjectApp_SendTheMessage();
+    267          // Setup to send message again
+    268           
+    269              osal_start_timerEx( ProjectApp_TaskID,
+    270                                  PROJECTAPP_SEND_MSG_EVT,
+    271                                  PROJECTAPP_SEND_MSG_TIMEOUT+(osal_rand() & 0x00FF));
+   \   000266                ; Setup parameters for call to function osal_rand
+   \   000266   12....       LCALL     `??osal_rand::?relay`; Banked call to: osal_rand
+   \   000269                ; Setup parameters for call to function osal_start_timerEx
+   \   000269   EA           MOV       A,R2
+   \   00026A   24E8         ADD       A,#-0x18
+   \   00026C   FC           MOV       R4,A
+   \   00026D   E4           CLR       A
+   \   00026E   3403         ADDC      A,#0x3
+   \   000270   FD           MOV       R5,A
+   \   000271   7A01         MOV       R2,#0x1
+   \   000273   7B00         MOV       R3,#0x0
+   \   000275   90....       MOV       DPTR,#ProjectApp_TaskID
+   \   000278   E0           MOVX      A,@DPTR
+   \   000279   F9           MOV       R1,A
+   \   00027A   12....       LCALL     `??osal_start_timerEx::?relay`; Banked call to: osal_start_timerEx
+    272          
+    273              // return unprocessed events
+    274              return (events ^ PROJECTAPP_SEND_MSG_EVT);
+   \   00027D   EE           MOV       A,R6
+   \   00027E   6401         XRL       A,#0x1
+   \   000280   FA           MOV       R2,A
+   \   000281   EF           MOV       A,R7
+   \                     ??ProjectApp_ProcessEvent_11:
+   \   000282   FB           MOV       R3,A
+   \   000283   8004         SJMP      ??ProjectApp_ProcessEvent_13
+    275            }
+    276          
+    277            
+    278          #if defined( IAR_ARMCM3_LM )
+    279            // Receive a message from the RTOS queue
+    280            if ( events & PROJECTAPP_RTOS_MSG_EVT )
+    281            {
+    282              // Process message from RTOS queue
+    283              ProjectApp_ProcessRtosMessage();
+    284          
+    285              // return unprocessed events
+    286              return (events ^ PROJECTAPP_RTOS_MSG_EVT);
+    287            }
+    288          #endif
+    289          
+    290            // Discard unknown events
+    291            return 0;
    \                     ??ProjectApp_ProcessEvent_12:
-   \   00028C   7A00         MOV       R2,#0x0
-   \   00028E   7B00         MOV       R3,#0x0
+   \   000285   7A00         MOV       R2,#0x0
+   \   000287   7B00         MOV       R3,#0x0
    \                     ??ProjectApp_ProcessEvent_13:
-   \   000290   741A         MOV       A,#0x1a
-   \   000292   12....       LCALL     ?DEALLOC_XSTACK8
-   \   000295   7F08         MOV       R7,#0x8
-   \   000297   02....       LJMP      ?BANKED_LEAVE_XDATA
-    281          }
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine0:
-   \   000000   F0           MOVX      @DPTR,A
-   \   000001                ; Setup parameters for call to function strlen
-   \   000001                ; Setup parameters for call to function strlen
-   \   000001   AA..         MOV       R2,?XSP + 0
-   \   000003   AB..         MOV       R3,?XSP + 1
-   \   000005   12....       LCALL     `??strlen::?relay`; Banked call to: strlen
-   \   000008   22           RET
+   \   000289   7435         MOV       A,#0x35
+   \   00028B   12....       LCALL     ?DEALLOC_XSTACK8
+   \   00028E   7F08         MOV       R7,#0x8
+   \   000290   02....       LJMP      ?BANKED_LEAVE_XDATA
+    292          }
 
    \                                 In  segment XDATA_ROM_C, align 1
    \                     `?<Constant "Bind success!\\r\\n">`:
@@ -892,294 +888,293 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \            210D0A00
 
    \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "%5.2f C\\r\\n">`:
+   \   000000   25352E32     DB "%5.2f C\015\012"
+   \            6620430D
+   \            0A00    
+
+   \                                 In  segment XDATA_ROM_C, align 1
    \                     `?<Constant "%s\\r\\n">`:
    \   000000   25730D0A     DB "%s\015\012"
    \            00      
-    282          
-    283          
-    284          /*********************************************************************
-    285           * @fn      ProjectApp_HandleKeys
-    286           *
-    287           * @brief   Handles all key events for this device.
-    288           *
-    289           * @param   shift - true if in shift/alt.
-    290           * @param   keys - bit field for key events. Valid entries:
-    291           *                 HAL_KEY_SW_4
-    292           *                 HAL_KEY_SW_3
-    293           *                 HAL_KEY_SW_2
-    294           *                 HAL_KEY_SW_1
-    295           *
-    296           * @return  none
-    297           */
-    298          static void ProjectApp_HandleKeys( uint8 shift, uint8 keys )
-    299          {
-    300            zAddrType_t dstAddr;
-    301          
-    302            // Shift is used to make each button/switch dual purpose.
-    303            if ( shift )
-    304            {
-    305              if ( keys & HAL_KEY_SW_1 )
-    306              {
-    307              }
-    308              if ( keys & HAL_KEY_SW_2 )
-    309              {
-    310              }
-    311              if ( keys & HAL_KEY_SW_3 )
-    312              {
-    313              }
-    314              if ( keys & HAL_KEY_SW_4 )
-    315              {
-    316              }
-    317            }
-    318            else
-    319            {
-    320              if ( keys & HAL_KEY_SW_1 )
-    321              {
-    322              }
-    323          
-    324          #if defined( SWITCH1_BIND )
-    325                // we can use SW1 to simulate SW2 for devices that only have one switch,
-    326                keys |= HAL_KEY_SW_2;
-    327          #elif defined( SWITCH1_MATCH )
-    328                // or use SW1 to simulate SW4 for devices that only have one switch
-    329                keys |= HAL_KEY_SW_4;
-    330          #endif
-    331              }
-    332          
-    333              if ( keys & HAL_KEY_SW_2 )
-    334              {
-    335                HalLedSet ( HAL_LED_4, HAL_LED_MODE_OFF );
-    336          
-    337                // Initiate an End Device Bind Request for the mandatory endpoint
-    338                dstAddr.addrMode = Addr16Bit;
-    339                dstAddr.addr.shortAddr = 0x0000; // Coordinator
-    340                ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
-    341                                      ProjectApp_epDesc.endPoint,
-    342                                      PROJECTAPP_PROFID,
-    343                                      PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-    344                                      PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-    345                                      FALSE );
-    346              }
+    293          
+    294          
+    295          /*********************************************************************
+    296           * @fn      ProjectApp_HandleKeys
+    297           *
+    298           * @brief   Handles all key events for this device.
+    299           *
+    300           * @param   shift - true if in shift/alt.
+    301           * @param   keys - bit field for key events. Valid entries:
+    302           *                 HAL_KEY_SW_4
+    303           *                 HAL_KEY_SW_3
+    304           *                 HAL_KEY_SW_2
+    305           *                 HAL_KEY_SW_1
+    306           *
+    307           * @return  none
+    308           */
+    309          static void ProjectApp_HandleKeys( uint8 shift, uint8 keys )
+    310          {
+    311            zAddrType_t dstAddr;
+    312          
+    313            // Shift is used to make each button/switch dual purpose.
+    314            if ( shift )
+    315            {
+    316              if ( keys & HAL_KEY_SW_1 )
+    317              {
+    318              }
+    319              if ( keys & HAL_KEY_SW_2 )
+    320              {
+    321              }
+    322              if ( keys & HAL_KEY_SW_3 )
+    323              {
+    324              }
+    325              if ( keys & HAL_KEY_SW_4 )
+    326              {
+    327              }
+    328            }
+    329            else
+    330            {
+    331              if ( keys & HAL_KEY_SW_1 )
+    332              {
+    333              }
+    334          
+    335          #if defined( SWITCH1_BIND )
+    336                // we can use SW1 to simulate SW2 for devices that only have one switch,
+    337                keys |= HAL_KEY_SW_2;
+    338          #elif defined( SWITCH1_MATCH )
+    339                // or use SW1 to simulate SW4 for devices that only have one switch
+    340                keys |= HAL_KEY_SW_4;
+    341          #endif
+    342              }
+    343          
+    344              if ( keys & HAL_KEY_SW_2 )
+    345              {
+    346                HalLedSet ( HAL_LED_4, HAL_LED_MODE_OFF );
     347          
-    348              if ( keys & HAL_KEY_SW_3 )
-    349              {
-    350              }
-    351          
-    352              if ( keys & HAL_KEY_SW_4 )
-    353              {
-    354                HalLedSet ( HAL_LED_4, HAL_LED_MODE_OFF );
-    355                // Initiate a Match Description Request (Service Discovery)
-    356                dstAddr.addrMode = AddrBroadcast;
-    357                dstAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR;
-    358                ZDP_MatchDescReq( &dstAddr, NWK_BROADCAST_SHORTADDR,
-    359                                  PROJECTAPP_PROFID,
-    360                                  PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-    361                                  PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
-    362                                  FALSE );
-    363              }
-    364            }
-    365          
-    366          
-    367          static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )//每次“绑定”状态发生改变，均会调用此函数
-    368          {
-    369            switch ( inMsg->clusterID )
-    370            {
-    371              case End_Device_Bind_rsp:
-    372                if ( ZDO_ParseBindRsp( inMsg ) == ZSuccess )
-    373                {
-    374                  printf("Bind success!\r\n");
-    375                  osal_start_timerEx( ProjectApp_TaskID,
-    376                                      PROJECTAPP_SEND_MSG_EVT,
-    377                                      PROJECTAPP_SEND_MSG_TIMEOUT );
-    378                }
-    379                else
-    380                {
-    381                  printf("Bind failure!\r\n");
-    382                }
-    383                break;
-    384            }
-    385          }
-    386          
-    387          static void ProjectApp_SendBindcast( void )
-    388          {
-    389            char strTemp[5];
-    390          
-    391            DHT11(); 
-    392            
-    393            strTemp[0] = wendu_shi+0x30;
-    394            strTemp[1] = wendu_ge+0x30;
-    395            strTemp[2] = '\r';
-    396            strTemp[3] = '\n';
-    397            strTemp[4] = '\0';
+    348                // Initiate an End Device Bind Request for the mandatory endpoint
+    349                dstAddr.addrMode = Addr16Bit;
+    350                dstAddr.addr.shortAddr = 0x0000; // Coordinator
+    351                ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
+    352                                      ProjectApp_epDesc.endPoint,
+    353                                      PROJECTAPP_PROFID,
+    354                                      PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
+    355                                      PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
+    356                                      FALSE );
+    357              }
+    358          
+    359              if ( keys & HAL_KEY_SW_3 )
+    360              {
+    361              }
+    362          
+    363              if ( keys & HAL_KEY_SW_4 )
+    364              {
+    365                HalLedSet ( HAL_LED_4, HAL_LED_MODE_OFF );
+    366                // Initiate a Match Description Request (Service Discovery)
+    367                dstAddr.addrMode = AddrBroadcast;
+    368                dstAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR;
+    369                ZDP_MatchDescReq( &dstAddr, NWK_BROADCAST_SHORTADDR,
+    370                                  PROJECTAPP_PROFID,
+    371                                  PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
+    372                                  PROJECTAPP_MAX_CLUSTERS, (cId_t *)ProjectApp_ClusterList,
+    373                                  FALSE );
+    374              }
+    375            }
+    376          
+    377          
+    378          static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )//每次“绑定”状态发生改变，均会调用此函数
+    379          {
+    380            switch ( inMsg->clusterID )
+    381            {
+    382              case End_Device_Bind_rsp:
+    383                if ( ZDO_ParseBindRsp( inMsg ) == ZSuccess )
+    384                {
+    385                  printf("Bind success!\r\n");
+    386                  osal_start_timerEx( ProjectApp_TaskID,
+    387                                      PROJECTAPP_SEND_MSG_EVT,
+    388                                      PROJECTAPP_SEND_MSG_TIMEOUT );
+    389                }
+    390                else
+    391                {
+    392                  printf("Bind failure!\r\n");
+    393                }
+    394                break;
+    395            }
+    396          }
+    397          
     398          
-    399            HalUARTWrite(0, (uint8 *)strTemp, strlen(strTemp)); //输出接收到的数据
-    400            
-    401            afAddrType_t ProjectApp_DstAddr;
-    402            ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
-    403            ProjectApp_DstAddr.endPoint       = 0;
-    404            ProjectApp_DstAddr.addr.shortAddr = 0;
-    405            
-    406            AF_DataRequest( &ProjectApp_DstAddr,
-    407                            &ProjectApp_epDesc,
-    408                            PROJECTAPP_CLUSTERID,
-    409                             strlen(strTemp)+1,
-    410                            (uint8 *)strTemp,
-    411                            &ProjectApp_TransID,
-    412                            AF_DISCV_ROUTE,
-    413                            AF_DEFAULT_RADIUS
-    414                          );
-    415          
-    416          }
-    417          /*********************************************************************
-    418           * LOCAL FUNCTIONS
-    419           */
-    420          
-    421          /*********************************************************************
-    422           * @fn      ProjectApp_MessageMSGCB
-    423           *
-    424           * @brief   Data message processor callback.  This function processes
-    425           *          any incoming data - probably from other devices.  So, based
-    426           *          on cluster ID, perform the intended action.
-    427           *
-    428           * @param   none
+    399          
+    400          
+    401          static void ProjectApp_SendBindcast( void )
+    402          {
+    403            float temp = SHT2x_GetTempPoll();
+    404            char Str_Buf[32];
+    405            sprintf(Str_Buf, "%5.2f C\r\n", temp);
+    406            printf("%s\r\n",Str_Buf);
+    407          
+    408            afAddrType_t ProjectApp_DstAddr;
+    409            ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
+    410            ProjectApp_DstAddr.endPoint       = 0;
+    411            ProjectApp_DstAddr.addr.shortAddr = 0;
+    412            
+    413            AF_DataRequest( &ProjectApp_DstAddr,
+    414                            &ProjectApp_epDesc,
+    415                            PROJECTAPP_CLUSTERID,
+    416                            strlen(Str_Buf)+1,
+    417                            (uint8 *)Str_Buf,
+    418                            &ProjectApp_TransID,
+    419                            AF_DISCV_ROUTE,
+    420                            AF_DEFAULT_RADIUS
+    421                          );
+    422          }
+    423          /*********************************************************************
+    424           * LOCAL FUNCTIONS
+    425           */
+    426          
+    427          /*********************************************************************
+    428           * @fn      ProjectApp_MessageMSGCB
     429           *
-    430           * @return  none
-    431           */
-    432          static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )
-    433          {
-    434            switch ( pkt->clusterId )
-    435            {
-    436              case PROJECTAPP_CLUSTERID:
-    437                printf("%s\r\n", pkt->cmd.Data);
-    438                break;
-    439            }
-    440          }
-    441          
-    442          /*********************************************************************
-    443           * @fn      ProjectApp_SendTheMessage
-    444           *
-    445           * @brief   Send "the" message.
-    446           *
-    447           * @param   none
-    448           *
-    449           * @return  none
-    450           */
-    451          
-    452          
-    453          static void ProjectApp_SendTheMessage( void )
-                             ^
-Warning[Pe177]: function "ProjectApp_SendTheMessage" was declared but never
-          referenced
-    454          {
-    455            char strTemp[3];//有个结束符
-    456            DHT11(); 
+    430           * @brief   Data message processor callback.  This function processes
+    431           *          any incoming data - probably from other devices.  So, based
+    432           *          on cluster ID, perform the intended action.
+    433           *
+    434           * @param   none
+    435           *
+    436           * @return  none
+    437           */
+    438          static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )
+    439          {
+    440            switch ( pkt->clusterId )
+    441            {
+    442              case PROJECTAPP_CLUSTERID:
+    443                printf("%s\r\n", pkt->cmd.Data);
+    444                break;
+    445            }
+    446          }
+    447          
+    448          /*********************************************************************
+    449           * @fn      ProjectApp_SendTheMessage
+    450           *
+    451           * @brief   Send "the" message.
+    452           *
+    453           * @param   none
+    454           *
+    455           * @return  none
+    456           */
     457          
-    458            strTemp[0] = wendu_shi+0x30;
-    459            strTemp[1] = wendu_ge+0x30;
-    460            strTemp[2] = '\0';
-    461            
-    462            afAddrType_t dstAddr;
-    463            dstAddr.endPoint = PROJECTAPP_ENDPOINT;//目的端点
-    464            dstAddr.addrMode = (afAddrMode_t)Addr16Bit;
-    465            dstAddr.addr.shortAddr = 0x0000; // Coordinator
-    466          
-    467            AF_DataRequest( &dstAddr,
-    468                            &ProjectApp_epDesc,//源端点 
-    469                            PROJECTAPP_CLUSTERID,
-    470                            strlen(strTemp)+1,//长度不包含'\0'
-    471                            (uint8 *)strTemp,//地址
-    472                            &ProjectApp_TransID,
-    473                            AF_DISCV_ROUTE,
-    474                            AF_DEFAULT_RADIUS );
-    475          }
-    476          
-    477          #if defined( IAR_ARMCM3_LM )
-    478          /*********************************************************************
-    479           * @fn      ProjectApp_ProcessRtosMessage
-    480           *
-    481           * @brief   Receive message from RTOS queue, send response back.
-    482           *
-    483           * @param   none
-    484           *
-    485           * @return  none
-    486           */
-    487          static void ProjectApp_ProcessRtosMessage( void )
-    488          {
-    489            osalQueue_t inMsg;
-    490          
-    491            if ( osal_queue_receive( OsalQueue, &inMsg, 0 ) == pdPASS )
-    492            {
-    493              uint8 cmndId = inMsg.cmnd;
-    494              uint32 counter = osal_build_uint32( inMsg.cbuf, 4 );
-    495          
-    496              switch ( cmndId )
-    497              {
-    498                case CMD_INCR:
-    499                  counter += 1;  /* Increment the incoming counter */
-    500                                 /* Intentionally fall through next case */
+    458          
+    459          //static void ProjectApp_SendTheMessage( void )
+    460          //{
+    461          //  char strTemp[3];//有个结束符
+    462          //  DHT11(); 
+    463          //
+    464          //  strTemp[0] = wendu_shi+0x30;
+    465          //  strTemp[1] = wendu_ge+0x30;
+    466          //  strTemp[2] = '\0';
+    467          //  
+    468          //  afAddrType_t dstAddr;
+    469          //  dstAddr.endPoint = PROJECTAPP_ENDPOINT;//目的端点
+    470          //  dstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+    471          //  dstAddr.addr.shortAddr = 0x0000; // Coordinator
+    472          //
+    473          //  AF_DataRequest( &dstAddr,
+    474          //                  &ProjectApp_epDesc,//源端点 
+    475          //                  PROJECTAPP_CLUSTERID,
+    476          //                  strlen(strTemp)+1,//长度不包含'\0'
+    477          //                  (uint8 *)strTemp,//地址
+    478          //                  &ProjectApp_TransID,
+    479          //                  AF_DISCV_ROUTE,
+    480          //                  AF_DEFAULT_RADIUS );
+    481          //}
+    482          
+    483          #if defined( IAR_ARMCM3_LM )
+    484          /*********************************************************************
+    485           * @fn      ProjectApp_ProcessRtosMessage
+    486           *
+    487           * @brief   Receive message from RTOS queue, send response back.
+    488           *
+    489           * @param   none
+    490           *
+    491           * @return  none
+    492           */
+    493          static void ProjectApp_ProcessRtosMessage( void )
+    494          {
+    495            osalQueue_t inMsg;
+    496          
+    497            if ( osal_queue_receive( OsalQueue, &inMsg, 0 ) == pdPASS )
+    498            {
+    499              uint8 cmndId = inMsg.cmnd;
+    500              uint32 counter = osal_build_uint32( inMsg.cbuf, 4 );
     501          
-    502                case CMD_ECHO:
-    503                {
-    504                  userQueue_t outMsg;
-    505          
-    506                  outMsg.resp = RSP_CODE | cmndId;  /* Response ID */
-    507                  osal_buffer_uint32( outMsg.rbuf, counter );    /* Increment counter */
-    508                  osal_queue_send( UserQueue1, &outMsg, 0 );  /* Send back to UserTask */
-    509                  break;
-    510                }
-    511                
-    512                default:
-    513                  break;  /* Ignore unknown command */    
-    514              }
-    515            }
-    516          }
-    517          #endif
-    518          
-    519          /*********************************************************************
-    520           */
+    502              switch ( cmndId )
+    503              {
+    504                case CMD_INCR:
+    505                  counter += 1;  /* Increment the incoming counter */
+    506                                 /* Intentionally fall through next case */
+    507          
+    508                case CMD_ECHO:
+    509                {
+    510                  userQueue_t outMsg;
+    511          
+    512                  outMsg.resp = RSP_CODE | cmndId;  /* Response ID */
+    513                  osal_buffer_uint32( outMsg.rbuf, counter );    /* Increment counter */
+    514                  osal_queue_send( UserQueue1, &outMsg, 0 );  /* Send back to UserTask */
+    515                  break;
+    516                }
+    517                
+    518                default:
+    519                  break;  /* Ignore unknown command */    
+    520              }
+    521            }
+    522          }
+    523          #endif
+    524          
+    525          /*********************************************************************
+    526           */
 
    Maximum stack usage in bytes:
 
-   ISTACK XSTACK Function
-   ------ ------ --------
-      0      9   ProjectApp_Init
-        0      9   -> RegisterForKeys
-        0      9   -> USER_Uart0_Init
-        0      9   -> ZDO_RegisterForZDOMsg
-        0      9   -> afRegister
-      1     51   ProjectApp_ProcessEvent
-        0     51   -> AF_DataRequest
-        0     42   -> DHT11
-        0     42   -> HalLedSet
-        0     42   -> HalUARTWrite
-        0     42   -> NLME_GetShortAddr
-        0     51   -> ZDP_EndDeviceBindReq
-        0     50   -> ZDP_MatchDescReq
-        0     42   -> osal_msg_deallocate
-        0     42   -> osal_msg_receive
-        0     42   -> osal_rand
-        0     42   -> osal_start_timerEx
-        0     42   -> printf
-        0     44   -> printf
-        0     42   -> strlen
-        0     42   -> user_state_change
+   XSTACK Function
+   ------ --------
+      9   ProjectApp_Init
+        9   -> RegisterForKeys
+        9   -> SHT2x_Init
+        9   -> USER_Uart0_Init
+        9   -> ZDO_RegisterForZDOMsg
+        9   -> afRegister
+     78   ProjectApp_ProcessEvent
+       78   -> AF_DataRequest
+       69   -> HalLedSet
+       69   -> NLME_GetShortAddr
+       69   -> SHT2x_GetTempPoll
+       78   -> ZDP_EndDeviceBindReq
+       77   -> ZDP_MatchDescReq
+       69   -> osal_msg_deallocate
+       69   -> osal_msg_receive
+       69   -> osal_rand
+       69   -> osal_start_timerEx
+       69   -> printf
+       71   -> printf
+       73   -> sprintf
+       69   -> strlen
+       69   -> user_state_change
 
 
    Segment part sizes:
 
    Bytes  Function/Label
    -----  --------------
+      10  ?<Constant "%5.2f C\r\n">
        5  ?<Constant "%s\r\n">
       16  ?<Constant "Bind failure!\r\n">
       16  ?<Constant "Bind success!\r\n">
-      11  ??Subroutine2_0
-       9  ?Subroutine0
-       2  ?Subroutine1
+      11  ??Subroutine1_0
+       2  ?Subroutine0
        2  ProjectApp_ClusterList
       12  ProjectApp_DstAddr
-      94  ProjectApp_Init
+      97  ProjectApp_Init
        1  ProjectApp_NwkState
-     666  ProjectApp_ProcessEvent
+     659  ProjectApp_ProcessEvent
       12  ProjectApp_SimpleDesc
        1  ProjectApp_TaskID
        1  ProjectApp_TransID
@@ -1187,15 +1182,15 @@ Warning[Pe177]: function "ProjectApp_SendTheMessage" was declared but never
       12  -- Other
 
  
- 782 bytes in segment BANKED_CODE
+ 769 bytes in segment BANKED_CODE
   12 bytes in segment BANK_RELAYS
-  51 bytes in segment XDATA_ROM_C
+  61 bytes in segment XDATA_ROM_C
   21 bytes in segment XDATA_Z
  
   12 bytes of CODE     memory
-  51 bytes of CONST    memory
- 782 bytes of HUGECODE memory
+  61 bytes of CONST    memory
+ 769 bytes of HUGECODE memory
   21 bytes of XDATA    memory
 
 Errors: none
-Warnings: 1
+Warnings: none

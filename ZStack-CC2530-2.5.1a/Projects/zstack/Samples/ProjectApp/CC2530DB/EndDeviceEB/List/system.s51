@@ -1,0 +1,395 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              21/Jul/2019  18:32:58
+// Copyright 2004-2018 IAR Systems AB.
+// PC-locked license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+//    Command line       =  
+//        -f C:\Users\Admin\AppData\Local\Temp\EW3284.tmp
+//        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+//        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D
+//        xPOWER_SAVING -lC
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        -lA
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+//        --diag_suppress Pe001,Pa010 -o
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+//        -e --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 8 -f
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+//        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+//        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+//        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+//        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+//        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440) -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+//        -I
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+//        -Ohz --require_prototypes --no_code_motion)
+//    Locale             =  Chinese (Simplified)_CHN.936
+//    List file          =  
+//        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\system.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME system
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+
+        PUBLIC `??ON_16MRC::?relay`
+        FUNCTION `??ON_16MRC::?relay`,0203H
+        PUBLIC `??ON_32MOSC::?relay`
+        FUNCTION `??ON_32MOSC::?relay`,0203H
+        PUBLIC `??delay_ms::?relay`
+        FUNCTION `??delay_ms::?relay`,0203H
+        PUBLIC `??delay_us::?relay`
+        FUNCTION `??delay_us::?relay`,0203H
+        PUBWEAK CLKCONCMD
+        PUBWEAK CLKCONSTA
+        PUBLIC ON_16MRC
+        FUNCTION ON_16MRC,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC ON_32MOSC
+        FUNCTION ON_32MOSC,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC delay_ms
+        FUNCTION delay_ms,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC delay_us
+        FUNCTION delay_us,0203H
+        ARGFRAME XSTACK, 0, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+ON_16MRC            SYMBOL "ON_16MRC"
+`??ON_16MRC::?relay` SYMBOL "?relay", ON_16MRC
+ON_32MOSC           SYMBOL "ON_32MOSC"
+`??ON_32MOSC::?relay` SYMBOL "?relay", ON_32MOSC
+delay_ms            SYMBOL "delay_ms"
+`??delay_ms::?relay` SYMBOL "?relay", delay_ms
+delay_us            SYMBOL "delay_us"
+`??delay_us::?relay` SYMBOL "?relay", delay_us
+
+// E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+//    1 #include "system.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,09eH
+// unsigned char volatile __sfr CLKCONSTA
+CLKCONSTA:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c6H
+// unsigned char volatile __sfr CLKCONCMD
+CLKCONCMD:
+        DATA8
+        DS 1
+//    2 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    3 void ON_32MOSC(void)
+ON_32MOSC:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function ON_32MOSC
+        CODE
+//    4 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//    5     CLKCONCMD &= ~0x40;           //设置系统时钟源为32MHZ晶振
+        ANL       0xc6,#0xbf
+//    6     while(CLKCONSTA & 0x40);      //等待晶振稳定
+??ON_32MOSC_0:
+        MOV       A,0x9e
+        MOV       C,0xE0 /* A   */.6
+        JC        ??ON_32MOSC_0
+//    7     CLKCONCMD &= ~0x47;           //设置系统主时钟频率为32MHZ 
+        ANL       0xc6,#0xb8
+//    8 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+        REQUIRE CLKCONCMD
+        REQUIRE CLKCONSTA
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//    9 void ON_16MRC(void)
+ON_16MRC:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function ON_16MRC
+        CODE
+//   10 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   11     CLKCONCMD |=0x40;             //设置系统时钟为16M RC
+        ORL       0xc6,#0x40
+//   12     while(1==(CLKCONSTA & 0x40)); //等待晶振稳定
+        MOV       A,0x9e
+//   13     CLKCONCMD |=0x41;             //设置系统主时钟频率为16MHZ
+        ORL       0xc6,#0x41
+//   14 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock1
+        REQUIRE CLKCONCMD
+        REQUIRE CLKCONSTA
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   15 void delay_ms(uint ms)//延时函数，单位：1ms
+delay_ms:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function delay_ms
+        CODE
+//   16 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   17     uint i,j;
+//   18 
+//   19     for (i=0; i<ms; i++)
+        MOV       R0,#0x0
+        MOV       R1,#0x0
+        SJMP      ??delay_ms_0
+//   20         for (j=0; j<535*2; j++);//系统不配置时默认为16M晶振，取535，很精确；32M晶振时取535*2
+??delay_ms_1:
+        INC       R0
+        MOV       A,R0
+        JNZ       ??delay_ms_0
+        INC       R1
+??delay_ms_0:
+        CLR       C
+        MOV       A,R0
+        SUBB      A,R2
+        MOV       A,R1
+        SUBB      A,R3
+        JC        ??delay_ms_1
+//   21 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   22 void delay_us(uint us)//延时函数，单位：1us
+delay_us:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function delay_us
+        CODE
+//   23 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   24     uint i,j;
+//   25 
+//   26     for (i=0; i<us; i++)
+        MOV       R0,#0x0
+        MOV       R1,#0x0
+        SJMP      ??delay_us_0
+//   27         for (j=0; j<1; j++);
+??delay_us_1:
+        INC       R0
+        MOV       A,R0
+        JNZ       ??delay_us_0
+        INC       R1
+??delay_us_0:
+        CLR       C
+        MOV       A,R0
+        SUBB      A,R2
+        MOV       A,R1
+        SUBB      A,R3
+        JC        ??delay_us_1
+//   28 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock3
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??ON_32MOSC::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ON_32MOSC
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??ON_16MRC::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    ON_16MRC
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??delay_ms::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    delay_ms
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??delay_us::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    delay_us
+
+        END
+// 
+// 68 bytes in segment BANKED_CODE
+// 24 bytes in segment BANK_RELAYS
+//  2 bytes in segment SFR_AN
+// 
+// 24 bytes of CODE     memory
+//  0 bytes of DATA     memory (+ 2 bytes shared)
+// 68 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

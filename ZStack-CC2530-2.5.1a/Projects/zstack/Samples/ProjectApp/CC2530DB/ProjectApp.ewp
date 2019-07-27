@@ -2431,11 +2431,11 @@
                 <option>
                     <name>Output variant</name>
                     <version>2</version>
-                    <state>6</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>Output description</name>
-                    <state>No float, no field width, no precision.</state>
+                    <state>Full formatting.</state>
                 </option>
                 <option>
                     <name>GeneralEnableMisra</name>
@@ -3425,10 +3425,10 @@
     <group>
         <name>App</name>
         <file>
-            <name>$PROJ_DIR$\..\Source\DHT11.c</name>
+            <name>$PROJ_DIR$\..\Source\iic.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Source\DHT11.h</name>
+            <name>$PROJ_DIR$\..\Source\iic.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\OSAL_ProjectApp.c</name>
@@ -3438,6 +3438,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\ProjectApp.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Source\sht2x.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Source\sht2x.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\user_api.c</name>

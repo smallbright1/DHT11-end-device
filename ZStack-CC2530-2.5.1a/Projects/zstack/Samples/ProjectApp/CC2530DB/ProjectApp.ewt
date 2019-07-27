@@ -3232,10 +3232,10 @@
     <group>
         <name>App</name>
         <file>
-            <name>$PROJ_DIR$\..\Source\DHT11.c</name>
+            <name>$PROJ_DIR$\..\Source\iic.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Source\DHT11.h</name>
+            <name>$PROJ_DIR$\..\Source\iic.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\OSAL_ProjectApp.c</name>
@@ -3245,6 +3245,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\ProjectApp.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Source\sht2x.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Source\sht2x.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Source\user_api.c</name>

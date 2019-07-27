@@ -1,0 +1,530 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               27/Jul/2019  10:51:05
+# Copyright 2004-2018 IAR Systems AB.
+# PC-locked license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\sht2x.c
+#    Command line       =  
+#        -f C:\Users\Admin\AppData\Local\Temp\EW72B4.tmp
+#        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\sht2x.c
+#        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+#        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
+#        -lC
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        -lA
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        --diag_suppress Pe001,Pa010 -o
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 8 -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+#        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+#        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+#        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+#        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+#        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+#        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+#        -DREJOIN_POLL_RATE=440) -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+#        -Ohz --require_prototypes --no_code_motion)
+#    Locale             =  Chinese (Simplified)_CHN.936
+#    List file          =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\sht2x.lst
+#    Object file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\sht2x.r51
+#
+###############################################################################
+
+E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\sht2x.c
+      1          #include "sht2x.h"
+      2          #include "iic.h"
+      3          #include "stdio.h"
+      4          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+      5          SHT2x_data SHT20;
+   \                     SHT20:
+   \   000000                DS 8
+   \   000008                REQUIRE __INIT_XDATA_Z
+      6          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      7          void delay_ms(uint ms)//延时函数，单位：1ms
+   \                     delay_ms:
+      8          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      9              uint i,j;
+     10          
+     11              for (i=0; i<ms; i++)
+   \   000000   7800         MOV       R0,#0x0
+   \   000002   7900         MOV       R1,#0x0
+   \   000004   8005         SJMP      ??delay_ms_0
+     12                  for (j=0; j<535*2; j++);//系统不配置时默认为16M晶振，取535，很精确；32M晶振时取535*2
+   \                     ??delay_ms_1:
+   \   000006   08           INC       R0
+   \   000007   E8           MOV       A,R0
+   \   000008   7001         JNZ       ??delay_ms_0
+   \   00000A   09           INC       R1
+   \                     ??delay_ms_0:
+   \   00000B   C3           CLR       C
+   \   00000C   E8           MOV       A,R0
+   \   00000D   9A           SUBB      A,R2
+   \   00000E   E9           MOV       A,R1
+   \   00000F   9B           SUBB      A,R3
+   \   000010   40F4         JC        ??delay_ms_1
+     13          }
+   \   000012   02....       LJMP      ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     14          uchar SHT2x_Init(void)
+   \                     SHT2x_Init:
+     15          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     16              uchar err;
+     17              IIC_Init();
+   \   000004                ; Setup parameters for call to function IIC_Init
+   \   000004   12....       LCALL     `??IIC_Init::?relay`; Banked call to: IIC_Init
+     18              err = SHT2x_SoftReset();
+     19              return err;
+   \   000007                ; Setup parameters for call to function SHT2x_SoftReset
+   \   000007   12....       LCALL     `??SHT2x_SoftReset::?relay`; Banked call to: SHT2x_SoftReset
+   \   00000A   D083         POP       DPH
+   \   00000C   D082         POP       DPL
+   \   00000E   02....       LJMP      ?BRET
+     20          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     21          uchar SHT2x_SoftReset(void) //SHT20软件复位
+   \                     SHT2x_SoftReset:
+     22          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+     23              uchar err=0;
+     24              IIC_Start();
+   \   000005                ; Setup parameters for call to function IIC_Start
+   \   000005   12....       LCALL     ?Subroutine2 & 0xFFFF
+     25              IIC_Send_Byte(0x80);
+     26              err = IIC_Wait_Ack();
+     27              IIC_Send_Byte(0xFE);
+   \                     ??CrossCallReturnLabel_2:
+   \   000008                ; Setup parameters for call to function IIC_Send_Byte
+   \   000008   79FE         MOV       R1,#-0x2
+   \   00000A   12....       LCALL     ?Subroutine4 & 0xFFFF
+     28              err = IIC_Wait_Ack();
+   \                     ??CrossCallReturnLabel_7:
+   \   00000D   E9           MOV       A,R1
+   \   00000E   FE           MOV       R6,A
+     29              IIC_Stop();
+   \   00000F                ; Setup parameters for call to function IIC_Stop
+   \   00000F   12....       LCALL     `??IIC_Stop::?relay`; Banked call to: IIC_Stop
+     30              return err;
+   \   000012   EE           MOV       A,R6
+   \   000013   F9           MOV       R1,A
+   \   000014   7F01         MOV       R7,#0x1
+   \   000016   02....       LJMP      ?BANKED_LEAVE_XDATA
+     31          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   12....       LCALL     ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
+   \   000003   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   12....       LCALL     `??IIC_Start::?relay`; Banked call to: IIC_Start
+   \   000003                ; Setup parameters for call to function IIC_Send_Byte
+   \   000003                ; Setup parameters for call to function IIC_Send_Byte
+   \   000003                ; Setup parameters for call to function IIC_Send_Byte
+   \   000003   7980         MOV       R1,#-0x80
+   \   000005   12....       LCALL     ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   000008   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   12....       LCALL     `??IIC_Send_Byte::?relay`; Banked call to: IIC_Send_Byte
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003                ; Setup parameters for call to function IIC_Wait_Ack
+   \   000003   12....       LCALL     `??IIC_Wait_Ack::?relay`; Banked call to: IIC_Wait_Ack
+   \   000006   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     32          float SHT2x_GetTempPoll(void)
+   \                     SHT2x_GetTempPoll:
+     33          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV       A,#-0x10
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+     34              float TEMP;
+     35              uchar ack, tmp1, tmp2;
+     36              uint ST;
+     37              uint i=0;
+     38          
+     39              IIC_Start();				//发送IIC开始信号
+   \   000005                ; Setup parameters for call to function IIC_Start
+   \   000005   12....       LCALL     ?Subroutine2 & 0xFFFF
+     40              IIC_Send_Byte(I2C_ADR_W);			//IIC发送一个字节 
+     41              ack = IIC_Wait_Ack();
+     42              IIC_Send_Byte(TRIG_TEMP_MEASUREMENT_POLL);
+   \                     ??CrossCallReturnLabel_3:
+   \   000008                ; Setup parameters for call to function IIC_Send_Byte
+   \   000008   79F3         MOV       R1,#-0xd
+   \   00000A   12....       LCALL     ?Subroutine4 & 0xFFFF
+     43              ack = IIC_Wait_Ack();
+   \                     ??CrossCallReturnLabel_8:
+   \   00000D   7EE8         MOV       R6,#-0x18
+   \   00000F   7F03         MOV       R7,#0x3
+     44          
+     45              do
+     46              {
+     47                  delay_ms(100);
+   \                     ??SHT2x_GetTempPoll_0:
+   \   000011                ; Setup parameters for call to function delay_ms
+   \   000011   12....       LCALL     ?Subroutine3 & 0xFFFF
+     48                  IIC_Start();				//发送IIC开始信号
+     49                  IIC_Send_Byte(I2C_ADR_R);	
+     50                  i++;
+     51                  ack = IIC_Wait_Ack();
+     52                  if(i==1000)break;
+   \                     ??CrossCallReturnLabel_5:
+   \   000014   EE           MOV       A,R6
+   \   000015   24FF         ADD       A,#-0x1
+   \   000017   1E           DEC       R6
+   \   000018   EF           MOV       A,R7
+   \   000019   34FF         ADDC      A,#-0x1
+   \   00001B   FF           MOV       R7,A
+   \   00001C   EE           MOV       A,R6
+   \   00001D   4F           ORL       A,R7
+   \   00001E   6003         JZ        ??SHT2x_GetTempPoll_1
+     53              }while(ack!=0);
+   \   000020   E9           MOV       A,R1
+   \   000021   70EE         JNZ       ??SHT2x_GetTempPoll_0
+     54          
+     55              tmp1 = IIC_Read_Byte(1);
+   \                     ??SHT2x_GetTempPoll_1:
+   \   000023                ; Setup parameters for call to function IIC_Read_Byte
+   \   000023   12....       LCALL     ?Subroutine1 & 0xFFFF
+     56              tmp2 = IIC_Read_Byte(1);
+     57              IIC_Read_Byte(0);
+     58              IIC_Stop();
+     59              
+     60              ST = (tmp1 << 8) | (tmp2 << 0);
+     61              ST &= ~0x0003;
+     62              TEMP = ((float)ST * 0.00268127) - 46.85;
+     63          
+     64              return (TEMP);	  
+   \                     ??CrossCallReturnLabel_0:
+   \   000026   12....       LCALL     ?UL_TO_FLT
+   \   000029   90....       MOV       DPTR,#__Constant_3b2fb83f
+   \   00002C   78..         MOV       R0,#?V4
+   \   00002E   12....       LCALL     ?L_MOV_X
+   \   000031   78..         MOV       R0,#?V0
+   \   000033   79..         MOV       R1,#?V4
+   \   000035   12....       LCALL     ?FLT_MUL
+   \   000038   90....       MOV       DPTR,#__Constant_c23b6666
+   \   00003B                REQUIRE ?Subroutine0
+   \   00003B                ; // Fall through to label ?Subroutine0
+     65          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   78..         MOV       R0,#?V4
+   \   000002   12....       LCALL     ?L_MOV_X
+   \   000005   78..         MOV       R0,#?V0
+   \   000007   79..         MOV       R1,#?V4
+   \   000009   12....       LCALL     ?FLT_ADD
+   \   00000C   AA..         MOV       R2,?V0
+   \   00000E   AB..         MOV       R3,?V1
+   \   000010   AC..         MOV       R4,?V2
+   \   000012   AD..         MOV       R5,?V3
+   \   000014   7F08         MOV       R7,#0x8
+   \   000016   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7A64         MOV       R2,#0x64
+   \   000002   7B00         MOV       R3,#0x0
+   \   000004   12....       LCALL     `??delay_ms::?relay`; Banked call to: delay_ms
+   \   000007                ; Setup parameters for call to function IIC_Start
+   \   000007                ; Setup parameters for call to function IIC_Start
+   \   000007   12....       LCALL     `??IIC_Start::?relay`; Banked call to: IIC_Start
+   \   00000A                ; Setup parameters for call to function IIC_Send_Byte
+   \   00000A                ; Setup parameters for call to function IIC_Send_Byte
+   \   00000A   7981         MOV       R1,#-0x7f
+   \   00000C   12....       LCALL     ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   00000F   E9           MOV       A,R1
+   \   000010   F8           MOV       R0,A
+   \   000011   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7901         MOV       R1,#0x1
+   \   000002   12....       LCALL     `??IIC_Read_Byte::?relay`; Banked call to: IIC_Read_Byte
+   \   000005   E9           MOV       A,R1
+   \   000006   FF           MOV       R7,A
+   \   000007                ; Setup parameters for call to function IIC_Read_Byte
+   \   000007                ; Setup parameters for call to function IIC_Read_Byte
+   \   000007   7901         MOV       R1,#0x1
+   \   000009   12....       LCALL     `??IIC_Read_Byte::?relay`; Banked call to: IIC_Read_Byte
+   \   00000C   E9           MOV       A,R1
+   \   00000D   FE           MOV       R6,A
+   \   00000E                ; Setup parameters for call to function IIC_Read_Byte
+   \   00000E                ; Setup parameters for call to function IIC_Read_Byte
+   \   00000E   7900         MOV       R1,#0x0
+   \   000010   12....       LCALL     `??IIC_Read_Byte::?relay`; Banked call to: IIC_Read_Byte
+   \   000013                ; Setup parameters for call to function IIC_Stop
+   \   000013                ; Setup parameters for call to function IIC_Stop
+   \   000013   12....       LCALL     `??IIC_Stop::?relay`; Banked call to: IIC_Stop
+   \   000016   EE           MOV       A,R6
+   \   000017   54FC         ANL       A,#0xfc
+   \   000019   F5..         MOV       ?V0,A
+   \   00001B   EF           MOV       A,R7
+   \   00001C   F5..         MOV       ?V1,A
+   \   00001E   E4           CLR       A
+   \   00001F   F5..         MOV       ?V2,A
+   \   000021   F5..         MOV       ?V3,A
+   \   000023   78..         MOV       R0,#?V0
+   \   000025   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     66          float SHT2x_GetHumiPoll(void)
+   \                     SHT2x_GetHumiPoll:
+     67          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV       A,#-0x10
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+     68              float HUMI;
+     69              uchar ack, tmp1, tmp2;
+     70              uint SRH;
+     71              uint i=0;
+     72          
+     73              IIC_Start();				//发送IIC开始信号
+   \   000005                ; Setup parameters for call to function IIC_Start
+   \   000005   12....       LCALL     ?Subroutine2 & 0xFFFF
+     74              IIC_Send_Byte(I2C_ADR_W);			//IIC发送一个字节 
+     75              ack = IIC_Wait_Ack();	
+     76              IIC_Send_Byte(TRIG_HUMI_MEASUREMENT_POLL);
+   \                     ??CrossCallReturnLabel_4:
+   \   000008                ; Setup parameters for call to function IIC_Send_Byte
+   \   000008   79F5         MOV       R1,#-0xb
+   \   00000A   12....       LCALL     ?Subroutine4 & 0xFFFF
+     77              ack = IIC_Wait_Ack();    
+   \                     ??CrossCallReturnLabel_9:
+   \   00000D   7E64         MOV       R6,#0x64
+     78              
+     79              do
+     80              {
+     81                  delay_ms(100);
+   \                     ??SHT2x_GetHumiPoll_0:
+   \   00000F                ; Setup parameters for call to function delay_ms
+   \   00000F   12....       LCALL     ?Subroutine3 & 0xFFFF
+     82                  IIC_Start();				//发送IIC开始信号
+     83                  IIC_Send_Byte(I2C_ADR_R);	
+     84                  i++;
+     85                  ack = IIC_Wait_Ack();
+     86                  if(i==100)break;
+   \                     ??CrossCallReturnLabel_6:
+   \   000012   1E           DEC       R6
+   \   000013   EE           MOV       A,R6
+   \   000014   6003         JZ        ??SHT2x_GetHumiPoll_1
+     87              }while(ack!=0);
+   \   000016   E9           MOV       A,R1
+   \   000017   70F6         JNZ       ??SHT2x_GetHumiPoll_0
+     88          
+     89              tmp1 = IIC_Read_Byte(1);
+   \                     ??SHT2x_GetHumiPoll_1:
+   \   000019                ; Setup parameters for call to function IIC_Read_Byte
+   \   000019   12....       LCALL     ?Subroutine1 & 0xFFFF
+     90              tmp2 = IIC_Read_Byte(1);
+     91              IIC_Read_Byte(0);
+     92              IIC_Stop();
+     93              SRH = (tmp1 << 8) | (tmp2 << 0);
+     94              SRH &= ~0x0003;
+     95              HUMI = ((float)SRH * 0.00190735) - 6;
+     96          
+     97              return (HUMI);
+   \                     ??CrossCallReturnLabel_1:
+   \   00001C   12....       LCALL     ?UL_TO_FLT
+   \   00001F   90....       MOV       DPTR,#__Constant_3afa000c
+   \   000022   78..         MOV       R0,#?V4
+   \   000024   12....       LCALL     ?L_MOV_X
+   \   000027   78..         MOV       R0,#?V0
+   \   000029   79..         MOV       R1,#?V4
+   \   00002B   12....       LCALL     ?FLT_MUL
+   \   00002E   90....       MOV       DPTR,#__Constant_c0c00000
+   \   000031   80..         SJMP      ?Subroutine0
+     98          }
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3b2fb83f:
+   \   000000   3FB82F3B     DD 3B2FB83FH
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_c23b6666:
+   \   000000   66663BC2     DD 0C23B6666H
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3afa000c:
+   \   000000   0C00FA3A     DD 3AFA000CH
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_c0c00000:
+   \   000000   0000C0C0     DD 0C0C00000H
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0     16   SHT2x_GetHumiPoll
+        0     16   -> IIC_Read_Byte
+        0     16   -> IIC_Send_Byte
+        0     16   -> IIC_Start
+        0     16   -> IIC_Stop
+        0     16   -> IIC_Wait_Ack
+        0     16   -> delay_ms
+      0     16   SHT2x_GetTempPoll
+        0     16   -> IIC_Read_Byte
+        0     16   -> IIC_Send_Byte
+        0     16   -> IIC_Start
+        0     16   -> IIC_Stop
+        0     16   -> IIC_Wait_Ack
+        0     16   -> delay_ms
+      2      0   SHT2x_Init
+        2      0   -> IIC_Init
+        2      0   -> SHT2x_SoftReset
+      0      9   SHT2x_SoftReset
+        0      9   -> IIC_Send_Byte
+        0      9   -> IIC_Start
+        0      9   -> IIC_Stop
+        0      9   -> IIC_Wait_Ack
+      0     16   delay_ms
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      25  ?Subroutine0
+      38  ?Subroutine1
+       9  ?Subroutine2
+      18  ?Subroutine3
+       4  ?Subroutine4
+       7  ?Subroutine5
+       8  SHT20
+      51  SHT2x_GetHumiPoll
+      59  SHT2x_GetTempPoll
+      17  SHT2x_Init
+      25  SHT2x_SoftReset
+       4  __Constant_3afa000c
+       4  __Constant_3b2fb83f
+       4  __Constant_c0c00000
+       4  __Constant_c23b6666
+      21  delay_ms
+      30  -- Other
+
+ 
+ 274 bytes in segment BANKED_CODE
+  30 bytes in segment BANK_RELAYS
+  16 bytes in segment XDATA_ROM_C
+   8 bytes in segment XDATA_Z
+ 
+  30 bytes of CODE     memory
+   0 bytes of CONST    memory (+ 16 bytes shared)
+ 274 bytes of HUGECODE memory
+   8 bytes of XDATA    memory
+
+Errors: none
+Warnings: none

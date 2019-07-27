@@ -197,13 +197,13 @@ int printf(const char *format, ...)
         return print( 0, format, args );
 }
 
-int sprintf(char *out, const char *format, ...)
-{
-        va_list args;
-        
-        va_start( args, format );
-        return print( &out, format, args );
-}
+//int sprintf(char *out, const char *format, ...)
+//{
+//        va_list args;
+//        
+//        va_start( args, format );
+//        return print( &out, format, args );
+//}
 
 #ifdef TEST_PRINTF
 int main(void)

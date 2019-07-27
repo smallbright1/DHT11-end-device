@@ -1,0 +1,238 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               21/Jul/2019  18:32:58
+# Copyright 2004-2018 IAR Systems AB.
+# PC-locked license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+#    Command line       =  
+#        -f C:\Users\Admin\AppData\Local\Temp\EW3284.tmp
+#        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+#        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+#        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
+#        -lC
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        -lA
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        --diag_suppress Pe001,Pa010 -o
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 8 -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+#        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+#        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+#        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+#        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+#        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+#        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+#        -DREJOIN_POLL_RATE=440) -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+#        -Ohz --require_prototypes --no_code_motion)
+#    Locale             =  Chinese (Simplified)_CHN.936
+#    List file          =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\system.lst
+#    Object file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\system.r51
+#
+###############################################################################
+
+E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\system.c
+      1          #include "system.h"
+
+   \                                 In  segment SFR_AN, at 0x9e
+   \   unsigned char volatile __sfr CLKCONSTA
+   \                     CLKCONSTA:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc6
+   \   unsigned char volatile __sfr CLKCONCMD
+   \                     CLKCONCMD:
+   \   000000                DS 1
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void ON_32MOSC(void)
+   \                     ON_32MOSC:
+      4          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      5              CLKCONCMD &= ~0x40;           //设置系统时钟源为32MHZ晶振
+   \   000000   53C6BF       ANL       0xc6,#0xbf
+      6              while(CLKCONSTA & 0x40);      //等待晶振稳定
+   \                     ??ON_32MOSC_0:
+   \   000003   E59E         MOV       A,0x9e
+   \   000005   A2E6         MOV       C,0xE0 /* A   */.6
+   \   000007   40FA         JC        ??ON_32MOSC_0
+      7              CLKCONCMD &= ~0x47;           //设置系统主时钟频率为32MHZ 
+   \   000009   53C6B8       ANL       0xc6,#0xb8
+      8          }
+   \   00000C   02....       LJMP      ?BRET
+   \   00000F                REQUIRE CLKCONCMD
+   \   00000F                REQUIRE CLKCONSTA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      9          void ON_16MRC(void)
+   \                     ON_16MRC:
+     10          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     11              CLKCONCMD |=0x40;             //设置系统时钟为16M RC
+   \   000000   43C640       ORL       0xc6,#0x40
+     12              while(1==(CLKCONSTA & 0x40)); //等待晶振稳定
+   \   000003   E59E         MOV       A,0x9e
+     13              CLKCONCMD |=0x41;             //设置系统主时钟频率为16MHZ
+   \   000005   43C641       ORL       0xc6,#0x41
+     14          }
+   \   000008   02....       LJMP      ?BRET
+   \   00000B                REQUIRE CLKCONCMD
+   \   00000B                REQUIRE CLKCONSTA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     15          void delay_ms(uint ms)//延时函数，单位：1ms
+   \                     delay_ms:
+     16          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     17              uint i,j;
+     18          
+     19              for (i=0; i<ms; i++)
+   \   000000   7800         MOV       R0,#0x0
+   \   000002   7900         MOV       R1,#0x0
+   \   000004   8005         SJMP      ??delay_ms_0
+     20                  for (j=0; j<535*2; j++);//系统不配置时默认为16M晶振，取535，很精确；32M晶振时取535*2
+   \                     ??delay_ms_1:
+   \   000006   08           INC       R0
+   \   000007   E8           MOV       A,R0
+   \   000008   7001         JNZ       ??delay_ms_0
+   \   00000A   09           INC       R1
+   \                     ??delay_ms_0:
+   \   00000B   C3           CLR       C
+   \   00000C   E8           MOV       A,R0
+   \   00000D   9A           SUBB      A,R2
+   \   00000E   E9           MOV       A,R1
+   \   00000F   9B           SUBB      A,R3
+   \   000010   40F4         JC        ??delay_ms_1
+     21          }
+   \   000012   02....       LJMP      ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     22          void delay_us(uint us)//延时函数，单位：1us
+   \                     delay_us:
+     23          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     24              uint i,j;
+     25          
+     26              for (i=0; i<us; i++)
+   \   000000   7800         MOV       R0,#0x0
+   \   000002   7900         MOV       R1,#0x0
+   \   000004   8005         SJMP      ??delay_us_0
+     27                  for (j=0; j<1; j++);
+   \                     ??delay_us_1:
+   \   000006   08           INC       R0
+   \   000007   E8           MOV       A,R0
+   \   000008   7001         JNZ       ??delay_us_0
+   \   00000A   09           INC       R1
+   \                     ??delay_us_0:
+   \   00000B   C3           CLR       C
+   \   00000C   E8           MOV       A,R0
+   \   00000D   9A           SUBB      A,R2
+   \   00000E   E9           MOV       A,R1
+   \   00000F   9B           SUBB      A,R3
+   \   000010   40F4         JC        ??delay_us_1
+     28          }
+   \   000012   02....       LJMP      ?BRET
+
+   Maximum stack usage in bytes:
+
+   ISTACK Function
+   ------ --------
+      0   ON_16MRC
+      0   ON_32MOSC
+      0   delay_ms
+      0   delay_us
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  CLKCONCMD
+       1  CLKCONSTA
+      11  ON_16MRC
+      15  ON_32MOSC
+      21  delay_ms
+      21  delay_us
+      24  -- Other
+
+ 
+ 68 bytes in segment BANKED_CODE
+ 24 bytes in segment BANK_RELAYS
+  2 bytes in segment SFR_AN
+ 
+ 24 bytes of CODE     memory
+  0 bytes of DATA     memory (+ 2 bytes shared)
+ 68 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

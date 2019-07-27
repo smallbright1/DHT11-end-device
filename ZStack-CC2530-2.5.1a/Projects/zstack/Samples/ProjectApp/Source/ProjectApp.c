@@ -4,10 +4,13 @@
 #include "ZDObject.h"
 #include "ZDProfile.h"
 
+#include "stdio.h"
 #include "string.h"
-#include "DHT11.h"
+#include "math.h"
+//#include "DHT11.h"
 #include "ProjectApp.h"
 #include "DebugTrace.h"
+#include "sht2x.h"
 
 #if !defined( WIN32 )
   #include "OnBoard.h"
@@ -93,7 +96,7 @@ afAddrType_t ProjectApp_DstAddr;
  */
 
 static void ProjectApp_HandleKeys( byte shift, byte keys );
-static void ProjectApp_SendTheMessage( void );
+//static void ProjectApp_SendTheMessage( void );
 static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg );
 static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt );
 #if defined( IAR_ARMCM3_LM )
@@ -162,9 +165,15 @@ void ProjectApp_Init( uint8 task_id )
   RTOS_RegisterApp( task_id, PROJECTAPP_RTOS_MSG_EVT );
 #endif
   
-   USER_Uart0_Init(HAL_UART_BR_115200);
+  USER_Uart0_Init(HAL_UART_BR_115200);
    
-ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
+  ZDO_RegisterForZDOMsg( ProjectApp_TaskID, End_Device_Bind_rsp );
+
+  SHT2x_Init(); 
+
+//  osal_start_timerEx( ProjectApp_TaskID,
+//                      PROJECTAPP_SEND_MSG_EVT,
+//                      PROJECTAPP_SEND_MSG_TIMEOUT );
 }
 
 /*********************************************************************
@@ -253,8 +262,10 @@ uint16 ProjectApp_ProcessEvent( uint8 task_id, uint16 events )
   {
     // Send "the" message
     ProjectApp_SendBindcast();
-//    ProjectApp_SendTheMessage();
-    // Setup to send message again
+
+//ProjectApp_SendTheMessage();
+// Setup to send message again
+ 
     osal_start_timerEx( ProjectApp_TaskID,
                         PROJECTAPP_SEND_MSG_EVT,
                         PROJECTAPP_SEND_MSG_TIMEOUT+(osal_rand() & 0x00FF));
@@ -384,20 +395,16 @@ static void ProjectApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )//每次“绑定”状
   }
 }
 
+
+
+
 static void ProjectApp_SendBindcast( void )
 {
-  char strTemp[5];
+  float temp = SHT2x_GetTempPoll();
+  char Str_Buf[32];
+  sprintf(Str_Buf, "%5.2f C\r\n", temp);
+  printf("%s\r\n",Str_Buf);
 
-  DHT11(); 
-  
-  strTemp[0] = wendu_shi+0x30;
-  strTemp[1] = wendu_ge+0x30;
-  strTemp[2] = '\r';
-  strTemp[3] = '\n';
-  strTemp[4] = '\0';
-
-  HalUARTWrite(0, (uint8 *)strTemp, strlen(strTemp)); //输出接收到的数据
-  
   afAddrType_t ProjectApp_DstAddr;
   ProjectApp_DstAddr.addrMode       = (afAddrMode_t)AddrNotPresent;
   ProjectApp_DstAddr.endPoint       = 0;
@@ -406,13 +413,12 @@ static void ProjectApp_SendBindcast( void )
   AF_DataRequest( &ProjectApp_DstAddr,
                   &ProjectApp_epDesc,
                   PROJECTAPP_CLUSTERID,
-                   strlen(strTemp)+1,
-                  (uint8 *)strTemp,
+                  strlen(Str_Buf)+1,
+                  (uint8 *)Str_Buf,
                   &ProjectApp_TransID,
                   AF_DISCV_ROUTE,
                   AF_DEFAULT_RADIUS
                 );
-
 }
 /*********************************************************************
  * LOCAL FUNCTIONS
@@ -450,29 +456,29 @@ static void ProjectApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )
  */
 
 
-static void ProjectApp_SendTheMessage( void )
-{
-  char strTemp[3];//有个结束符
-  DHT11(); 
-
-  strTemp[0] = wendu_shi+0x30;
-  strTemp[1] = wendu_ge+0x30;
-  strTemp[2] = '\0';
-  
-  afAddrType_t dstAddr;
-  dstAddr.endPoint = PROJECTAPP_ENDPOINT;//目的端点
-  dstAddr.addrMode = (afAddrMode_t)Addr16Bit;
-  dstAddr.addr.shortAddr = 0x0000; // Coordinator
-
-  AF_DataRequest( &dstAddr,
-                  &ProjectApp_epDesc,//源端点 
-                  PROJECTAPP_CLUSTERID,
-                  strlen(strTemp)+1,//长度不包含'\0'
-                  (uint8 *)strTemp,//地址
-                  &ProjectApp_TransID,
-                  AF_DISCV_ROUTE,
-                  AF_DEFAULT_RADIUS );
-}
+//static void ProjectApp_SendTheMessage( void )
+//{
+//  char strTemp[3];//有个结束符
+//  DHT11(); 
+//
+//  strTemp[0] = wendu_shi+0x30;
+//  strTemp[1] = wendu_ge+0x30;
+//  strTemp[2] = '\0';
+//  
+//  afAddrType_t dstAddr;
+//  dstAddr.endPoint = PROJECTAPP_ENDPOINT;//目的端点
+//  dstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+//  dstAddr.addr.shortAddr = 0x0000; // Coordinator
+//
+//  AF_DataRequest( &dstAddr,
+//                  &ProjectApp_epDesc,//源端点 
+//                  PROJECTAPP_CLUSTERID,
+//                  strlen(strTemp)+1,//长度不包含'\0'
+//                  (uint8 *)strTemp,//地址
+//                  &ProjectApp_TransID,
+//                  AF_DISCV_ROUTE,
+//                  AF_DEFAULT_RADIUS );
+//}
 
 #if defined( IAR_ARMCM3_LM )
 /*********************************************************************

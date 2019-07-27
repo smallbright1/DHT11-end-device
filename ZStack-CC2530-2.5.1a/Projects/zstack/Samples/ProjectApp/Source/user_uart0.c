@@ -6,7 +6,6 @@
 #include "ProjectApp.h"
 #include "ZDProfile.h"
 #include "user_printf.h"
-#include "DHT11.h"
 
 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
 uint8 UART0_RX_STA = 0;                //接收状态标记

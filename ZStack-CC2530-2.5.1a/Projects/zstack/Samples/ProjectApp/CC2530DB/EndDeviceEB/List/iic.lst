@@ -1,0 +1,569 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               27/Jul/2019  10:50:41
+# Copyright 2004-2018 IAR Systems AB.
+# PC-locked license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\iic.c
+#    Command line       =  
+#        -f C:\Users\Admin\AppData\Local\Temp\EW16EF.tmp
+#        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\iic.c
+#        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
+#        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
+#        -lC
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        -lA
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List
+#        --diag_suppress Pe001,Pa010 -o
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 8 -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+#        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg
+#        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+#        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+#        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+#        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+#        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+#        -DREJOIN_POLL_RATE=440) -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\Source\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\ZMain\TI2530DB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\mt\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\osal\include\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\saddr\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\services\sdata\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\af\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sec\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\sys\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\
+#        -I
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\
+#        -Ohz --require_prototypes --no_code_motion)
+#    Locale             =  Chinese (Simplified)_CHN.936
+#    List file          =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\List\iic.lst
+#    Object file        =  
+#        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\CC2530DB\EndDeviceEB\Obj\iic.r51
+#
+###############################################################################
+
+E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\iic.c
+      1          #include "iic.h"
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfe
+   \   unsigned char volatile __sfr P1DIR
+   \                     P1DIR:
+   \   000000                DS 1
+      2          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      3          void delay_us(uint us)//延时函数，单位：1us
+   \                     delay_us:
+      4          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      5              uint i,j;
+      6          
+      7              for (i=0; i<us; i++)
+   \   000000   7800         MOV       R0,#0x0
+   \   000002   7900         MOV       R1,#0x0
+   \   000004   8005         SJMP      ??delay_us_0
+      8                  for (j=0; j<1; j++);
+   \                     ??delay_us_1:
+   \   000006   08           INC       R0
+   \   000007   E8           MOV       A,R0
+   \   000008   7001         JNZ       ??delay_us_0
+   \   00000A   09           INC       R1
+   \                     ??delay_us_0:
+   \   00000B   C3           CLR       C
+   \   00000C   E8           MOV       A,R0
+   \   00000D   9A           SUBB      A,R2
+   \   00000E   E9           MOV       A,R1
+   \   00000F   9B           SUBB      A,R3
+   \   000010   40F4         JC        ??delay_us_1
+      9          }
+   \   000012   02....       LJMP      ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     10          void IIC_Init(void)//初始化IIC
+   \                     IIC_Init:
+     11          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     12              P1SEL &= ~(1<<6);//1111 1011 第2位清0，0表示普通IO口，1表示复用为片上外设；（普通IO口、输出）
+   \   000000   53F4BF       ANL       0xf4,#0xbf
+     13              P1DIR |=  (1<<6);//0000 0100 第2位置1，0表示输入，    1表示输出；
+   \   000003   43FE40       ORL       0xfe,#0x40
+     14              
+     15              P1SEL &= ~(1<<7);//1111 0111 第3位清0，0表示普通IO口，1表示复用为片上外设；（普通IO口、输出）
+   \   000006   53F47F       ANL       0xf4,#0x7f
+     16              P1DIR |=  (1<<7);//0000 1000 第3位置1，0表示输入，    1表示输出；
+   \   000009   43FE80       ORL       0xfe,#0x80
+     17              
+     18              IIC_SCL=1;
+   \   00000C   D296         SETB      0x90.6
+     19              IIC_SDA=1;
+   \   00000E   D297         SETB      0x90.7
+     20          }
+   \   000010   02....       LJMP      ?BRET
+   \   000013                REQUIRE P1SEL
+   \   000013                REQUIRE P1DIR
+   \   000013                REQUIRE _A_P1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     21          void IIC_Start(void)//产生IIC起始信号
+   \                     IIC_Start:
+     22          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     23              SDA_OUT();     //sda线输出
+   \   000004   43FE80       ORL       0xfe,#0x80
+     24              IIC_SDA=1;
+   \   000007   D297         SETB      0x90.7
+     25              IIC_SCL=1;
+   \   000009   D296         SETB      0x90.6
+     26              delay_us(4);
+   \   00000B                ; Setup parameters for call to function delay_us
+   \   00000B   7A04         MOV       R2,#0x4
+   \   00000D   7B00         MOV       R3,#0x0
+   \   00000F   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     27              IIC_SDA=0;//START:when CLK is high,DATA change form high to low 
+   \   000012   C297         CLR       0x90.7
+     28              delay_us(4);
+   \   000014                ; Setup parameters for call to function delay_us
+   \   000014   7A04         MOV       R2,#0x4
+   \   000016   7B00         MOV       R3,#0x0
+   \   000018   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     29              IIC_SCL=0;//钳住I2C总线，准备发送或接收数据 
+   \   00001B   C296         CLR       0x90.6
+     30              delay_us(4);/*+++*/
+   \   00001D                ; Setup parameters for call to function delay_us
+   \   00001D   80..         SJMP      ?Subroutine0
+   \   00001F                REQUIRE P1DIR
+   \   00001F                REQUIRE _A_P1
+     31          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7A04         MOV       R2,#0x4
+   \   000002   7B00         MOV       R3,#0x0
+   \   000004   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   000007                REQUIRE ??Subroutine5_0
+   \   000007                ; // Fall through to label ??Subroutine5_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine5_0:
+   \   000000   D083         POP       DPH
+   \   000002   D082         POP       DPL
+   \   000004   02....       LJMP      ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     32          void IIC_Stop(void)//产生IIC停止信号
+   \                     IIC_Stop:
+     33          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     34              SDA_OUT();//sda线输出
+   \   000004   43FE80       ORL       0xfe,#0x80
+     35              IIC_SCL=0;
+   \   000007   C296         CLR       0x90.6
+     36              IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
+   \   000009   C297         CLR       0x90.7
+     37              delay_us(4);
+   \   00000B                ; Setup parameters for call to function delay_us
+   \   00000B   7A04         MOV       R2,#0x4
+   \   00000D   12....       LCALL     ?Subroutine3 & 0xFFFF
+     38              IIC_SCL=1; 
+     39              delay_us(1);/*+++*/
+     40              IIC_SDA=1;//发送I2C总线结束信号
+   \                     ??CrossCallReturnLabel_0:
+   \   000010   D297         SETB      0x90.7
+     41              delay_us(4);
+   \   000012                ; Setup parameters for call to function delay_us
+   \   000012   80..         SJMP      ?Subroutine0
+   \   000014                REQUIRE P1DIR
+   \   000014                REQUIRE _A_P1
+     42          }     
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7B00         MOV       R3,#0x0
+   \   000002   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   000005   D296         SETB      0x90.6
+   \   000007                ; Setup parameters for call to function delay_us
+   \   000007                ; Setup parameters for call to function delay_us
+   \   000007   7A01         MOV       R2,#0x1
+   \   000009   7B00         MOV       R3,#0x0
+   \   00000B   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   00000E   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     43          uchar IIC_Wait_Ack(void)//等待应答信号到来,返回值：1，接收应答失败;0，接收应答成功
+   \                     IIC_Wait_Ack:
+     44          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     45              uchar ucErrTime=0;
+     46              SDA_IN();      //SDA设置为输入  
+   \   000004   53FE7F       ANL       0xfe,#0x7f
+     47              IIC_SDA=1;delay_us(1);	   
+   \   000007   D297         SETB      0x90.7
+   \   000009                ; Setup parameters for call to function delay_us
+   \   000009   7A01         MOV       R2,#0x1
+   \   00000B   12....       LCALL     ?Subroutine3 & 0xFFFF
+     48              IIC_SCL=1;delay_us(1);	 
+   \                     ??CrossCallReturnLabel_1:
+   \   00000E   74FB         MOV       A,#-0x5
+     49              while(READ_SDA)
+   \                     ??IIC_Wait_Ack_0:
+   \   000010   A297         MOV       C,0x90.7
+   \   000012   500A         JNC       ??IIC_Wait_Ack_1
+     50              {
+     51                  ucErrTime++;
+     52                  if(ucErrTime>250)
+   \   000014   14           DEC       A
+   \   000015   70F9         JNZ       ??IIC_Wait_Ack_0
+     53                  {
+     54                      IIC_Stop();
+   \   000017                ; Setup parameters for call to function IIC_Stop
+   \   000017   12....       LCALL     `??IIC_Stop::?relay`; Banked call to: IIC_Stop
+     55                      return 1;
+   \   00001A   7901         MOV       R1,#0x1
+   \   00001C   8004         SJMP      ??IIC_Wait_Ack_2
+     56                  }
+     57              }
+     58              IIC_SCL=0;//时钟输出0
+   \                     ??IIC_Wait_Ack_1:
+   \   00001E   C296         CLR       0x90.6
+     59              return 0;
+   \   000020   7900         MOV       R1,#0x0
+   \                     ??IIC_Wait_Ack_2:
+   \   000022   80..         SJMP      ??Subroutine5_0
+   \   000024                REQUIRE P1DIR
+   \   000024                REQUIRE _A_P1
+     60          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     61          void IIC_Ack(void)//产生ACK应答
+   \                     IIC_Ack:
+     62          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     63              IIC_SCL=0;
+   \   000004   C296         CLR       0x90.6
+     64              SDA_OUT();
+   \   000006   43FE80       ORL       0xfe,#0x80
+     65              IIC_SDA=0;
+   \   000009   C297         CLR       0x90.7
+     66              delay_us(20);/*2->20*/
+   \   00000B                ; Setup parameters for call to function delay_us
+   \   00000B   7A14         MOV       R2,#0x14
+   \   00000D   12....       LCALL     ??Subroutine6_0 & 0xFFFF
+     67              IIC_SCL=1;
+     68              delay_us(2);
+   \                     ??CrossCallReturnLabel_5:
+   \   000010                ; Setup parameters for call to function delay_us
+   \   000010   7A02         MOV       R2,#0x2
+   \   000012                REQUIRE ?Subroutine2
+   \   000012                REQUIRE _A_P1
+   \   000012                REQUIRE P1DIR
+   \   000012                ; // Fall through to label ?Subroutine2
+     69              IIC_SCL=0;
+     70          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   7B00         MOV       R3,#0x0
+   \   000002   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   000005   C296         CLR       0x90.6
+   \   000007   80..         SJMP      ??Subroutine5_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine6_0:
+   \   000000   7B00         MOV       R3,#0x0
+   \   000002   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   000005   D296         SETB      0x90.6
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     71          void IIC_NAck(void)//不产生ACK应答	
+   \                     IIC_NAck:
+     72          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     73              IIC_SCL=0;
+   \   000004   C296         CLR       0x90.6
+     74              SDA_OUT();
+   \   000006   43FE80       ORL       0xfe,#0x80
+     75              IIC_SDA=1;
+   \   000009   D297         SETB      0x90.7
+     76              delay_us(5);/*2->5*/
+   \   00000B                ; Setup parameters for call to function delay_us
+   \   00000B   12....       LCALL     ?Subroutine4 & 0xFFFF
+     77              IIC_SCL=1;
+     78              delay_us(5);/*2->5*/
+   \                     ??CrossCallReturnLabel_2:
+   \   00000E                ; Setup parameters for call to function delay_us
+   \   00000E   7A05         MOV       R2,#0x5
+   \   000010   80..         SJMP      ?Subroutine2
+   \   000012                REQUIRE _A_P1
+   \   000012                REQUIRE P1DIR
+     79              IIC_SCL=0;
+     80          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   7A05         MOV       R2,#0x5
+   \   000002                REQUIRE ??Subroutine6_0
+   \   000002                ; // Fall through to label ??Subroutine6_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     81          void IIC_Send_Byte(uchar txd)//IIC发送一个字节,返回从机有无应答//1,有应答;0,无应答	
+   \                     IIC_Send_Byte:
+     82          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV       A,R1
+   \   000006   FF           MOV       R7,A
+     83              uchar t;   
+     84              SDA_OUT(); 	    
+   \   000007   43FE80       ORL       0xfe,#0x80
+     85              IIC_SCL=0;//拉低时钟开始数据传输
+   \   00000A   C296         CLR       0x90.6
+     86              for(t=0;t<8;t++)
+   \   00000C   7E08         MOV       R6,#0x8
+     87              {              
+     88                  IIC_SDA=(txd&0x80)>>7;
+   \                     ??IIC_Send_Byte_0:
+   \   00000E   EF           MOV       A,R7
+   \   00000F   A2E7         MOV       C,0xE0 /* A   */.7
+   \   000011   9297         MOV       0x90.7,C
+     89                  txd<<=1; 	  
+   \   000013   C3           CLR       C
+   \   000014   33           RLC       A
+   \   000015   FF           MOV       R7,A
+     90                  delay_us(5);   //对TEA5767这三个延时都是必须的/*2->5*/
+   \   000016                ; Setup parameters for call to function delay_us
+   \   000016   12....       LCALL     ?Subroutine4 & 0xFFFF
+     91                  IIC_SCL=1;
+     92                  delay_us(5); /*2->5*/
+   \                     ??CrossCallReturnLabel_3:
+   \   000019                ; Setup parameters for call to function delay_us
+   \   000019   7A05         MOV       R2,#0x5
+   \   00001B   7B00         MOV       R3,#0x0
+   \   00001D   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     93                  IIC_SCL=0;	
+   \   000020   C296         CLR       0x90.6
+     94                  delay_us(5);/*2->5*/
+   \   000022                ; Setup parameters for call to function delay_us
+   \   000022   7A05         MOV       R2,#0x5
+   \   000024   7B00         MOV       R3,#0x0
+   \   000026   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     95              }
+   \   000029   DEE3         DJNZ      R6,??IIC_Send_Byte_0
+     96          }
+   \   00002B                REQUIRE ?Subroutine1
+   \   00002B                REQUIRE P1DIR
+   \   00002B                REQUIRE _A_P1
+   \   00002B                ; // Fall through to label ?Subroutine1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F01         MOV       R7,#0x1
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     97          uchar IIC_Read_Byte(unsigned char ack)//读1个字节，ack=1时，发送ACK，ack=0，发送nACK
+   \                     IIC_Read_Byte:
+     98          {
+   \   000000                REQUIRE ?V0
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV       ?V0,R1
+     99              unsigned char i,receive=0;
+   \   000007   7E00         MOV       R6,#0x0
+    100              SDA_IN();//SDA设置为输入
+   \   000009   53FE7F       ANL       0xfe,#0x7f
+    101              for(i=0;i<8;i++ )
+   \   00000C   7F08         MOV       R7,#0x8
+    102              {
+    103                  IIC_SCL=0; 
+   \                     ??IIC_Read_Byte_0:
+   \   00000E   C296         CLR       0x90.6
+    104                  delay_us(5);/*2->5*/
+   \   000010                ; Setup parameters for call to function delay_us
+   \   000010   12....       LCALL     ?Subroutine4 & 0xFFFF
+    105                  IIC_SCL=1;
+    106                  receive<<=1;
+   \                     ??CrossCallReturnLabel_4:
+   \   000013   EE           MOV       A,R6
+   \   000014   C3           CLR       C
+   \   000015   33           RLC       A
+   \   000016   FE           MOV       R6,A
+    107                  if(READ_SDA)receive++;
+   \   000017   A297         MOV       C,0x90.7
+   \   000019   5001         JNC       ??IIC_Read_Byte_1
+   \   00001B   0E           INC       R6
+    108                  delay_us(5); /*1->5*/
+   \                     ??IIC_Read_Byte_1:
+   \   00001C                ; Setup parameters for call to function delay_us
+   \   00001C   7A05         MOV       R2,#0x5
+   \   00001E   7B00         MOV       R3,#0x0
+   \   000020   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+    109              }
+   \   000023   1F           DEC       R7
+   \   000024   EF           MOV       A,R7
+   \   000025   70E7         JNZ       ??IIC_Read_Byte_0
+    110              if(!ack) IIC_NAck();//发送nACK
+   \   000027   E5..         MOV       A,?V0
+   \   000029   7005         JNZ       ??IIC_Read_Byte_2
+   \   00002B                ; Setup parameters for call to function IIC_NAck
+   \   00002B   12....       LCALL     `??IIC_NAck::?relay`; Banked call to: IIC_NAck
+   \   00002E   8003         SJMP      ??IIC_Read_Byte_3
+    111              else     IIC_Ack(); //发送ACK   
+   \                     ??IIC_Read_Byte_2:
+   \   000030                ; Setup parameters for call to function IIC_Ack
+   \   000030   12....       LCALL     `??IIC_Ack::?relay`; Banked call to: IIC_Ack
+    112              return receive;
+   \                     ??IIC_Read_Byte_3:
+   \   000033   EE           MOV       A,R6
+   \   000034   F9           MOV       R1,A
+   \   000035   80..         SJMP      ?Subroutine1
+   \   000037                REQUIRE P1DIR
+   \   000037                REQUIRE _A_P1
+    113          }
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      2      9   IIC_Ack
+        2      0   -> delay_us
+      0      0   IIC_Init
+      2      9   IIC_NAck
+        2      0   -> delay_us
+      0      9   IIC_Read_Byte
+        0      9   -> IIC_Ack
+        0      9   -> IIC_NAck
+        0      9   -> delay_us
+      0      9   IIC_Send_Byte
+        0      9   -> delay_us
+      2      0   IIC_Start
+        2      0   -> delay_us
+      2      0   IIC_Stop
+        2      0   -> delay_us
+      2      0   IIC_Wait_Ack
+        2      0   -> IIC_Stop
+        2      0   -> delay_us
+      0      9   delay_us
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       7  ??Subroutine5_0
+       8  ??Subroutine6_0
+       7  ?Subroutine0
+       5  ?Subroutine1
+       9  ?Subroutine2
+      15  ?Subroutine3
+       2  ?Subroutine4
+      18  IIC_Ack
+      19  IIC_Init
+      18  IIC_NAck
+      55  IIC_Read_Byte
+      43  IIC_Send_Byte
+      31  IIC_Start
+      20  IIC_Stop
+      36  IIC_Wait_Ack
+       1  P1DIR
+       1  P1SEL
+       1  _A_P1
+      21  delay_us
+      54  -- Other
+
+ 
+ 314 bytes in segment BANKED_CODE
+  54 bytes in segment BANK_RELAYS
+   3 bytes in segment SFR_AN
+ 
+  54 bytes of CODE     memory
+   0 bytes of DATA     memory (+ 3 bytes shared)
+ 314 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

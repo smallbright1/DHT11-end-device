@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V10.30.1.6000 for 8051              20/Jul/2019  10:49:31
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              27/Jul/2019  10:51:07
 // Copyright 2004-2018 IAR Systems AB.
 // PC-locked license - IAR Embedded Workbench for 8051
 //
@@ -14,7 +14,7 @@
 //    Source file        =  
 //        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 //    Command line       =  
-//        -f C:\Users\Admin\AppData\Local\Temp\EW926B.tmp
+//        -f C:\Users\Admin\AppData\Local\Temp\EW7A39.tmp
 //        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_uart0.c
 //        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
 //        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D
@@ -300,42 +300,41 @@ Uart0_Reset         SYMBOL "Uart0_Reset"
 //    6 #include "ProjectApp.h"
 //    7 #include "ZDProfile.h"
 //    8 #include "user_printf.h"
-//    9 #include "DHT11.h"
-//   10 
+//    9 
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   11 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
+//   10 uint8 UART0_RX_BUFF[UART0_RX_BUFF_MAX];//接收缓存区
 UART0_RX_BUFF:
         DS 60
         REQUIRE __INIT_XDATA_Z
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   12 uint8 UART0_RX_STA = 0;                //接收状态标记
+//   11 uint8 UART0_RX_STA = 0;                //接收状态标记
 UART0_RX_STA:
         DS 1
         REQUIRE __INIT_XDATA_Z
 
         RSEG XDATA_Z:XDATA:NOROOT(0)
         DATA8
-//   13 uint8 UART0_RX_LEN = 0;                //接收数据长度
+//   12 uint8 UART0_RX_LEN = 0;                //接收数据长度
 UART0_RX_LEN:
         DS 1
         REQUIRE __INIT_XDATA_Z
-//   14 //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-//   15 extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
-//   16 extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+//   13 //extern cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+//   14 extern const cId_t ProjectApp_ClusterList[PROJECTAPP_MAX_CLUSTERS];
+//   15 extern byte ProjectApp_TransID;  // This is the unique message ID (counter)
+//   16 
 //   17 
-//   18 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   19 void USER_Uart0_Init( uint8 baudRate )
+//   18 void USER_Uart0_Init( uint8 baudRate )
 USER_Uart0_Init:
           CFI Block cfiBlock0 Using cfiCommon0
           CFI Function USER_Uart0_Init
         CODE
-//   20 {
+//   19 {
         FUNCALL USER_Uart0_Init, HalUARTOpen
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -365,24 +364,24 @@ USER_Uart0_Init:
         MOV       A,#-0x1d
         LCALL     ?ALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 38)
-//   21   halUARTCfg_t uartConfig;
-//   22 
-//   23   /* UART Configuration */
-//   24   uartConfig.configured           = TRUE;
+//   20   halUARTCfg_t uartConfig;
+//   21 
+//   22   /* UART Configuration */
+//   23   uartConfig.configured           = TRUE;
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOV       A,#0x1
         MOVX      @DPTR,A
-//   25   uartConfig.baudRate             = baudRate;
+//   24   uartConfig.baudRate             = baudRate;
         LCALL     ?XSTACK_DISP0_8
         MOV       A,R1
         MOVX      @DPTR,A
-//   26   uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
+//   25   uartConfig.flowControl          = USER_UART_DEFAULT_OVERFLOW;
         MOV       A,#0x2
         LCALL     ?XSTACK_DISP0_8
         CLR       A
         MOVX      @DPTR,A
-//   27   uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
+//   26   uartConfig.flowControlThreshold = USER_UART_DEFAULT_THRESHOLD;
         MOV       A,#0x3
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x40
@@ -390,7 +389,7 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   28   uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
+//   27   uartConfig.rx.maxBufSize        = USER_UART_DEFAULT_MAX_RX_BUFF;
         MOV       A,#0xa
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#-0x80
@@ -398,7 +397,7 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   29   uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
+//   28   uartConfig.tx.maxBufSize        = USER_UART_DEFAULT_MAX_TX_BUFF;
         MOV       A,#0x12
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#-0x80
@@ -406,17 +405,17 @@ USER_Uart0_Init:
         INC       DPTR
         CLR       A
         MOVX      @DPTR,A
-//   30   uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
+//   29   uartConfig.idleTimeout          = USER_UART_DEFAULT_IDLE_TIMEOUT;
         MOV       A,#0x5
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x6
         MOVX      @DPTR,A
-//   31   uartConfig.intEnable            = TRUE;
+//   30   uartConfig.intEnable            = TRUE;
         MOV       A,#0x16
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#0x1
         MOVX      @DPTR,A
-//   32   uartConfig.callBackFunc         = Uart0_Process;
+//   31   uartConfig.callBackFunc         = Uart0_Process;
         MOV       A,#0x1b
         LCALL     ?XSTACK_DISP0_8
         MOV       A,#`??Uart0_Process::?relay` & 0xff
@@ -424,30 +423,30 @@ USER_Uart0_Init:
         INC       DPTR
         MOV       A,#(`??Uart0_Process::?relay` >> 8) & 0xff
         MOVX      @DPTR,A
-//   33 
-//   34   /* Start UART */
-//   35   HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
+//   32 
+//   33   /* Start UART */
+//   34   HalUARTOpen (USER_UART_DEFAULT_PORT, &uartConfig);
         ; Setup parameters for call to function HalUARTOpen
         MOV       R2,?XSP + 0
         MOV       R3,?XSP + 1
         MOV       R1,#0x0
         LCALL     `??HalUARTOpen::?relay`; Banked call to: HalUARTOpen
-//   36 }
+//   35 }
         MOV       A,#0x1d
         LCALL     ?DEALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 9)
         MOV       R7,#0x1
         LJMP      ?BANKED_LEAVE_XDATA
           CFI EndBlock cfiBlock0
-//   37 
+//   36 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   38 void Uart0_Process( uint8 port, uint8 event )
+//   37 void Uart0_Process( uint8 port, uint8 event )
 Uart0_Process:
           CFI Block cfiBlock1 Using cfiCommon0
           CFI Function Uart0_Process
         CODE
-//   39 {
+//   38 {
         FUNCALL Uart0_Process, Hal_UART_RxBufLen
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -504,10 +503,10 @@ Uart0_Process:
           CFI CFA_XSP16 add(XSP16, 11)
         MOV       A,R1
         MOV       R6,A
-//   40   uint8 Res;
-//   41   (void)event;  // Intentionally unreferenced parameter
-//   42  
-//   43   while (Hal_UART_RxBufLen(port))
+//   39   uint8 Res;
+//   40   (void)event;  // Intentionally unreferenced parameter
+//   41  
+//   42   while (Hal_UART_RxBufLen(port))
 ??Uart0_Process_0:
         ; Setup parameters for call to function Hal_UART_RxBufLen
         MOV       A,R6
@@ -516,8 +515,8 @@ Uart0_Process:
         MOV       A,R2
         ORL       A,R3
         JZ        ??Uart0_Process_1
-//   44   {
-//   45     HalUARTRead (port, &Res, 1);//读取一个字节
+//   43   {
+//   44     HalUARTRead (port, &Res, 1);//读取一个字节
         ; Setup parameters for call to function HalUARTRead
         MOV       R4,#0x1
         MOV       R5,#0x0
@@ -526,7 +525,7 @@ Uart0_Process:
         MOV       A,R6
         MOV       R1,A
         LCALL     `??HalUARTRead::?relay`; Banked call to: HalUARTRead
-//   46     UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
+//   45     UART0_RX_BUFF[UART0_RX_STA&0x3F]=Res ;
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOVX      A,@DPTR
@@ -545,31 +544,31 @@ Uart0_Process:
         POP       A
           CFI CFA_SP SP+0
         MOVX      @DPTR,A
-//   47     UART0_RX_STA++;
+//   46     UART0_RX_STA++;
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         INC       A
         MOVX      @DPTR,A
-//   48  
-//   49     if((UART0_RX_STA&0x80)==0)//接收未完成
+//   47  
+//   48     if((UART0_RX_STA&0x80)==0)//接收未完成
         MOV       C,0xE0 /* A   */.7
         JC        ??Uart0_Process_2
-//   50     {
-//   51       if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
+//   49     {
+//   50       if(UART0_RX_STA&0x40)//前一个接收到的数据结束符的“前一半”
         MOV       C,0xE0 /* A   */.6
         MOV       DPL,?XSP + 0
         MOV       DPH,?XSP + 1
         MOVX      A,@DPTR
         JNC       ??Uart0_Process_3
-//   52       {
-//   53         if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
+//   51       {
+//   52         if     (Res==0x0A)UART0_RX_STA |= 0x80;//接收完成了
         XRL       A,#0xa
         JNZ       ??Uart0_Process_4
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         SETB      0xE0 /* A   */.7
         SJMP      ??Uart0_Process_5
-//   54         else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
+//   53         else if(Res!=0x0D)UART0_RX_STA &= 0xBF;//不是结束符，则将前半个结束符标志置0
 ??Uart0_Process_4:
         MOVX      A,@DPTR
         XRL       A,#0xd
@@ -578,10 +577,10 @@ Uart0_Process:
         MOVX      A,@DPTR
         CLR       0xE0 /* A   */.6
         SJMP      ??Uart0_Process_5
-//   55       }
-//   56       else
-//   57       {
-//   58         if(Res==0x0D)UART0_RX_STA |= 0x40;
+//   54       }
+//   55       else
+//   56       {
+//   57         if(Res==0x0D)UART0_RX_STA |= 0x40;
 ??Uart0_Process_3:
         XRL       A,#0xd
         JNZ       ??Uart0_Process_2
@@ -590,29 +589,29 @@ Uart0_Process:
         SETB      0xE0 /* A   */.6
 ??Uart0_Process_5:
         MOVX      @DPTR,A
-//   59       }
-//   60     }
-//   61  
-//   62     if((UART0_RX_STA&0x80)==0x80)
+//   58       }
+//   59     }
+//   60  
+//   61     if((UART0_RX_STA&0x80)==0x80)
 ??Uart0_Process_2:
         MOV       DPTR,#UART0_RX_STA
         MOVX      A,@DPTR
         MOV       C,0xE0 /* A   */.7
         JNC       ??Uart0_Process_0
-//   63     {
-//   64       UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
+//   62     {
+//   63       UART0_RX_LEN = (UART0_RX_STA&0x3F)-2;
         ANL       A,#0x3f
         ADD       A,#-0x2
         MOV       DPTR,#UART0_RX_LEN
         MOVX      @DPTR,A
-//   65       Uart0_Handle();
-//   66       Uart0_Reset();
+//   64       Uart0_Handle();
+//   65       Uart0_Reset();
         ; Setup parameters for call to function Uart0_Reset
         LCALL     `??Uart0_Reset::?relay`; Banked call to: Uart0_Reset
-//   67       break;
-//   68     }
-//   69   }
-//   70 }
+//   66       break;
+//   67     }
+//   68   }
+//   69 }
 ??Uart0_Process_1:
         MOV       A,#0x1
         LCALL     ?DEALLOC_XSTACK8
@@ -639,32 +638,32 @@ Uart0_Process:
         MOV       R7,#0x2
         LJMP      ?BANKED_LEAVE_XDATA
           CFI EndBlock cfiBlock2
+//   70 
 //   71 
 //   72 
-//   73 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   74 void Uart0_Handle(void)
+//   73 void Uart0_Handle(void)
 Uart0_Handle:
           CFI Block cfiBlock3 Using cfiCommon0
           CFI Function Uart0_Handle
         CODE
-//   75 {
+//   74 {
         ; Saved register size: 0
         ; Auto size: 0
-//   76  
-//   77 }
+//   75  
+//   76 }
         LJMP      ?BRET
           CFI EndBlock cfiBlock3
-//   78 
+//   77 
 
         RSEG BANKED_CODE:HUGECODE:NOROOT(0)
-//   79 void Uart0_Reset(void)
+//   78 void Uart0_Reset(void)
 Uart0_Reset:
           CFI Block cfiBlock4 Using cfiCommon0
           CFI Function Uart0_Reset
         CODE
-//   80 {
+//   79 {
         FUNCALL Uart0_Reset, memset
         LOCFRAME ISTACK, 0, STACK
         LOCFRAME PSTACK, 0, STACK
@@ -694,7 +693,7 @@ Uart0_Reset:
           CFI CFA_XSP16 add(XSP16, 10)
         ; Saved register size: 10
         ; Auto size: 0
-//   81   memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
+//   80   memset(UART0_RX_BUFF,0,UART0_RX_BUFF_MAX);
         ; Setup parameters for call to function memset
         MOV       ?V0,#0x3c
         MOV       ?V1,#0x0
@@ -709,11 +708,11 @@ Uart0_Reset:
         MOV       A,#0x2
         LCALL     ?DEALLOC_XSTACK8
           CFI CFA_XSP16 add(XSP16, 10)
-//   82   UART0_RX_STA = 0;
+//   81   UART0_RX_STA = 0;
         MOV       DPTR,#UART0_RX_STA
         CLR       A
         MOVX      @DPTR,A
-//   83 }
+//   82 }
         SJMP      ?Subroutine0
           CFI EndBlock cfiBlock4
 

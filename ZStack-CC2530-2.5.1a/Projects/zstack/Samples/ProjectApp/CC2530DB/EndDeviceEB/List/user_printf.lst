@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               19/Jul/2019  12:47:18
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               27/Jul/2019  10:51:07
 # Copyright 2004-2018 IAR Systems AB.
 # PC-locked license - IAR Embedded Workbench for 8051
 #
@@ -14,7 +14,7 @@
 #    Source file        =  
 #        E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_printf.c
 #    Command line       =  
-#        -f C:\Users\Admin\AppData\Local\Temp\EW483.tmp
+#        -f C:\Users\Admin\AppData\Local\Temp\EW798D.tmp
 #        (E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectApp\Source\user_printf.c
 #        -D NWK_AUTO_POLL -D ZTOOL_P1 -D xMT_TASK -D xMT_SYS_FUNC -D
 #        xMT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D HAL_LCD=FALSE -D xPOWER_SAVING
@@ -178,12 +178,12 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
      42          	if (str) {
    \   000004   EA           MOV       A,R2
    \   000005   4B           ORL       A,R3
-   \   000006   6021         JZ        ??printchar_0
+   \   000006   601F         JZ        ??printchar_0
      43          		**str = c;
    \   000008   8A82         MOV       DPL,R2
    \   00000A   8B83         MOV       DPH,R3
-   \   00000C   12....       LCALL     ?Subroutine8 & 0xFFFF
-   \                     ??CrossCallReturnLabel_9:
+   \   00000C   12....       LCALL     ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
    \   00000F   EC           MOV       A,R4
    \   000010   F0           MOVX      @DPTR,A
      44          		++(*str);
@@ -198,25 +198,36 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00001D   F9           MOV       R1,A
    \   00001E   8A82         MOV       DPL,R2
    \   000020   8B83         MOV       DPH,R3
-   \   000022   E8           MOV       A,R0
-   \   000023   F0           MOVX      @DPTR,A
-   \   000024   A3           INC       DPTR
-   \   000025   E9           MOV       A,R1
-   \   000026   F0           MOVX      @DPTR,A
-   \   000027   8005         SJMP      ??printchar_1
+   \   000022   12....       LCALL     ??Subroutine14_0 & 0xFFFF
      45          	}
+   \                     ??CrossCallReturnLabel_22:
+   \   000025   8005         SJMP      ??printchar_1
      46          	else (void)putchar((char)c);
    \                     ??printchar_0:
-   \   000029                ; Setup parameters for call to function putchar
-   \   000029   EC           MOV       A,R4
-   \   00002A   F9           MOV       R1,A
-   \   00002B   12....       LCALL     `??putchar::?relay`; Banked call to: putchar
+   \   000027                ; Setup parameters for call to function putchar
+   \   000027   EC           MOV       A,R4
+   \   000028   F9           MOV       R1,A
+   \   000029   12....       LCALL     `??putchar::?relay`; Banked call to: putchar
      47          }
    \                     ??printchar_1:
-   \   00002E   80..         SJMP      ?Subroutine0
+   \   00002C   80..         SJMP      ?Subroutine0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine8:
+   \                     ??Subroutine14_0:
+   \   000000   E8           MOV       A,R0
+   \   000001                REQUIRE ??Subroutine15_0
+   \   000001                ; // Fall through to label ??Subroutine15_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine15_0:
+   \   000000   F0           MOVX      @DPTR,A
+   \   000001   A3           INC       DPTR
+   \   000002   E9           MOV       A,R1
+   \   000003   F0           MOVX      @DPTR,A
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
    \   000000   E0           MOVX      A,@DPTR
    \   000001   F8           MOV       R0,A
    \   000002   A3           INC       DPTR
@@ -267,8 +278,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000029   F8           MOV       R0,A
      55          
      56          	if (width > 0) {
-   \   00002A   12....       LCALL     ?Subroutine6 & 0xFFFF
-   \                     ??CrossCallReturnLabel_30:
+   \   00002A   12....       LCALL     ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_32:
    \   00002D   4034         JC        ??prints_0
      57          		register int len = 0;
    \   00002F   7A00         MOV       R2,#0x0
@@ -327,10 +338,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
      66          			printchar (out, padchar);
    \                     ??prints_8:
    \   00006A                ; Setup parameters for call to function printchar
-   \   00006A   12....       LCALL     ?Subroutine9 & 0xFFFF
+   \   00006A   12....       LCALL     ?Subroutine7 & 0xFFFF
      67          			++pc;
      68          		}
-   \                     ??CrossCallReturnLabel_25:
+   \                     ??CrossCallReturnLabel_27:
    \   00006D   7002         JNZ       ??prints_9
    \   00006F   05..         INC       ?V1
    \                     ??prints_9:
@@ -341,9 +352,9 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000076   34FF         ADDC      A,#-0x1
    \   000078   FF           MOV       R7,A
    \                     ??prints_7:
-   \   000079   12....       LCALL     ?Subroutine6 & 0xFFFF
+   \   000079   12....       LCALL     ?Subroutine4 & 0xFFFF
      69          	}
-   \                     ??CrossCallReturnLabel_31:
+   \                     ??CrossCallReturnLabel_33:
    \   00007C   50EC         JNC       ??prints_8
      70          	for ( ; *string ; ++string) {
    \                     ??prints_6:
@@ -355,10 +366,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000087                ; Setup parameters for call to function printchar
    \   000087   FC           MOV       R4,A
    \   000088   7D00         MOV       R5,#0x0
-   \   00008A   12....       LCALL     ??Subroutine15_0 & 0xFFFF
+   \   00008A   12....       LCALL     ??Subroutine16_0 & 0xFFFF
      72          		++pc;
      73          	}
-   \                     ??CrossCallReturnLabel_27:
+   \                     ??CrossCallReturnLabel_29:
    \   00008D   7002         JNZ       ??prints_11
    \   00008F   05..         INC       ?V1
    \                     ??prints_11:
@@ -372,10 +383,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
      75          		printchar (out, padchar);
    \                     ??prints_12:
    \   0000A0                ; Setup parameters for call to function printchar
-   \   0000A0   12....       LCALL     ?Subroutine9 & 0xFFFF
+   \   0000A0   12....       LCALL     ?Subroutine7 & 0xFFFF
      76          		++pc;
      77          	}
-   \                     ??CrossCallReturnLabel_26:
+   \                     ??CrossCallReturnLabel_28:
    \   0000A3   7002         JNZ       ??prints_13
    \   0000A5   05..         INC       ?V1
    \                     ??prints_13:
@@ -386,25 +397,25 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   0000AC   34FF         ADDC      A,#-0x1
    \   0000AE   FF           MOV       R7,A
    \                     ??prints_10:
-   \   0000AF   12....       LCALL     ?Subroutine6 & 0xFFFF
-   \                     ??CrossCallReturnLabel_32:
+   \   0000AF   12....       LCALL     ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_34:
    \   0000B2   50EC         JNC       ??prints_12
      78          
      79          	return pc;
    \   0000B4   AA..         MOV       R2,?V0
    \   0000B6   AB..         MOV       R3,?V1
-   \   0000B8   02....       LJMP      ??Subroutine17_0 & 0xFFFF
+   \   0000B8   02....       LJMP      ??Subroutine18_0 & 0xFFFF
      80          }
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine9:
+   \                     ?Subroutine7:
    \   000000   AC..         MOV       R4,?V4
    \   000002   AD..         MOV       R5,?V5
-   \   000004                REQUIRE ??Subroutine15_0
-   \   000004                ; // Fall through to label ??Subroutine15_0
+   \   000004                REQUIRE ??Subroutine16_0
+   \   000004                ; // Fall through to label ??Subroutine16_0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ??Subroutine15_0:
+   \                     ??Subroutine16_0:
    \   000000   AA..         MOV       R2,?V6
    \   000002   AB..         MOV       R3,?V7
    \   000004   12....       LCALL     `??printchar::?relay`; Banked call to: printchar
@@ -413,16 +424,16 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00000B   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine6:
+   \                     ?Subroutine4:
    \   000000   C3           CLR       C
    \   000001   EE           MOV       A,R6
    \   000002   9401         SUBB      A,#0x1
    \   000004   EF           MOV       A,R7
-   \   000005                REQUIRE ??Subroutine16_0
-   \   000005                ; // Fall through to label ??Subroutine16_0
+   \   000005                REQUIRE ??Subroutine17_0
+   \   000005                ; // Fall through to label ??Subroutine17_0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ??Subroutine16_0:
+   \                     ??Subroutine17_0:
    \   000000   9400         SUBB      A,#0x0
    \   000002   A2D2         MOV       C,0xD0 /* PSW */.2
    \   000004   65D0         XRL       A,PSW
@@ -430,7 +441,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000007   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ??Subroutine17_0:
+   \                     ??Subroutine18_0:
    \   000000   7F08         MOV       R7,#0x8
    \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
      81          
@@ -519,22 +530,22 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00005D   12....       LCALL     ?XSTACK_DISP102_8
    \   000060   7404         MOV       A,#0x4
    \   000062   12....       LCALL     ?XSTACK_DISP0_8
-   \   000065   12....       LCALL     ?Subroutine7 & 0xFFFF
+   \   000065   12....       LCALL     ?Subroutine5 & 0xFFFF
      96          	}
-   \                     ??CrossCallReturnLabel_6:
+   \                     ??CrossCallReturnLabel_2:
    \   000068   12....       LCALL     ?DEALLOC_XSTACK8
    \   00006B   02....       LJMP      ??printi_1 & 0xFFFF
    \                     ??printi_0:
    \   00006E   741A         MOV       A,#0x1a
    \   000070   12....       LCALL     ?XSTACK_DISP0_8
-   \   000073   12....       LCALL     ?Subroutine14 & 0xFFFF
+   \   000073   12....       LCALL     ?Subroutine12 & 0xFFFF
      97          
      98          	if (sg && b == 10 && i < 0) {
-   \                     ??CrossCallReturnLabel_22:
+   \                     ??CrossCallReturnLabel_18:
    \   000076   741C         MOV       A,#0x1c
    \   000078   12....       LCALL     ?XSTACK_DISP0_8
-   \   00007B   12....       LCALL     ?Subroutine13 & 0xFFFF
-   \                     ??CrossCallReturnLabel_18:
+   \   00007B   12....       LCALL     ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
    \   00007E   EA           MOV       A,R2
    \   00007F   4B           ORL       A,R3
    \   000080   6018         JZ        ??printi_2
@@ -544,8 +555,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000088   7010         JNZ       ??printi_2
    \   00008A   C3           CLR       C
    \   00008B   ED           MOV       A,R5
-   \   00008C   12....       LCALL     ??Subroutine16_0 & 0xFFFF
-   \                     ??CrossCallReturnLabel_28:
+   \   00008C   12....       LCALL     ??Subroutine17_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_30:
    \   00008F   5009         JNC       ??printi_2
      99          		neg = 1;
    \   000091   D2..         SETB      ?VB.0
@@ -586,8 +597,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   0000B8   EA           MOV       A,R2
    \   0000B9   940A         SUBB      A,#0xa
    \   0000BB   EB           MOV       A,R3
-   \   0000BC   12....       LCALL     ??Subroutine16_0 & 0xFFFF
-   \                     ??CrossCallReturnLabel_29:
+   \   0000BC   12....       LCALL     ??Subroutine17_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_31:
    \   0000BF   400C         JC        ??printi_5
     109          			t += letbase - '0' - 10;
    \   0000C1   7422         MOV       A,#0x22
@@ -600,8 +611,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   0000CC   F8           MOV       R0,A
     110          		*--s = t + '0';
    \                     ??printi_5:
-   \   0000CD   12....       LCALL     ?Subroutine11 & 0xFFFF
-   \                     ??CrossCallReturnLabel_14:
+   \   0000CD   12....       LCALL     ?Subroutine9 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
    \   0000D0   E8           MOV       A,R0
    \   0000D1   2430         ADD       A,#0x30
    \   0000D3   85..82       MOV       DPL,?V6
@@ -638,9 +649,9 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
     116          			printchar (out, '-');
    \   000100                ; Setup parameters for call to function printchar
    \   000100   7C2D         MOV       R4,#0x2d
-   \   000102   12....       LCALL     ?Subroutine10 & 0xFFFF
+   \   000102   12....       LCALL     ?Subroutine8 & 0xFFFF
     117          			++pc;
-   \                     ??CrossCallReturnLabel_12:
+   \                     ??CrossCallReturnLabel_8:
    \   000105   7402         MOV       A,#0x2
    \   000107   12....       LCALL     ?XSTACK_DISP0_8
    \   00010A   7401         MOV       A,#0x1
@@ -660,10 +671,10 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
     120          		else {
     121          			*--s = '-';
    \                     ??printi_7:
-   \   00011E   12....       LCALL     ?Subroutine11 & 0xFFFF
+   \   00011E   12....       LCALL     ?Subroutine9 & 0xFFFF
     122          		}
     123          	}
-   \                     ??CrossCallReturnLabel_15:
+   \                     ??CrossCallReturnLabel_11:
    \   000121   85..82       MOV       DPL,?V6
    \   000124   F583         MOV       DPH,A
    \   000126   742D         MOV       A,#0x2d
@@ -686,8 +697,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000142   AD..         MOV       R5,?V7
    \   000144   7404         MOV       A,#0x4
    \   000146   12....       LCALL     ?XSTACK_DISP0_8
-   \   000149   12....       LCALL     ?Subroutine7 & 0xFFFF
-   \                     ??CrossCallReturnLabel_7:
+   \   000149   12....       LCALL     ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
    \   00014C   12....       LCALL     ?DEALLOC_XSTACK8
    \   00014F   8B..         MOV       ?V1,R3
    \   000151   D083         POP       DPH
@@ -708,11 +719,11 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
    \                     ?Subroutine1:
    \   000000   12....       LCALL     ?DEALLOC_XSTACK8
-   \   000003                REQUIRE ??Subroutine17_0
-   \   000003                ; // Fall through to label ??Subroutine17_0
+   \   000003                REQUIRE ??Subroutine18_0
+   \   000003                ; // Fall through to label ??Subroutine18_0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine11:
+   \                     ?Subroutine9:
    \   000000   E5..         MOV       A,?V6
    \   000002   24FF         ADD       A,#-0x1
    \   000004   F5..         MOV       ?V6,A
@@ -722,7 +733,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00000C   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine14:
+   \                     ?Subroutine12:
    \   000000   E0           MOVX      A,@DPTR
    \   000001   F5..         MOV       ?V4,A
    \   000003   A3           INC       DPTR
@@ -731,17 +742,17 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000007   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine10:
+   \                     ?Subroutine8:
    \   000000   7D00         MOV       R5,#0x0
    \   000002   85..82       MOV       DPL,?XSP + 0
    \   000005   85..83       MOV       DPH,?XSP + 1
-   \   000008   12....       LCALL     ?Subroutine13 & 0xFFFF
-   \                     ??CrossCallReturnLabel_21:
+   \   000008   12....       LCALL     ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_17:
    \   00000B   12....       LCALL     `??printchar::?relay`; Banked call to: printchar
    \   00000E   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine13:
+   \                     ?Subroutine11:
    \   000000   E0           MOVX      A,@DPTR
    \   000001   FA           MOV       R2,A
    \   000002   A3           INC       DPTR
@@ -750,13 +761,28 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   000005   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine7:
-   \   000000   12....       LCALL     ?Subroutine13 & 0xFFFF
-   \                     ??CrossCallReturnLabel_20:
+   \                     ?Subroutine5:
+   \   000000   12....       LCALL     ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_16:
    \   000003   12....       LCALL     `??prints::?relay`; Banked call to: prints
    \   000006   7404         MOV       A,#0x4
    \   000008   22           RET
     127          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   12....       LCALL     ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000003                REQUIRE ??Subroutine13_0
+   \   000003                ; // Fall through to label ??Subroutine13_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine13_0:
+   \   000000   F9           MOV       R1,A
+   \   000001   85..82       MOV       DPL,?V6
+   \   000004   85..83       MOV       DPH,?V7
+   \   000007                REQUIRE ??Subroutine14_0
+   \   000007                ; // Fall through to label ??Subroutine14_0
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
     128          static int print(char **out, const char *format, va_list args )
@@ -857,9 +883,9 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   00002F   8F83         MOV       DPH,R7
    \   000031   E0           MOVX      A,@DPTR
    \   000032   FC           MOV       R4,A
-   \   000033   12....       LCALL     ?Subroutine10 & 0xFFFF
+   \   000033   12....       LCALL     ?Subroutine8 & 0xFFFF
     184          			++pc;
-   \                     ??CrossCallReturnLabel_13:
+   \                     ??CrossCallReturnLabel_9:
    \   000036   05..         INC       ?V2
    \   000038   E5..         MOV       A,?V2
    \   00003A   7002         JNZ       ??print_2
@@ -951,7 +977,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \                     ??print_7:
    \   0000BC   E0           MOVX      A,@DPTR
    \   0000BD   6473         XRL       A,#0x73
-   \   0000BF   705F         JNZ       ??print_8
+   \   0000BF   705E         JNZ       ??print_8
    \   0000C1   85..82       MOV       DPL,?V6
    \   0000C4   85..83       MOV       DPH,?V7
    \   0000C7   E0           MOVX      A,@DPTR
@@ -961,8 +987,8 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \   0000CB   F9           MOV       R1,A
    \   0000CC   8882         MOV       DPL,R0
    \   0000CE   F583         MOV       DPH,A
-   \   0000D0   12....       LCALL     ?Subroutine14 & 0xFFFF
-   \                     ??CrossCallReturnLabel_23:
+   \   0000D0   12....       LCALL     ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
    \   0000D3   E8           MOV       A,R0
    \   0000D4   2402         ADD       A,#0x2
    \   0000D6   5001         JNC       ??print_9
@@ -970,249 +996,235 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    \                     ??print_9:
    \   0000D9   85..82       MOV       DPL,?V6
    \   0000DC   85..83       MOV       DPH,?V7
-   \   0000DF   F0           MOVX      @DPTR,A
-   \   0000E0   A3           INC       DPTR
-   \   0000E1   E9           MOV       A,R1
-   \   0000E2   F0           MOVX      @DPTR,A
-   \   0000E3   E5..         MOV       A,?V4
-   \   0000E5   45..         ORL       A,?V5
-   \   0000E7   7006         JNZ       ??print_10
-   \   0000E9   75....       MOV       ?V4,#`?<Constant "(null)">` & 0xff
-   \   0000EC   75....       MOV       ?V5,#(`?<Constant "(null)">` >> 8) & 0xff
+   \   0000DF   12....       LCALL     ??Subroutine15_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   0000E2   E5..         MOV       A,?V4
+   \   0000E4   45..         ORL       A,?V5
+   \   0000E6   7006         JNZ       ??print_10
+   \   0000E8   75....       MOV       ?V4,#`?<Constant "(null)">` & 0xff
+   \   0000EB   75....       MOV       ?V5,#(`?<Constant "(null)">` >> 8) & 0xff
    \                     ??print_10:
-   \   0000EF                ; Setup parameters for call to function prints
-   \   0000EF   8C..         MOV       ?V0,R4
-   \   0000F1   8D..         MOV       ?V1,R5
-   \   0000F3   78..         MOV       R0,#?V0
-   \   0000F5   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0000F8   8A..         MOV       ?V0,R2
-   \   0000FA   8B..         MOV       ?V1,R3
-   \   0000FC   78..         MOV       R0,#?V0
-   \   0000FE   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000101   AC..         MOV       R4,?V4
-   \   000103   AD..         MOV       R5,?V5
+   \   0000EE                ; Setup parameters for call to function prints
+   \   0000EE   8C..         MOV       ?V0,R4
+   \   0000F0   8D..         MOV       ?V1,R5
+   \   0000F2   78..         MOV       R0,#?V0
+   \   0000F4   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000F7   8A..         MOV       ?V0,R2
+   \   0000F9   8B..         MOV       ?V1,R3
+   \   0000FB   78..         MOV       R0,#?V0
+   \   0000FD   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000100   AC..         MOV       R4,?V4
+   \   000102   AD..         MOV       R5,?V5
    \                     ??print_11:
-   \   000105   7404         MOV       A,#0x4
-   \   000107   12....       LCALL     ?XSTACK_DISP0_8
-   \   00010A   12....       LCALL     ?Subroutine7 & 0xFFFF
-   \                     ??CrossCallReturnLabel_8:
-   \   00010D   12....       LCALL     ?DEALLOC_XSTACK8
-   \                     ??print_12:
-   \   000110   8B..         MOV       ?V1,R3
-   \   000112   E5..         MOV       A,?V2
-   \   000114   2A           ADD       A,R2
-   \   000115   F5..         MOV       ?V2,A
-   \   000117   E5..         MOV       A,?V3
-   \   000119   35..         ADDC      A,?V1
-   \   00011B   F5..         MOV       ?V3,A
-   \   00011D   02....       LJMP      ??print_2 & 0xFFFF
-   \                     ??print_8:
-   \   000120   E0           MOVX      A,@DPTR
-   \   000121   6464         XRL       A,#0x64
-   \   000123   7045         JNZ       ??print_13
-   \   000125   12....       LCALL     ?Subroutine4 & 0xFFFF
-   \                     ??CrossCallReturnLabel_2:
-   \   000128   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00012B   8C..         MOV       ?V0,R4
-   \   00012D   78..         MOV       R0,#?V0
-   \   00012F   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000132   8A..         MOV       ?V0,R2
-   \   000134   8B..         MOV       ?V1,R3
-   \   000136   78..         MOV       R0,#?V0
-   \   000138   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00013B   75..01       MOV       ?V0,#0x1
-   \   00013E   8D..         MOV       ?V1,R5
-   \                     ??print_14:
-   \   000140   78..         MOV       R0,#?V0
-   \   000142   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000145   75..0A       MOV       ?V0,#0xa
-   \                     ??print_15:
-   \   000148   78..         MOV       R0,#?V0
-   \   00014A   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00014D   85..82       MOV       DPL,?V4
-   \   000150   85..83       MOV       DPH,?V5
-   \   000153   E0           MOVX      A,@DPTR
-   \   000154   FC           MOV       R4,A
-   \   000155   A3           INC       DPTR
-   \   000156   E0           MOVX      A,@DPTR
-   \   000157   FD           MOV       R5,A
-   \   000158   740A         MOV       A,#0xa
-   \   00015A   12....       LCALL     ?XSTACK_DISP0_8
-   \   00015D   12....       LCALL     ?Subroutine13 & 0xFFFF
-   \                     ??CrossCallReturnLabel_19:
-   \   000160   12....       LCALL     `??printi::?relay`; Banked call to: printi
-   \   000163   740A         MOV       A,#0xa
-   \   000165   12....       LCALL     ?DEALLOC_XSTACK8
-   \   000168   80A6         SJMP      ??print_12
-   \                     ??print_13:
-   \   00016A   E0           MOVX      A,@DPTR
-   \   00016B   6478         XRL       A,#0x78
-   \   00016D   702C         JNZ       ??print_16
-   \   00016F   12....       LCALL     ?Subroutine5 & 0xFFFF
+   \   000104   7404         MOV       A,#0x4
+   \   000106   12....       LCALL     ?XSTACK_DISP0_8
+   \   000109   12....       LCALL     ?Subroutine5 & 0xFFFF
    \                     ??CrossCallReturnLabel_4:
-   \   000172                ; Setup parameters for call to function printi
-   \   000172   75..61       MOV       ?V0,#0x61
+   \   00010C   12....       LCALL     ?DEALLOC_XSTACK8
+   \                     ??print_12:
+   \   00010F   8B..         MOV       ?V1,R3
+   \   000111   E5..         MOV       A,?V2
+   \   000113   2A           ADD       A,R2
+   \   000114   F5..         MOV       ?V2,A
+   \   000116   E5..         MOV       A,?V3
+   \   000118   35..         ADDC      A,?V1
+   \   00011A   F5..         MOV       ?V3,A
+   \   00011C   02....       LJMP      ??print_2 & 0xFFFF
+   \                     ??print_8:
+   \   00011F   E0           MOVX      A,@DPTR
+   \   000120   6464         XRL       A,#0x64
+   \   000122   7045         JNZ       ??print_13
+   \   000124   12....       LCALL     ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   000127   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00012A   8C..         MOV       ?V0,R4
+   \   00012C   78..         MOV       R0,#?V0
+   \   00012E   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000131   8A..         MOV       ?V0,R2
+   \   000133   8B..         MOV       ?V1,R3
+   \   000135   78..         MOV       R0,#?V0
+   \   000137   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00013A   75..01       MOV       ?V0,#0x1
+   \   00013D   8D..         MOV       ?V1,R5
+   \                     ??print_14:
+   \   00013F   78..         MOV       R0,#?V0
+   \   000141   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000144   75..0A       MOV       ?V0,#0xa
+   \                     ??print_15:
+   \   000147   78..         MOV       R0,#?V0
+   \   000149   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00014C   85..82       MOV       DPL,?V4
+   \   00014F   85..83       MOV       DPH,?V5
+   \   000152   E0           MOVX      A,@DPTR
+   \   000153   FC           MOV       R4,A
+   \   000154   A3           INC       DPTR
+   \   000155   E0           MOVX      A,@DPTR
+   \   000156   FD           MOV       R5,A
+   \   000157   740A         MOV       A,#0xa
+   \   000159   12....       LCALL     ?XSTACK_DISP0_8
+   \   00015C   12....       LCALL     ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   00015F   12....       LCALL     `??printi::?relay`; Banked call to: printi
+   \   000162   740A         MOV       A,#0xa
+   \   000164   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000167   80A6         SJMP      ??print_12
+   \                     ??print_13:
+   \   000169   E0           MOVX      A,@DPTR
+   \   00016A   6478         XRL       A,#0x78
+   \   00016C   702C         JNZ       ??print_16
+   \   00016E   12....       LCALL     ?Subroutine3 & 0xFFFF
+   \                     ??CrossCallReturnLabel_25:
+   \   000171                ; Setup parameters for call to function printi
+   \   000171   75..61       MOV       ?V0,#0x61
    \                     ??print_17:
-   \   000175   8D..         MOV       ?V1,R5
-   \   000177   78..         MOV       R0,#?V0
-   \   000179   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00017C   8C..         MOV       ?V0,R4
-   \   00017E   78..         MOV       R0,#?V0
-   \   000180   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000183   8A..         MOV       ?V0,R2
-   \   000185   8B..         MOV       ?V1,R3
-   \   000187   78..         MOV       R0,#?V0
-   \   000189   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00018C   E4           CLR       A
-   \   00018D   F5..         MOV       ?V0,A
-   \   00018F   F5..         MOV       ?V1,A
-   \   000191   78..         MOV       R0,#?V0
-   \   000193   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000196   75..10       MOV       ?V0,#0x10
-   \   000199   80AD         SJMP      ??print_15
+   \   000174   8D..         MOV       ?V1,R5
+   \   000176   78..         MOV       R0,#?V0
+   \   000178   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00017B   8C..         MOV       ?V0,R4
+   \   00017D   78..         MOV       R0,#?V0
+   \   00017F   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000182   8A..         MOV       ?V0,R2
+   \   000184   8B..         MOV       ?V1,R3
+   \   000186   78..         MOV       R0,#?V0
+   \   000188   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00018B   E4           CLR       A
+   \   00018C   F5..         MOV       ?V0,A
+   \   00018E   F5..         MOV       ?V1,A
+   \   000190   78..         MOV       R0,#?V0
+   \   000192   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000195   75..10       MOV       ?V0,#0x10
+   \   000198   80AD         SJMP      ??print_15
    \                     ??print_16:
-   \   00019B   E0           MOVX      A,@DPTR
-   \   00019C   6458         XRL       A,#0x58
-   \   00019E   7008         JNZ       ??print_18
-   \   0001A0   12....       LCALL     ?Subroutine5 & 0xFFFF
-   \                     ??CrossCallReturnLabel_5:
-   \   0001A3                ; Setup parameters for call to function printi
-   \   0001A3   75..41       MOV       ?V0,#0x41
-   \   0001A6   80CD         SJMP      ??print_17
+   \   00019A   E0           MOVX      A,@DPTR
+   \   00019B   6458         XRL       A,#0x58
+   \   00019D   7008         JNZ       ??print_18
+   \   00019F   12....       LCALL     ?Subroutine3 & 0xFFFF
+   \                     ??CrossCallReturnLabel_26:
+   \   0001A2                ; Setup parameters for call to function printi
+   \   0001A2   75..41       MOV       ?V0,#0x41
+   \   0001A5   80CD         SJMP      ??print_17
    \                     ??print_18:
-   \   0001A8   E0           MOVX      A,@DPTR
-   \   0001A9   6475         XRL       A,#0x75
-   \   0001AB   701E         JNZ       ??print_19
-   \   0001AD   12....       LCALL     ?Subroutine4 & 0xFFFF
-   \                     ??CrossCallReturnLabel_3:
-   \   0001B0   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0001B3   8C..         MOV       ?V0,R4
-   \   0001B5   78..         MOV       R0,#?V0
-   \   0001B7   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0001BA   8A..         MOV       ?V0,R2
-   \   0001BC   8B..         MOV       ?V1,R3
-   \   0001BE   78..         MOV       R0,#?V0
-   \   0001C0   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   0001C3   E4           CLR       A
-   \   0001C4   F5..         MOV       ?V0,A
-   \   0001C6   F5..         MOV       ?V1,A
-   \   0001C8   02....       LJMP      ??print_14 & 0xFFFF
+   \   0001A7   E0           MOVX      A,@DPTR
+   \   0001A8   6475         XRL       A,#0x75
+   \   0001AA   701E         JNZ       ??print_19
+   \   0001AC   12....       LCALL     ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   0001AF   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0001B2   8C..         MOV       ?V0,R4
+   \   0001B4   78..         MOV       R0,#?V0
+   \   0001B6   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0001B9   8A..         MOV       ?V0,R2
+   \   0001BB   8B..         MOV       ?V1,R3
+   \   0001BD   78..         MOV       R0,#?V0
+   \   0001BF   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0001C2   E4           CLR       A
+   \   0001C3   F5..         MOV       ?V0,A
+   \   0001C5   F5..         MOV       ?V1,A
+   \   0001C7   02....       LJMP      ??print_14 & 0xFFFF
    \                     ??print_19:
-   \   0001CB   E0           MOVX      A,@DPTR
-   \   0001CC   6463         XRL       A,#0x63
-   \   0001CE   6003         JZ        $+5
-   \   0001D0   02....       LJMP      ??print_2 & 0xFFFF
-   \   0001D3   85..82       MOV       DPL,?V6
-   \   0001D6   85..83       MOV       DPH,?V7
-   \   0001D9   12....       LCALL     ?Subroutine8 & 0xFFFF
-   \                     ??CrossCallReturnLabel_10:
-   \   0001DC   E0           MOVX      A,@DPTR
-   \   0001DD   C0E0         PUSH      A
-   \   0001DF   7402         MOV       A,#0x2
-   \   0001E1   12....       LCALL     ?XSTACK_DISP0_8
-   \   0001E4   D0E0         POP       A
-   \   0001E6   F0           MOVX      @DPTR,A
-   \   0001E7   85..82       MOV       DPL,?V6
-   \   0001EA   85..83       MOV       DPH,?V7
-   \   0001ED   E0           MOVX      A,@DPTR
-   \   0001EE   2402         ADD       A,#0x2
-   \   0001F0   F8           MOV       R0,A
-   \   0001F1   A3           INC       DPTR
-   \   0001F2   E0           MOVX      A,@DPTR
-   \   0001F3   3400         ADDC      A,#0x0
-   \   0001F5   F9           MOV       R1,A
-   \   0001F6   85..82       MOV       DPL,?V6
-   \   0001F9   85..83       MOV       DPH,?V7
-   \   0001FC   E8           MOV       A,R0
+   \   0001CA   E0           MOVX      A,@DPTR
+   \   0001CB   6463         XRL       A,#0x63
+   \   0001CD   6003         JZ        $+5
+   \   0001CF   02....       LJMP      ??print_2 & 0xFFFF
+   \   0001D2   85..82       MOV       DPL,?V6
+   \   0001D5   85..83       MOV       DPH,?V7
+   \   0001D8   12....       LCALL     ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   0001DB   E0           MOVX      A,@DPTR
+   \   0001DC   C0E0         PUSH      A
+   \   0001DE   7402         MOV       A,#0x2
+   \   0001E0   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001E3   D0E0         POP       A
+   \   0001E5   F0           MOVX      @DPTR,A
+   \   0001E6   85..82       MOV       DPL,?V6
+   \   0001E9   85..83       MOV       DPH,?V7
+   \   0001EC   E0           MOVX      A,@DPTR
+   \   0001ED   2402         ADD       A,#0x2
+   \   0001EF   F8           MOV       R0,A
+   \   0001F0   A3           INC       DPTR
+   \   0001F1   E0           MOVX      A,@DPTR
+   \   0001F2   3400         ADDC      A,#0x0
+   \   0001F4   12....       LCALL     ??Subroutine13_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_24:
+   \   0001F7   7403         MOV       A,#0x3
+   \   0001F9   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001FC   E4           CLR       A
    \   0001FD   F0           MOVX      @DPTR,A
-   \   0001FE   A3           INC       DPTR
-   \   0001FF   E9           MOV       A,R1
-   \   000200   F0           MOVX      @DPTR,A
-   \   000201   7403         MOV       A,#0x3
-   \   000203   12....       LCALL     ?XSTACK_DISP0_8
-   \   000206   E4           CLR       A
-   \   000207   F0           MOVX      @DPTR,A
-   \   000208                ; Setup parameters for call to function prints
-   \   000208   8C..         MOV       ?V0,R4
-   \   00020A   8D..         MOV       ?V1,R5
-   \   00020C   78..         MOV       R0,#?V0
-   \   00020E   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000211   8A..         MOV       ?V0,R2
-   \   000213   8B..         MOV       ?V1,R3
-   \   000215   78..         MOV       R0,#?V0
-   \   000217   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00021A   7406         MOV       A,#0x6
-   \   00021C   12....       LCALL     ?XSTACK_DISP102_8
-   \   00021F   02....       LJMP      ??print_11 & 0xFFFF
+   \   0001FE                ; Setup parameters for call to function prints
+   \   0001FE   8C..         MOV       ?V0,R4
+   \   000200   8D..         MOV       ?V1,R5
+   \   000202   78..         MOV       R0,#?V0
+   \   000204   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000207   8A..         MOV       ?V0,R2
+   \   000209   8B..         MOV       ?V1,R3
+   \   00020B   78..         MOV       R0,#?V0
+   \   00020D   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000210   7406         MOV       A,#0x6
+   \   000212   12....       LCALL     ?XSTACK_DISP102_8
+   \   000215   02....       LJMP      ??print_11 & 0xFFFF
     186          	}
     187          	if (out) **out = '\0';
    \                     ??print_3:
-   \   000222   85..82       MOV       DPL,?XSP + 0
-   \   000225   85..83       MOV       DPH,?XSP + 1
-   \   000228   E0           MOVX      A,@DPTR
-   \   000229   F8           MOV       R0,A
-   \   00022A   A3           INC       DPTR
-   \   00022B   E0           MOVX      A,@DPTR
-   \   00022C   F9           MOV       R1,A
-   \   00022D   E8           MOV       A,R0
-   \   00022E   49           ORL       A,R1
-   \   00022F   6011         JZ        ??print_20
-   \   000231   85..82       MOV       DPL,?XSP + 0
-   \   000234   85..83       MOV       DPH,?XSP + 1
-   \   000237   A3           INC       DPTR
-   \   000238   E0           MOVX      A,@DPTR
-   \   000239   F583         MOV       DPH,A
-   \   00023B   8882         MOV       DPL,R0
-   \   00023D   12....       LCALL     ?Subroutine8 & 0xFFFF
-   \                     ??CrossCallReturnLabel_11:
-   \   000240   E4           CLR       A
-   \   000241   F0           MOVX      @DPTR,A
+   \   000218   85..82       MOV       DPL,?XSP + 0
+   \   00021B   85..83       MOV       DPH,?XSP + 1
+   \   00021E   E0           MOVX      A,@DPTR
+   \   00021F   F8           MOV       R0,A
+   \   000220   A3           INC       DPTR
+   \   000221   E0           MOVX      A,@DPTR
+   \   000222   F9           MOV       R1,A
+   \   000223   E8           MOV       A,R0
+   \   000224   49           ORL       A,R1
+   \   000225   6011         JZ        ??print_20
+   \   000227   85..82       MOV       DPL,?XSP + 0
+   \   00022A   85..83       MOV       DPH,?XSP + 1
+   \   00022D   A3           INC       DPTR
+   \   00022E   E0           MOVX      A,@DPTR
+   \   00022F   F583         MOV       DPH,A
+   \   000231   8882         MOV       DPL,R0
+   \   000233   12....       LCALL     ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   000236   E4           CLR       A
+   \   000237   F0           MOVX      @DPTR,A
     188          	va_end( args );
     189          	return pc;
    \                     ??print_20:
-   \   000242   AA..         MOV       R2,?V2
-   \   000244   AB..         MOV       R3,?V3
-   \   000246   7404         MOV       A,#0x4
-   \   000248   02....       LJMP      ?Subroutine1 & 0xFFFF
+   \   000238   AA..         MOV       R2,?V2
+   \   00023A   AB..         MOV       R3,?V3
+   \   00023C   7404         MOV       A,#0x4
+   \   00023E   02....       LJMP      ?Subroutine1 & 0xFFFF
     190          }
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine5:
-   \   000000   12....       LCALL     ?Subroutine12 & 0xFFFF
-   \                     ??CrossCallReturnLabel_17:
-   \   000003   22           RET
+   \                     ?Subroutine2:
+   \   000000   12....       LCALL     ?Subroutine10 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   000003   F9           MOV       R1,A
+   \   000004   85..82       MOV       DPL,?V6
+   \   000007   85..83       MOV       DPH,?V7
+   \   00000A   E8           MOV       A,R0
+   \   00000B   F0           MOVX      @DPTR,A
+   \   00000C   A3           INC       DPTR
+   \   00000D   E9           MOV       A,R1
+   \   00000E   F0           MOVX      @DPTR,A
+   \   00000F                ; Setup parameters for call to function printi
+   \   00000F                ; Setup parameters for call to function printi
+   \   00000F   75..61       MOV       ?V0,#0x61
+   \   000012   8D..         MOV       ?V1,R5
+   \   000014   78..         MOV       R0,#?V0
+   \   000016   22           RET
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine12:
+   \                     ?Subroutine10:
    \   000000   85..82       MOV       DPL,?V6
    \   000003   85..83       MOV       DPH,?V7
-   \   000006   12....       LCALL     ?Subroutine14 & 0xFFFF
-   \                     ??CrossCallReturnLabel_24:
+   \   000006   12....       LCALL     ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
    \   000009   E5..         MOV       A,?V4
    \   00000B   2402         ADD       A,#0x2
    \   00000D   F8           MOV       R0,A
    \   00000E   E4           CLR       A
    \   00000F   35..         ADDC      A,?V5
-   \   000011   F9           MOV       R1,A
-   \   000012   85..82       MOV       DPL,?V6
-   \   000015   85..83       MOV       DPH,?V7
-   \   000018   E8           MOV       A,R0
-   \   000019   F0           MOVX      @DPTR,A
-   \   00001A   A3           INC       DPTR
-   \   00001B   E9           MOV       A,R1
-   \   00001C   F0           MOVX      @DPTR,A
-   \   00001D   22           RET
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine4:
-   \   000000   12....       LCALL     ?Subroutine12 & 0xFFFF
-   \                     ??CrossCallReturnLabel_16:
-   \   000003                ; Setup parameters for call to function printi
-   \   000003                ; Setup parameters for call to function printi
-   \   000003   75..61       MOV       ?V0,#0x61
-   \   000006   8D..         MOV       ?V1,R5
-   \   000008   78..         MOV       R0,#?V0
-   \   00000A   22           RET
+   \   000011   22           RET
     191          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
@@ -1232,90 +1244,45 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
     196                  va_start( args, format );
    \   00000A   740C         MOV       A,#0xc
    \   00000C   12....       LCALL     ?XSTACK_DISP100_8
-   \   00000F   12....       LCALL     ?Subroutine3 & 0xFFFF
+   \   00000F   85..82       MOV       DPL,?XSP + 0
+   \   000012   85..83       MOV       DPH,?XSP + 1
+   \   000015   12....       LCALL     ??Subroutine14_0 & 0xFFFF
     197                  return print( 0, format, args );
-   \                     ??CrossCallReturnLabel_0:
-   \   000012   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   000015   EA           MOV       A,R2
-   \   000016   FC           MOV       R4,A
-   \   000017   EB           MOV       A,R3
-   \   000018   FD           MOV       R5,A
-   \   000019   7A00         MOV       R2,#0x0
-   \   00001B   7B00         MOV       R3,#0x0
-   \   00001D   12....       LCALL     `??print::?relay`; Banked call to: print
-   \   000020   7402         MOV       A,#0x2
-   \   000022   12....       LCALL     ?DEALLOC_XSTACK8
-   \   000025   7402         MOV       A,#0x2
-   \   000027                REQUIRE ?Subroutine2
-   \   000027                ; // Fall through to label ?Subroutine2
+   \                     ??CrossCallReturnLabel_23:
+   \   000018                ; Setup parameters for call to function print
+   \   000018   A8..         MOV       R0,?XSP + 0
+   \   00001A   A9..         MOV       R1,?XSP + 1
+   \   00001C   88..         MOV       ?V0,R0
+   \   00001E   89..         MOV       ?V1,R1
+   \   000020   78..         MOV       R0,#?V0
+   \   000022   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000025   EA           MOV       A,R2
+   \   000026   FC           MOV       R4,A
+   \   000027   EB           MOV       A,R3
+   \   000028   FD           MOV       R5,A
+   \   000029   7A00         MOV       R2,#0x0
+   \   00002B   7B00         MOV       R3,#0x0
+   \   00002D   12....       LCALL     `??print::?relay`; Banked call to: print
+   \   000030   7402         MOV       A,#0x2
+   \   000032   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000035   7402         MOV       A,#0x2
+   \   000037   12....       LCALL     ?DEALLOC_XSTACK8
+   \   00003A   7F02         MOV       R7,#0x2
+   \   00003C   02....       LJMP      ?BANKED_LEAVE_XDATA
     198          }
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine2:
-   \   000000   12....       LCALL     ?DEALLOC_XSTACK8
-   \   000003   7F02         MOV       R7,#0x2
-   \   000005   02....       LJMP      ?BANKED_LEAVE_XDATA
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-   \                     ?Subroutine3:
-   \   000000   85..82       MOV       DPL,?XSP + 0
-   \   000003   85..83       MOV       DPH,?XSP + 1
-   \   000006   E8           MOV       A,R0
-   \   000007   F0           MOVX      @DPTR,A
-   \   000008   A3           INC       DPTR
-   \   000009   E9           MOV       A,R1
-   \   00000A   F0           MOVX      @DPTR,A
-   \   00000B                ; Setup parameters for call to function print
-   \   00000B                ; Setup parameters for call to function print
-   \   00000B   A8..         MOV       R0,?XSP + 0
-   \   00000D   A9..         MOV       R1,?XSP + 1
-   \   00000F   88..         MOV       ?V0,R0
-   \   000011   89..         MOV       ?V1,R1
-   \   000013   78..         MOV       R0,#?V0
-   \   000015   22           RET
-    199          
-
-   \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    200          int sprintf(char *out, const char *format, ...)
-   \                     sprintf:
-    201          {
-   \   000000                REQUIRE ?V0
-   \   000000                REQUIRE ?V1
-   \   000000   74F6         MOV       A,#-0xa
-   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
-   \   000005                ; Saved register size: 10
-   \   000005                ; Auto size: 4
-   \   000005   74FC         MOV       A,#-0x4
-   \   000007   12....       LCALL     ?ALLOC_XSTACK8
-   \   00000A   7402         MOV       A,#0x2
-   \   00000C   12....       LCALL     ?XSTACK_DISP0_8
-   \   00000F   EA           MOV       A,R2
-   \   000010   F0           MOVX      @DPTR,A
-   \   000011   A3           INC       DPTR
-   \   000012   EB           MOV       A,R3
-   \   000013   F0           MOVX      @DPTR,A
-    202                  va_list args;
-    203                  
-    204                  va_start( args, format );
-   \   000014   740E         MOV       A,#0xe
-   \   000016   12....       LCALL     ?XSTACK_DISP100_8
-   \   000019   12....       LCALL     ?Subroutine3 & 0xFFFF
-    205                  return print( &out, format, args );
-   \                     ??CrossCallReturnLabel_1:
-   \   00001C   12....       LCALL     ?PUSH_XSTACK_I_TWO
-   \   00001F   7404         MOV       A,#0x4
-   \   000021   12....       LCALL     ?XSTACK_DISP101_8
-   \   000024   12....       LCALL     `??print::?relay`; Banked call to: print
-   \   000027   7402         MOV       A,#0x2
-   \   000029   12....       LCALL     ?DEALLOC_XSTACK8
-   \   00002C   7404         MOV       A,#0x4
-   \   00002E   80..         SJMP      ?Subroutine2
-    206          }
 
    \                                 In  segment XDATA_ROM_C, align 1
    \                     `?<Constant "(null)">`:
    \   000000   286E756C     DB "(null)"
    \            6C2900  
+    199          
+    200          //int sprintf(char *out, const char *format, ...)
+    201          //{
+    202          //        va_list args;
+    203          //        
+    204          //        va_start( args, format );
+    205          //        return print( &out, format, args );
+    206          //}
     207          
     208          #ifdef TEST_PRINTF
     209          int main(void)
@@ -1388,7 +1355,7 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
 
    ISTACK XSTACK Function
    ------ ------ --------
-      1     46   print
+      1     44   print
         0     20   -> printchar
         0     30   -> printi
         0     24   -> prints
@@ -1404,8 +1371,6 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
         0     16   -> printchar
       3      1   putchar
         2      1   -> HalUARTWrite
-      0     16   sprintf
-        0     16   -> print
 
 
    Segment part sizes:
@@ -1413,41 +1378,41 @@ E:\GitHub\DHT11-end-device\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ProjectA
    Bytes  Function/Label
    -----  --------------
        7  ?<Constant "(null)">
-      12  ??Subroutine15_0
-       8  ??Subroutine16_0
-       5  ??Subroutine17_0
+       7  ??Subroutine13_0
+       1  ??Subroutine14_0
+       5  ??Subroutine15_0
+      12  ??Subroutine16_0
+       8  ??Subroutine17_0
+       5  ??Subroutine18_0
        7  ?Subroutine0
        3  ?Subroutine1
-      15  ?Subroutine10
-      13  ?Subroutine11
-      30  ?Subroutine12
-       6  ?Subroutine13
-       8  ?Subroutine14
-       8  ?Subroutine2
-      22  ?Subroutine3
-      11  ?Subroutine4
-       4  ?Subroutine5
-       5  ?Subroutine6
-       9  ?Subroutine7
-       9  ?Subroutine8
-       4  ?Subroutine9
-     587  print
-      48  printchar
-      39  printf
+      18  ?Subroutine10
+       6  ?Subroutine11
+       8  ?Subroutine12
+      23  ?Subroutine2
+       3  ?Subroutine3
+       5  ?Subroutine4
+       9  ?Subroutine5
+       9  ?Subroutine6
+       4  ?Subroutine7
+      15  ?Subroutine8
+      13  ?Subroutine9
+     577  print
+      46  printchar
+      63  printf
      351  printi
      187  prints
       35  putchar
-      48  sprintf
-      42  -- Other
+      36  -- Other
 
  
- 1 474 bytes in segment BANKED_CODE
-    42 bytes in segment BANK_RELAYS
+ 1 420 bytes in segment BANKED_CODE
+    36 bytes in segment BANK_RELAYS
      7 bytes in segment XDATA_ROM_C
  
-    42 bytes of CODE     memory
+    36 bytes of CODE     memory
      7 bytes of CONST    memory
- 1 474 bytes of HUGECODE memory
+ 1 420 bytes of HUGECODE memory
 
 Errors: none
 Warnings: none

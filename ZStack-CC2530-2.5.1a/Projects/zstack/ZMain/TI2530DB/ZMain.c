@@ -70,7 +70,6 @@ static void zmain_vdd_check( void );
 #ifdef LCD_SUPPORTED
 static void zmain_lcd_init( void );
 #endif
-
 /*********************************************************************
  * @fn      main
  * @brief   First function called after startup.
